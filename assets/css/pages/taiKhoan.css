@@ -1,0 +1,157 @@
+/* =========================================
+   1. TIÊU ĐỀ & NÚT THÊM MỚI
+========================================= */
+.page-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.page-title-row h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-main);
+    margin: 0;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-primary:hover { background: #1D4ED8; }
+
+/* =========================================
+   2. THANH TÌM KIẾM
+========================================= */
+.filter-row {
+    margin-bottom: 24px;
+}
+
+.search-box {
+    position: relative;
+    width: 400px;
+}
+
+.search-box i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9CA3AF;
+    font-size: 20px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px 16px 10px 44px;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--text-main);
+    outline: none;
+}
+.search-box input:focus { border-color: var(--primary-color); }
+
+/* =========================================
+   3. BẢNG DỮ LIỆU
+========================================= */
+.dashboard-section {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    padding: 0; /* Bỏ padding để bảng bo sát viền */
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.table-responsive { overflow-x: auto; }
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.table th {
+    background-color: #F9FAFB;
+    color: var(--text-gray);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border-color);
+    white-space: nowrap;
+}
+
+.table td {
+    padding: 16px 24px;
+    font-size: 14px;
+    color: var(--text-main);
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+.table tbody tr:last-child td { border-bottom: none; }
+
+/* Thông tin user (Tên + Email xếp dọc) */
+.user-info { display: flex; flex-direction: column; gap: 4px; }
+.user-info .name { font-weight: 500; color: #111827; }
+.user-info .email { color: #6B7280; font-size: 13px; }
+
+/* =========================================
+   4. NHÃN (BADGES) CHO VAI TRÒ & TRẠNG THÁI
+========================================= */
+.role-badge {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    display: inline-block;
+}
+.role-admin { background: #EFF6FF; color: #2563EB; }
+.role-agent { background: #F0FDF4; color: #16A34A; }
+.role-collab { background: #FEF3C7; color: #D97706; }
+
+/* Trạng thái (Có dấu chấm) */
+.status-dot {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+}
+.status-dot::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+.status-active { background: #DCFCE7; color: #16A34A; }
+.status-active::before { background: #16A34A; }
+.status-inactive { background: #FEE2E2; color: #DC2626; }
+.status-inactive::before { background: #DC2626; }
+
+/* =========================================
+   5. PHÂN TRANG
+========================================= */
+.pagination-info {
+    color: var(--text-gray);
+    font-size: 13px;
+}
+.pagination-info strong {
+    color: var(--text-main);
+    font-weight: 500;
+}

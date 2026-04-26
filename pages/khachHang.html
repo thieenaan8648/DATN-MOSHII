@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Khách hàng - MOSHII</title>
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/pages/bangDieukhien.css">
+    <link rel="stylesheet" href="../assets/css/pages/khachHang.css">
+    
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="app-container">
+        <div id="sidebar-placeholder"></div>
+
+        <div class="main-wrapper">
+            <div id="header-placeholder"></div>
+
+            <main class="main-content">
+                <div class="page-title-row">
+                    <h2>Khách hàng</h2>
+                    <button class="btn-primary"><i class='bx bx-plus'></i> Thêm khách hàng</button>
+                </div>
+
+                <div class="filter-row">
+                    <div class="search-box">
+                        <i class='bx bx-search'></i>
+                        <input type="text" placeholder="Tìm kiếm theo tên, SĐT, mã khách hàng...">
+                    </div>
+                </div>
+
+                <div class="dashboard-section" style="padding: 0; overflow: hidden;">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>MÃ KH</th>
+                                    <th>TÊN KHÁCH HÀNG</th>
+                                    <th>SỐ ĐIỆN THOẠI</th>
+                                    <th>QUỐC GIA</th>
+                                    <th>TRẠNG THÁI</th>
+                                    <th>NGÀY ĐĂNG KÝ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>KH001</strong></td>
+                                    <td>Nguyễn Thị Mai</td>
+                                    <td>0987654321</td>
+                                    <td><span class="country-tag">🇻🇳 Việt Nam</span></td>
+                                    <td><span class="status-dot status-active">Đang hoạt động</span></td>
+                                    <td>10/04/2026</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>KH002</strong></td>
+                                    <td>Trần Văn Hùng</td>
+                                    <td>0912345678</td>
+                                    <td><span class="country-tag">🇹🇭 Thái Lan</span></td>
+                                    <td><span class="status-dot status-active">Đang hoạt động</span></td>
+                                    <td>12/04/2026</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>KH003</strong></td>
+                                    <td>Lê Thị Lan</td>
+                                    <td>0909998887</td>
+                                    <td><span class="country-tag">🇸🇬 Singapore</span></td>
+                                    <td><span class="status-dot status-locked">Đã khóa</span></td>
+                                    <td>14/04/2026</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>KH004</strong></td>
+                                    <td>Phạm Văn Đức</td>
+                                    <td>0944556677</td>
+                                    <td><span class="country-tag">🇰🇷 Hàn Quốc</span></td>
+                                    <td><span class="status-dot status-active">Đang hoạt động</span></td>
+                                    <td>15/04/2026</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="pagination-info" style="margin-top: 16px; color: var(--text-gray); font-size: 13px;">
+                    Hiển thị <strong>4</strong> / <strong>1,250</strong> khách hàng
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="../assets/js/include.js"></script>
+</body>
+</html>

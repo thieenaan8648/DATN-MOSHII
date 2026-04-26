@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Đơn hàng - MOSHII</title>
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/pages/bangDieukhien.css">
+    <link rel="stylesheet" href="../assets/css/pages/donHang.css">
+    
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="app-container">
+        <div id="sidebar-placeholder"></div>
+
+        <div class="main-wrapper">
+            <div id="header-placeholder"></div>
+
+            <main class="main-content">
+                <div class="page-title-row">
+                    <h2>Đơn hàng</h2>
+                    <button class="btn-primary"><i class='bx bx-export'></i> Xuất báo cáo</button>
+                </div>
+
+                <div class="filter-row">
+                    <div class="search-box">
+                        <i class='bx bx-search'></i>
+                        <input type="text" placeholder="Tìm kiếm theo mã đơn, khách hàng...">
+                    </div>
+                </div>
+
+                <div class="dashboard-section" style="padding: 0; overflow: hidden;">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>MÃ ĐƠN</th>
+                                    <th>KHÁCH HÀNG</th>
+                                    <th>GÓI CƯỚC</th>
+                                    <th>SỐ TIỀN</th>
+                                    <th>TRẠNG THÁI</th>
+                                    <th>NGÀY</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>DH001</strong></td>
+                                    <td>Nguyễn Thị Mai</td>
+                                    <td>Gói Data Cao Cấp</td>
+                                    <td>150,000 VNĐ</td>
+                                    <td><span class="status-badge completed">Đã hoàn thành</span></td>
+                                    <td>15/4/2026</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>DH002</strong></td>
+                                    <td>Trần Văn Hùng</td>
+                                    <td>Gói Combo Data + Voice</td>
+                                    <td>200,000 VNĐ</td>
+                                    <td><span class="status-badge processing">Đang xử lý</span></td>
+                                    <td>15/4/2026</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>DH003</strong></td>
+                                    <td>Lê Thị Lan</td>
+                                    <td>Gói SMS Doanh Nghiệp</td>
+                                    <td>50,000 VNĐ</td>
+                                    <td><span class="status-badge pending">Chờ xử lý</span></td>
+                                    <td>14/4/2026</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>DH004</strong></td>
+                                    <td>Phạm Văn Đức</td>
+                                    <td>Gói All-in-One</td>
+                                    <td>300,000 VNĐ</td>
+                                    <td><span class="status-badge processing">Đang xử lý</span></td>
+                                    <td>14/4/2026</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>DH005</strong></td>
+                                    <td>Hoàng Thị Thu</td>
+                                    <td>Gói Data Cao Cấp</td>
+                                    <td>150,000 VNĐ</td>
+                                    <td><span class="status-badge completed">Đã hoàn thành</span></td>
+                                    <td>13/4/2026</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
+                    <div class="pagination-info" style="color: var(--text-gray); font-size: 13px;">
+                        Hiển thị <strong>5</strong> / <strong>5</strong> đơn hàng
+                    </div>
+                    <div style="color: #9CA3AF; font-size: 12px;">
+                        Cập nhật lần cuối: 11:30:15 26/4/2026
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="../assets/js/include.js"></script>
+</body>
+</html>

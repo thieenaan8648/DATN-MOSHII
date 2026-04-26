@@ -1,0 +1,103 @@
+/* =========================================
+   TRANG DANH SÁCH GÓI CƯỚC
+========================================= */
+
+.page-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.page-title-row h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+/* Thanh tìm kiếm */
+.filter-row {
+    margin-bottom: 24px;
+}
+
+.search-box {
+    position: relative;
+    width: 400px;
+}
+
+.search-box i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9CA3AF;
+    font-size: 20px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px 16px 10px 44px;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+}
+
+/* =========================================
+   NHÃN DỊCH VỤ (DATA, VOICE, SMS)
+========================================= */
+.service-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.badge-service {
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    border: 1px solid transparent;
+}
+
+.badge-data { background: #DBEAFE; color: #1E40AF; border-color: #93C5FD; }
+.badge-voice { background: #D1FAE5; color: #065F46; border-color: #6EE7B7; }
+.badge-sms { background: #FEF3C7; color: #92400E; border-color: #FCD34D; }
+
+/* Nhãn Loại gói (Tháng/Ngày) */
+.badge-type {
+    padding: 4px 12px;
+    background: #F3F4F6;
+    color: #374151;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    display: inline-block;
+}
+
+/* =========================================
+   TRẠNG THÁI (Dấu chấm)
+========================================= */
+.status-dot {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.status-dot::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+.status-active { background: #DCFCE7; color: #16A34A; }
+.status-active::before { background: #16A34A; }
+
+.status-inactive { background: #FEE2E2; color: #DC2626; }
+.status-inactive::before { background: #DC2626; }

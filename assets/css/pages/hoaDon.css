@@ -1,0 +1,65 @@
+/* =========================================
+   TRANG DANH SÁCH HÓA ĐƠN
+========================================= */
+
+.page-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.page-title-row h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+/* Thanh tìm kiếm */
+.filter-row {
+    margin-bottom: 24px;
+}
+
+.search-box {
+    position: relative;
+    width: 400px;
+}
+
+.search-box i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9CA3AF;
+    font-size: 20px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px 16px 10px 44px;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+}
+
+/* Nhãn Trạng thái Hóa đơn */
+.invoice-status {
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    display: inline-block;
+}
+
+/* Đã thanh toán */
+.invoice-status.paid {
+    background: #DCFCE7;
+    color: #16A34A;
+}
+
+/* Chờ thanh toán */
+.invoice-status.unpaid {
+    background: #FEF3C7;
+    color: #D97706;
+}

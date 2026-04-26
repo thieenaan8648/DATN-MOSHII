@@ -1,37 +1,60 @@
-// Hàm load component cũ của bạn
+/**
+ * Hàm nạp thành phần HTML từ file bên ngoài
+ */
 function loadComponent(elementId, filePath) {
-    return fetch(filePath) // Thêm return để dùng được .then()
+    return fetch(filePath)
         .then(response => {
             if (!response.ok) throw new Error("Không tìm thấy file: " + filePath);
             return response.text();
         })
         .then(data => {
-            document.getElementById(elementId).innerHTML = data;
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.innerHTML = data;
+            }
         })
         .catch(error => console.error('Lỗi nạp component:', error));
 }
 
+/**
+ * Khởi tạo giao diện và xử lý logic menu
+ */
 document.addEventListener("DOMContentLoaded", function() {
-    // Load xong tất cả component
+    // Load xong tất cả component (Sidebar, Header, Footer)
     Promise.all([
         loadComponent("sidebar-placeholder", "../components/sidebar.html"),
-        loadComponent("header-placeholder", "../components/header.html")
+        loadComponent("header-placeholder", "../components/header.html"),
+        loadComponent("footer-placeholder", "../components/footer.html")
     ]).then(() => {
-        // Sau khi Sidebar đã lên màn hình, ta mới tìm được nút đăng xuất
-        const logoutBtn = document.querySelector(".menu-item.logout");
         
+        // --- LOGIC 1: TỰ ĐỘNG ACTIVE MENU THEO TRANG HIỆN TẠI ---
+        // Lấy tên file hiện tại (ví dụ: taiKhoan.html)
+        const currentPath = window.location.pathname.split("/").pop();
+        
+        // Tìm tất cả các thẻ menu trong sidebar
+        const menuItems = document.querySelectorAll(".menu-item");
+
+        menuItems.forEach(item => {
+            // Xóa class active cũ của tất cả menu
+            item.classList.remove("active");
+
+            // Lấy giá trị href của menu (ví dụ: taiKhoan.html)
+            const itemHref = item.getAttribute("href");
+
+            // Nếu href trùng với tên file hiện tại thì thêm class active (hiện xanh)
+            if (itemHref === currentPath) {
+                item.classList.add("active");
+            }
+        });
+
+
+        // --- LOGIC 2: XỬ LÝ ĐĂNG XUẤT ---
+        const logoutBtn = document.querySelector(".menu-item.logout");
         if (logoutBtn) {
             logoutBtn.addEventListener("click", function(e) {
-                e.preventDefault(); // Ngăn chặn chuyển trang mặc định của thẻ <a>
-                
-                // 1. Xóa dữ liệu đăng nhập (nếu có)
+                e.preventDefault();
                 localStorage.removeItem("userToken");
                 sessionStorage.clear();
-                
-                // 2. Thông báo (tùy chọn)
-                //alert("Bạn đã đăng xuất thành công!");
-                
-                // 3. Chuyển hướng về trang đăng nhập
                 window.location.href = "dangNhap.html";
             });
         }

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Gói cước - MOSHII</title>
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/pages/bangDieukhien.css">
+    <link rel="stylesheet" href="../assets/css/pages/goiCuoc.css">
+    
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="app-container">
+        <div id="sidebar-placeholder"></div>
+
+        <div class="main-wrapper">
+            <div id="header-placeholder"></div>
+
+            <main class="main-content">
+                <div class="page-title-row">
+                    <h2>Gói cước</h2>
+                    <button class="btn-primary"><i class='bx bx-plus'></i> Tạo mới gói cước</button>
+                </div>
+
+                <div class="filter-row">
+                    <div class="search-box">
+                        <i class='bx bx-search'></i>
+                        <input type="text" placeholder="Tìm kiếm theo mã, tên gói...">
+                    </div>
+                </div>
+
+                <div class="dashboard-section" style="padding: 0; overflow: hidden;">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>MÃ GÓI CƯỚC</th>
+                                    <th>TÊN GÓI CƯỚC</th>
+                                    <th>GIÁ</th>
+                                    <th>LOẠI DỊCH VỤ</th>
+                                    <th>LOẠI GÓI</th>
+                                    <th>TRẠNG THÁI</th>
+                                    <th>GHI CHÚ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong style="color: #111827;">GC001</strong></td>
+                                    <td>Gói Data Cao Cấp</td>
+                                    <td>150.000 VNĐ</td>
+                                    <td>
+                                        <div class="service-badges">
+                                            <span class="badge-service badge-data">Data</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge-type">Tháng</span></td>
+                                    <td><span class="status-dot status-active">Hoạt động</span></td>
+                                    <td><span style="color: var(--text-gray);">Gói data không giới hạn tốc độ</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong style="color: #111827;">GC002</strong></td>
+                                    <td>Gói Combo Data + Voice</td>
+                                    <td>200.000 VNĐ</td>
+                                    <td>
+                                        <div class="service-badges">
+                                            <span class="badge-service badge-data">Data</span>
+                                            <span class="badge-service badge-voice">Voice</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge-type">Tháng</span></td>
+                                    <td><span class="status-dot status-active">Hoạt động</span></td>
+                                    <td><span style="color: var(--text-gray);">-</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong style="color: #111827;">GC003</strong></td>
+                                    <td>Gói SMS Doanh Nghiệp</td>
+                                    <td>50.000 VNĐ</td>
+                                    <td>
+                                        <div class="service-badges">
+                                            <span class="badge-service badge-sms">SMS</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge-type">Tháng</span></td>
+                                    <td><span class="status-dot status-active">Hoạt động</span></td>
+                                    <td><span style="color: var(--text-gray);">500 SMS/tháng</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong style="color: #111827;">GC004</strong></td>
+                                    <td>Gói All-in-One</td>
+                                    <td>300.000 VNĐ</td>
+                                    <td>
+                                        <div class="service-badges">
+                                            <span class="badge-service badge-data">Data</span>
+                                            <span class="badge-service badge-sms">SMS</span>
+                                            <span class="badge-service badge-voice">Voice</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge-type">Tháng</span></td>
+                                    <td><span class="status-dot status-active">Hoạt động</span></td>
+                                    <td><span style="color: var(--text-gray);">Gói tổng hợp tất cả dịch vụ</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong style="color: #111827;">GC005</strong></td>
+                                    <td>Gói Data Ngày</td>
+                                    <td>20.000 VNĐ</td>
+                                    <td>
+                                        <div class="service-badges">
+                                            <span class="badge-service badge-data">Data</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge-type">Ngày</span></td>
+                                    <td><span class="status-dot status-inactive">Ngừng hoạt động</span></td>
+                                    <td><span style="color: var(--text-gray);">Gói data 1 ngày - tạm ngừng cung cấp</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
+                    <div class="pagination-info" style="color: var(--text-gray); font-size: 13px;">
+                        Hiển thị <strong>5</strong> / <strong>5</strong> gói cước
+                    </div>
+                    <div style="color: #9CA3AF; font-size: 12px;">
+                        Cập nhật lần cuối: 06:25:05 23/4/2026
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="../assets/js/include.js"></script>
+</body>
+</html>
