@@ -1,0 +1,147 @@
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ===== LAYOUT ===== */
+.login-page {
+  display: flex;
+  height: 100vh;
+}
+
+/* LEFT */
+.login-left {
+  width: 50%;
+  background: linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%);
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  z-index: 1;
+}
+
+.robot {
+  width: 400px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+}
+
+/* DECOR DOT */
+.dot {
+  width: 12px;
+  height: 12px;
+  background: #FECDD3;
+  opacity: 0.4;
+  border-radius: 50%;
+  position: absolute;
+}
+
+/* RIGHT */
+.login-right {
+  width: 50%;
+  background: #FAFBFC;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+/* CARD */
+.login-card {
+  width: 440px;
+  padding: 40px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+}
+
+/* LOGO */
+.logo {
+  font-size: 48px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 40px;
+  color:#2563EB
+}
+
+/* FORM */
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+}
+
+/* INPUT */
+input {
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 10px;
+  border: 1px solid #D1D5DB;
+  font-size: 14px;
+}
+
+/* PASSWORD */
+.password {
+  position: relative;
+}
+
+.password input {
+  padding-right: 40px;
+}
+
+.eye {
+  position: absolute;
+  right: 12px;
+  top: 14px;
+  cursor: pointer;
+}
+
+/* BUTTON */
+.btn-login {
+  width: 100%;
+  height: 48px;
+  background: #2563EB;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.decor {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* 🔥 QUAN TRỌNG */
+}
+
+.error {
+  color: #DC2626;
+  font-size: 12px;
+  margin-top: 4px;
+  display: none; /* ẩn mặc định */
+}
+
+.input-error {
+  border: 1px solid #DC2626 !important;
+}
+
+.error {
+  color: #DC2626;
+  font-size: 12px;
+  margin-top: 6px;
+  display: none;
+}
+
+.input-error {
+  border: 1px solid #DC2626 !important;
+}

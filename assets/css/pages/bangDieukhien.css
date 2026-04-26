@@ -1,0 +1,365 @@
+/* =========================================
+   1. PAGE HEADER (Tiêu đề trang)
+========================================= */
+.page-header {
+    margin-bottom: 32px; 
+}
+
+/* =========================================
+   2. STATS GRID (6 thẻ thống kê đầu trang)
+========================================= */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 24px; 
+    margin-bottom: 24px;
+}
+
+.stat-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between;
+    min-height: 140px; 
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-box i { font-size: 24px; }
+.icon-box.blue    { background: #EFF6FF; color: #2563EB; } 
+.icon-box.warning { background: #FFFBEB; color: #F59E0B; } 
+.icon-box.purple  { background: #F3E8FF; color: #9333EA; } 
+.icon-box.green   { background: #ECFDF5; color: #10B981; } 
+.icon-box.red     { background: #FEF2F2; color: #EF4444; } 
+.icon-box.pink    { background: #FDF2F8; color: #EC4899; } 
+
+.badge {
+    padding: 4px 10px;
+    border-radius: 20px; 
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px; 
+    white-space: nowrap;
+}
+.badge.success { background: #D1FAE5; color: #059669; }
+.badge.danger  { background: #FEE2E2; color: #DC2626; }
+
+.card-info {
+    display: flex;
+    flex-direction: column; 
+    gap: 4px;
+}
+
+.card-info p {
+    color: var(--text-gray);
+    font-size: 13px;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.card-info h3 {
+    color: var(--text-main);
+    font-size: 18px; 
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* =========================================
+   3. BỐ CỤC CHUNG CÁC KHỐI BÊN DƯỚI
+========================================= */
+.dashboard-section {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    padding: 24px;
+    margin-bottom: 24px;
+    height: auto; 
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+    align-items: start;
+}
+
+.text-gray { color: var(--text-gray); }
+
+/* =========================================
+   4. BIỂU ĐỒ DOANH THU & ĐƠN HÀNG
+========================================= */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.header-left h3 { margin: 0 0 4px 0; font-size: 16px; }
+.header-left p { margin: 0; font-size: 13px; }
+
+.chart-legend {
+    display: flex;
+    gap: 20px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-gray);
+}
+
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.dot.revenue { background: var(--primary-color); }
+.dot.orders { background: var(--warning); }
+
+.chart-container {
+    display: flex;
+    height: 250px;
+    gap: 15px;
+}
+
+.y-axis {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 25px; 
+    color: var(--text-gray);
+    font-size: 11px;
+    width: 40px;
+}
+.y-axis.left { text-align: right; }
+.y-axis.right { text-align: left; }
+
+.chart-area {
+    flex: 1;
+    position: relative;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.grid-lines {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.grid-lines .line {
+    border-top: 1px dashed #F3F4F6;
+    width: 100%;
+}
+
+.bars {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 100%;
+    padding: 0 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.bar-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40px;
+    height: 100%;
+    justify-content: flex-end;
+}
+
+.bar {
+    width: 24px;
+    background: var(--primary-color);
+    border-radius: 4px 4px 0 0;
+}
+
+.bar-wrapper span {
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--text-gray);
+}
+
+.line-chart-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* =========================================
+   5. TÌNH TRẠNG KHO & THÔNG BÁO (ĐÃ SỬA)
+========================================= */
+/* Gói cước bán chạy */
+.package-item { margin-bottom: 16px; }
+.package-item:last-child { margin-bottom: 0; }
+
+.package-info { 
+    display: flex; 
+    justify-content: space-between; 
+    font-size: 14px; 
+    margin-bottom: 8px; 
+}
+.package-info strong { color: var(--primary-color); }
+
+.progress-bar { 
+    height: 8px; background: #E5E7EB; border-radius: 4px; overflow: hidden; 
+}
+.progress { height: 100%; background: var(--primary-color); }
+
+/* Khối Tình trạng kho và Thông báo */
+.inventory-status, .alert-list { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 12px; 
+}
+
+/* 5.1 Tình trạng kho */
+.status-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Đẩy số liệu sang phải */
+    padding: 14px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.status-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #374151;
+}
+
+.status-item.success { background: #F0FDF4; border: 1px solid #BBF7D0; }
+.status-item.success i, .status-item.success strong { color: #10B981; }
+
+.status-item.danger { background: #FEF2F2; border: 1px solid #FECACA; }
+.status-item.danger i, .status-item.danger strong { color: #EF4444; }
+
+.status-item.info { background: #F9FAFB; border: 1px solid #E5E7EB; }
+.status-item.info i { color: #6B7280; }
+.status-item.info strong.text-success { color: #10B981; }
+
+.update-time {
+    color: var(--text-gray);
+    font-size: 12px;
+    margin-top: 16px;
+    margin-bottom: 0;
+}
+
+/* 5.2 Thông báo & Cảnh báo */
+.alert-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.alert-item i { font-size: 18px; margin-top: 2px; }
+.alert-item p { margin: 0 0 4px 0; color: #374151; }
+.alert-item small { color: var(--text-gray); font-size: 12px; }
+
+.alert-item.warning { background: #FFFBEB; border: 1px solid #FDE68A; }
+.alert-item.warning i { color: #F59E0B; }
+
+.alert-item.primary { background: #EFF6FF; border: 1px solid #BFDBFE; }
+.alert-item.primary i { color: #3B82F6; }
+
+.alert-item.success { background: #F0FDF4; border: 1px solid #BBF7D0; }
+.alert-item.success i { color: #10B981; }
+
+
+/* =========================================
+   6. BẢNG ĐƠN HÀNG GẦN ĐÂY
+========================================= */
+.btn-outline {
+    padding: 8px 16px;
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-main);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-outline:hover { background: #F9FAFB; }
+
+.table-responsive {
+    overflow-x: auto;
+    margin-top: 16px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.table th {
+    background-color: #F9FAFB; 
+    color: var(--text-gray);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-color);
+    white-space: nowrap;
+}
+
+.table td {
+    padding: 16px;
+    font-size: 14px;
+    color: var(--text-main);
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+.table tbody tr:last-child td { border-bottom: none; }
+.table td strong { font-weight: 500; }
+
+/* Nhãn trạng thái */
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.status-badge.completed { background: #D1FAE5; color: #059669; border: 1px solid #A7F3D0; }
+.status-badge.processing { background: #DBEAFE; color: #1D4ED8; border: 1px solid #BFDBFE; }
+.status-badge.pending { background: #FEF3C7; color: #B45309; border: 1px solid #FDE68A; }

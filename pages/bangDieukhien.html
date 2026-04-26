@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng điều khiển - MOSHII</title>
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/pages/bangDieukhien.css">
+    
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="app-container">
+        <div id="sidebar-placeholder"></div>
+
+        <div class="main-wrapper">
+            <div id="header-placeholder"></div>
+
+            <main class="main-content">
+                <div class="page-header">
+                    <h2>Bảng điều khiển</h2>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="card-top">
+                            <div class="icon-box blue"><i class='bx bx-dollar'></i></div>
+                            <span class="badge success">+12.5%</span>
+                        </div>
+                        <div class="card-info">
+                            <p>Doanh thu tháng này</p>
+                            <h3>125,430,000 VNĐ</h3>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="card-top">
+                            <div class="icon-box warning"><i class='bx bx-shopping-bag'></i></div>
+                            <span class="badge success">+8</span>
+                        </div>
+                        <div class="card-info">
+                            <p>Tổng đơn hàng</p>
+                            <h3>156</h3>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="card-top">
+                            <div class="icon-box purple"><i class='bx bx-broadcast'></i></div>
+                        </div>
+                        <div class="card-info">
+                            <p>eSIM đã bán</p>
+                            <h3>1,234</h3>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="card-top">
+                            <div class="icon-box green"><i class='bx bx-signal-5'></i></div>
+                        </div>
+                        <div class="card-info">
+                            <p>eSIM đang hoạt động</p>
+                            <h3>987</h3>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="card-top">
+                            <div class="icon-box red"><i class='bx bx-time-five'></i></div>
+                        </div>
+                        <div class="card-info">
+                            <p>Sắp hết hạn (3 ngày)</p>
+                            <h3 class="text-danger">45</h3>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="card-top">
+                            <div class="icon-box pink"><i class='bx bx-user-plus'></i></div>
+                        </div>
+                        <div class="card-info">
+                            <p>Khách hàng mới</p>
+                            <h3>23</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-section chart-box">
+                    <div class="section-header">
+                        <div class="header-left">
+                            <h3>Doanh thu & Đơn hàng</h3>
+                            <p class="text-gray">7 ngày gần nhất</p>
+                        </div>
+                        <div class="chart-legend">
+                            <div class="legend-item">
+                                <span class="dot revenue"></span> Doanh thu (VND)
+                            </div>
+                            <div class="legend-item">
+                                <span class="dot orders"></span> Đơn hàng
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <div class="y-axis left">
+                            <span>150tr</span>
+                            <span>100tr</span>
+                            <span>50tr</span>
+                            <span>0</span>
+                        </div>
+
+                        <div class="chart-area">
+                            <div class="grid-lines">
+                                <div class="line"></div>
+                                <div class="line"></div>
+                                <div class="line"></div>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="bars">
+                                <div class="bar-wrapper"><div class="bar" style="height: 65%"></div><span>T2</span></div>
+                                <div class="bar-wrapper"><div class="bar" style="height: 80%"></div><span>T3</span></div>
+                                <div class="bar-wrapper"><div class="bar" style="height: 45%"></div><span>T4</span></div>
+                                <div class="bar-wrapper"><div class="bar" style="height: 90%"></div><span>T5</span></div>
+                                <div class="bar-wrapper"><div class="bar" style="height: 70%"></div><span>T6</span></div>
+                                <div class="bar-wrapper"><div class="bar" style="height: 85%"></div><span>T7</span></div>
+                                <div class="bar-wrapper"><div class="bar" style="height: 55%"></div><span>CN</span></div>
+                            </div>
+
+                            <svg class="line-chart-layer" viewBox="0 0 700 200" preserveAspectRatio="none">
+                                <polyline fill="none" stroke="#F59E0B" stroke-width="3" 
+                                    points="50,140 150,100 250,160 350,80 450,120 550,60 650,130" />
+                                <circle cx="50" cy="140" r="4" fill="#F59E0B" />
+                                <circle cx="150" cy="100" r="4" fill="#F59E0B" />
+                                <circle cx="250" cy="160" r="4" fill="#F59E0B" />
+                                <circle cx="350" cy="80" r="4" fill="#F59E0B" />
+                                <circle cx="450" cy="120" r="4" fill="#F59E0B" />
+                                <circle cx="550" cy="60" r="4" fill="#F59E0B" />
+                                <circle cx="650" cy="130" r="4" fill="#F59E0B" />
+                            </svg>
+                        </div>
+
+                        <div class="y-axis right">
+                            <span>30</span>
+                            <span>20</span>
+                            <span>10</span>
+                            <span>0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-section">
+                    <h3 style="margin-bottom: 16px;">Gói cước bán chạy</h3>
+                    <div class="package-list-wrapper">
+                        <div class="package-item">
+                            <div class="package-info"><span>#1 Gói Data Cao Cấp</span> <strong>456</strong></div>
+                            <div class="progress-bar"><div class="progress" style="width: 85%"></div></div>
+                        </div>
+                        <div class="package-item">
+                            <div class="package-info"><span>#2 Gói Combo Data + Voice</span> <strong>342</strong></div>
+                            <div class="progress-bar"><div class="progress" style="width: 65%"></div></div>
+                        </div>
+                        <div class="package-item">
+                            <div class="package-info"><span>#3 Gói All-in-One</span> <strong>234</strong></div>
+                            <div class="progress-bar"><div class="progress" style="width: 45%"></div></div>
+                        </div>
+                        <div class="package-item">
+                            <div class="package-info"><span>#4 Gói SMS Doanh Nghiệp</span> <strong>145</strong></div>
+                            <div class="progress-bar"><div class="progress" style="width: 25%"></div></div>
+                        </div>
+                        <div class="package-item">
+                            <div class="package-info"><span>#5 Gói Data Ngày</span> <strong>57</strong></div>
+                            <div class="progress-bar"><div class="progress" style="width: 10%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-section">
+                    <div class="section-header" style="align-items: center;">
+                        <h3 style="margin: 0;">Đơn hàng gần đây</h3>
+                        <button class="btn-outline">Xem tất cả</button>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>MÃ ĐƠN</th>
+                                    <th>KHÁCH HÀNG</th>
+                                    <th>GÓI CƯỚC</th>
+                                    <th>SỐ TIỀN</th>
+                                    <th>TRẠNG THÁI</th>
+                                    <th>NGÀY</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>DH001</strong></td>
+                                    <td>Nguyễn Thị Mai</td>
+                                    <td>Gói Data Cao Cấp</td>
+                                    <td>150,000 VNĐ</td>
+                                    <td><span class="status-badge completed">Đã hoàn thành</span></td>
+                                    <td>15/4/2026</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>DH002</strong></td>
+                                    <td>Trần Văn Hùng</td>
+                                    <td>Gói Combo Data + Voice</td>
+                                    <td>200,000 VNĐ</td>
+                                    <td><span class="status-badge processing">Đang xử lý</span></td>
+                                    <td>15/4/2026</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>DH003</strong></td>
+                                    <td>Lê Thị Lan</td>
+                                    <td>Gói SMS Doanh Nghiệp</td>
+                                    <td>50,000 VNĐ</td>
+                                    <td><span class="status-badge pending">Chờ xử lý</span></td>
+                                    <td>14/4/2026</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>DH004</strong></td>
+                                    <td>Phạm Văn Đức</td>
+                                    <td>Gói All-in-One</td>
+                                    <td>300,000 VNĐ</td>
+                                    <td><span class="status-badge processing">Đang xử lý</span></td>
+                                    <td>14/4/2026</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>DH005</strong></td>
+                                    <td>Hoàng Thị Thu</td>
+                                    <td>Gói Data Cao Cấp</td>
+                                    <td>150,000 VNĐ</td>
+                                    <td><span class="status-badge completed">Đã hoàn thành</span></td>
+                                    <td>13/4/2026</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div class="dashboard-section" style="display: flex; flex-direction: column;">
+                        <h3 style="margin-bottom: 16px;">Tình trạng kho eSIM</h3>
+                        
+                        <div class="inventory-status" style="flex: 1;">
+                            <div class="status-item success">
+                                <div class="status-left">
+                                    <i class='bx bx-wifi'></i> 
+                                    <span>eSIM đang hoạt động</span>
+                                </div>
+                                <strong>987</strong>
+                            </div>
+                            
+                            <div class="status-item danger">
+                                <div class="status-left">
+                                    <i class='bx bx-wifi-off'></i> 
+                                    <span>eSIM sắp hết hạn</span>
+                                </div>
+                                <strong>45</strong>
+                            </div>
+                            
+                            <div class="status-item info">
+                                <div class="status-left">
+                                    <i class='bx bx-pulse'></i> 
+                                    <span>Trạng thái hệ thống</span>
+                                </div>
+                                <strong class="text-success">Hoạt động tốt</strong>
+                            </div>
+                        </div>
+                        
+                        <p class="update-time">Cập nhật lần cuối: 05:08:34 16/4/2026</p>
+                    </div>
+
+                    <div class="dashboard-section">
+                        <h3 style="margin-bottom: 16px;">Thông báo & Cảnh báo</h3>
+                        
+                        <div class="alert-list">
+                            <div class="alert-item warning">
+                                <i class='bx bx-error-circle'></i>
+                                <div class="alert-content">
+                                    <p>45 eSIM sắp hết hạn trong 7 ngày tới</p>
+                                    <small>2 giờ trước</small>
+                                </div>
+                            </div>
+                            
+                            <div class="alert-item primary">
+                                <i class='bx bx-info-circle'></i>
+                                <div class="alert-content">
+                                    <p>Cập nhật hệ thống thành công lúc 14:30</p>
+                                    <small>3 giờ trước</small>
+                                </div>
+                            </div>
+                            
+                            <div class="alert-item warning">
+                                <i class='bx bx-error-circle'></i>
+                                <div class="alert-content">
+                                    <p>12 đơn hàng đang chờ xử lý</p>
+                                    <small>5 giờ trước</small>
+                                </div>
+                            </div>
+                            
+                            <div class="alert-item success">
+                                <i class='bx bx-check-circle'></i>
+                                <div class="alert-content">
+                                    <p>Đồng bộ dữ liệu thành công</p>
+                                    <small>6 giờ trước</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="../assets/js/include.js"></script>
+</body>
+</html>
