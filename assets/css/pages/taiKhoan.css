@@ -111,7 +111,7 @@
 
 /* =========================================
    4. NHÃN (BADGES) CHO VAI TRÒ & TRẠNG THÁI
-========================================= */
+========================================= 
 .role-badge {
     padding: 4px 10px;
     border-radius: 6px;
@@ -121,7 +121,7 @@
 }
 .role-admin { background: #EFF6FF; color: #2563EB; }
 .role-agent { background: #F0FDF4; color: #16A34A; }
-.role-collab { background: #FEF3C7; color: #D97706; }
+.role-collab { background: #FEF3C7; color: #D97706; }*/
 
 /* Trạng thái (Có dấu chấm) */
 .status-dot {
