@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý thu nhập - MOSHII</title>
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/pages/bangDieukhien.css">
+    <link rel="stylesheet" href="../assets/css/pages/thuNhap.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="app-container">
+        <div id="sidebar-placeholder"></div>
+        <div class="main-wrapper">
+            <div id="header-placeholder"></div>
+            <main class="main-content">
+                <div class="page-header">
+                    <h2>Quản lý thu nhập</h2>
+                </div>
+
+                <div class="card-block">
+                    <div class="tabs-container">
+                        <div class="tab-item active" onclick="switchTab('income')">Thu nhập</div>
+                        <div class="tab-item" onclick="switchTab('withdraw')">Yêu cầu rút tiền</div>
+                    </div>
+                </div>
+
+                <div class="card-block">
+                    <div class="filter-bar">
+                        <div class="filter-group">
+                            <label>Đối tượng</label>
+                            <select><option>Tất cả</option></select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Chọn đại lý</label>
+                            <select><option>-- Chọn đại lý --</option></select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Tháng</label>
+                            <select><option>Tháng 4</option></select>
+                        </div>
+                        <div class="filter-group small">
+                            <label>Năm</label>
+                            <select><option>2026</option></select>
+                        </div>
+                        <button class="btn-view">Xem thu nhập</button>
+                    </div>
+                </div>
+
+                <div class="card-block table-block">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr id="table-header">
+                                    <th>MÃ GIAO DỊCH</th>
+                                    <th>NGÀY</th>
+                                    <th>NGUỒN THU</th>
+                                    <th>SỐ TIỀN</th>
+                                    <th>TRẠNG THÁI</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="5" style="text-align: center; color: #9CA3AF; padding: 40px;">
+                                        Nhấn "Xem thu nhập" để hiển thị dữ liệu
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="../assets/js/include.js"></script>
+    <script>
+        function switchTab(type) {
+            const tabs = document.querySelectorAll('.tab-item');
+            tabs.forEach(t => t.classList.remove('active'));
+            
+            if(type === 'income') {
+                tabs[0].classList.add('active');
+                document.getElementById('table-header').innerHTML = '<th>MÃ GIAO DỊCH</th><th>NGÀY</th><th>NGUỒN THU</th><th>SỐ TIỀN</th><th>TRẠNG THÁI</th>';
+                document.querySelector('.btn-view').innerText = 'Xem thu nhập';
+            } else {
+                tabs[1].classList.add('active');
+                document.getElementById('table-header').innerHTML = '<th>MÃ YÊU CẦU</th><th>NGÀY GỬI</th><th>ĐẠI LÝ / CTV</th><th>SỐ TIỀN RÚT</th><th>TRẠNG THÁI</th>';
+                document.querySelector('.btn-view').innerText = 'Xem yêu cầu';
+            }
+        }
+    </script>
+</body>
+</html>

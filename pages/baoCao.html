@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="../assets/css/base.css">
     <link rel="stylesheet" href="../assets/css/layout.css">
     <link rel="stylesheet" href="../assets/css/components.css">
-    <link rel="stylesheet" href="../assets/css/pages/bangDieukhien.css">
     <link rel="stylesheet" href="../assets/css/pages/baoCao.css">
     
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -21,128 +20,65 @@
 
             <main class="main-content">
                 <div class="page-title-row">
-                    <h2>Báo cáo thống kê</h2>
-                    <button class="btn-primary"><i class='bx bx-download'></i> Xuất báo cáo (Excel)</button>
+                    <h2>Báo cáo thống kê đơn hàng</h2>
                 </div>
 
-                <div class="report-filters">
-                    <div class="filter-group">
-                        <label>Khoảng thời gian</label>
-                        <select class="select-input">
-                            <option>7 ngày gần nhất</option>
-                            <option>Tháng này</option>
-                            <option>Tháng trước</option>
-                        </select>
-                    </div>
-                    <div class="filter-group">
-                        <label>Loại dịch vụ</label>
-                        <select class="select-input">
-                            <option>Tất cả dịch vụ</option>
-                            <option>Data</option>
-                            <option>Voice</option>
-                            <option>SMS</option>
-                        </select>
-                    </div>
-                </div>
+                <div class="filter-section">
+                    <h3>Bộ lọc báo cáo</h3>
 
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="card-top">
-                            <div class="icon-box blue"><i class='bx bx-dollar'></i></div>
-                            <span class="badge success">+15.2%</span>
-                        </div>
-                        <div class="card-info">
-                            <p>Tổng doanh thu kỳ này</p>
-                            <h3>450,200,000 VNĐ</h3>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="card-top">
-                            <div class="icon-box warning"><i class='bx bx-cart'></i></div>
-                            <span class="badge success">+12</span>
-                        </div>
-                        <div class="card-info">
-                            <p>Tổng đơn hàng</p>
-                            <h3>1,245</h3>
+                    <div class="filter-row-group">
+                        <div class="filter-label">Đối tượng thống kê</div>
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="doi_tuong" checked> Tất cả
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="doi_tuong"> Theo Đại lý
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="doi_tuong"> Theo Cộng tác viên
+                            </label>
                         </div>
                     </div>
-                    <div class="stat-card">
-                        <div class="card-top">
-                            <div class="icon-box pink"><i class='bx bx-user-plus'></i></div>
-                        </div>
-                        <div class="card-info">
-                            <p>Khách hàng mới</p>
-                            <h3>156</h3>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="dashboard-section report-chart-box">
-                    <div class="section-header">
-                        <div class="header-left">
-                            <h3>Biểu đồ tăng trưởng doanh thu</h3>
-                            <p class="text-gray">So sánh với kỳ trước</p>
+                    <div class="filter-row-group">
+                        <div class="filter-label">Loại thời gian</div>
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="loai_thoi_gian" checked> Theo ngày
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="loai_thoi_gian"> Theo tuần
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="loai_thoi_gian"> Theo tháng
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="loai_thoi_gian"> Theo năm
+                            </label>
                         </div>
                     </div>
-                    
-                    <div class="chart-container large">
-                        <div class="y-axis left">
-                            <span>200tr</span>
-                            <span>150tr</span>
-                            <span>100tr</span>
-                            <span>50tr</span>
-                            <span>0</span>
-                        </div>
-                        <div class="chart-area">
-                            <div class="grid-lines">
-                                <div class="line"></div>
-                                <div class="line"></div>
-                                <div class="line"></div>
-                                <div class="line"></div>
-                                <div class="line"></div>
+
+                    <div class="filter-row-group">
+                        <div class="filter-label">Khoảng thời gian</div>
+                        <div class="date-group">
+                            <div class="date-input-wrapper">
+                                <label>Từ ngày</label>
+                                <input type="date">
                             </div>
-                            <div class="bars" style="padding: 0 40px;">
-                                <div class="bar-wrapper"><div class="bar" style="height: 70%; width: 45px;"></div><span>T4</span></div>
-                                <div class="bar-wrapper"><div class="bar" style="height: 85%; width: 45px;"></div><span>T5</span></div>
-                                <div class="bar-wrapper"><div class="bar" style="height: 60%; width: 45px;"></div><span>T6</span></div>
-                                <div class="bar-wrapper"><div class="bar" style="height: 95%; width: 45px;"></div><span>T7</span></div>
+                            <div class="date-input-wrapper">
+                                <label>Đến ngày</label>
+                                <input type="date">
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="report-table-wrapper">
-                    <h3>Dữ liệu chi tiết theo thời gian</h3>
-                    <div class="dashboard-section" style="padding: 0; overflow: hidden;">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>THỜI GIAN</th>
-                                    <th>DOANH THU</th>
-                                    <th>ĐƠN HÀNG</th>
-                                    <th>KHÁCH MỚI</th>
-                                    <th>TĂNG TRƯỞNG</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Tháng 1 / 2026</td>
-                                    <td>120,500,000 VNĐ</td>
-                                    <td>340</td>
-                                    <td>45</td>
-                                    <td><span style="color: #16A34A; font-weight: 600;">+5.2%</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Tháng 2 / 2026</td>
-                                    <td>145,200,000 VNĐ</td>
-                                    <td>410</td>
-                                    <td>52</td>
-                                    <td><span style="color: #16A34A; font-weight: 600;">+12.4%</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="action-row">
+                        <button class="btn-primary">Xem báo cáo</button>
+                        <button class="btn-outline">Xuất báo cáo</button>
                     </div>
                 </div>
+
             </main>
         </div>
     </div>

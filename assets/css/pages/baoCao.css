@@ -1,70 +1,137 @@
 /* =========================================
-   TRANG BÁO CÁO THỐNG KÊ
+   TRANG BÁO CÁO THỐNG KÊ (CẬP NHẬT THEO FIGMA)
 ========================================= */
 
-/* 1. Header và Nút bấm */
 .page-title-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin-bottom: 24px;
 }
 
 .page-title-row h2 {
     font-size: 24px;
     font-weight: 600;
-    color: var(--text-main);
+    color: #111827;
     margin: 0;
 }
 
-/* 2. Bộ lọc thời gian & Dịch vụ */
-.report-filters {
+/* Khối Bộ lọc báo cáo */
+.filter-section {
+    background: #fff;
+    border: 1px solid #E5E7EB;
+    border-radius: 14px;
+    padding: 32px;
+    box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.10);
     display: flex;
-    gap: 16px;
-    margin-bottom: 24px;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.filter-section h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
+}
+
+/* Nhóm các hàng bộ lọc (Radio & Date) */
+.filter-row-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.filter-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+}
+
+/* Tùy chỉnh Nút Radio */
+.radio-group {
+    display: flex;
+    gap: 24px;
     align-items: center;
 }
 
-.filter-group {
+.radio-item {
     display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.filter-group label {
-    font-size: 12px;
-    color: var(--text-gray);
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #374151;
     font-weight: 500;
 }
 
-.select-input {
-    padding: 10px 12px;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    font-size: 14px;
-    color: var(--text-main);
-    background: #fff;
-    outline: none;
-    min-width: 180px;
+.radio-item input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    accent-color: #2563EB; /* Màu xanh của MOSHII */
     cursor: pointer;
 }
 
-/* 3. Khối biểu đồ báo cáo lớn */
-.report-chart-box {
-    margin-top: 8px;
+/* Ô chọn ngày (Date Picker) */
+.date-group {
+    display: flex;
+    gap: 16px;
 }
 
-.chart-container.large {
-    height: 350px; /* Tăng chiều cao cho biểu đồ báo cáo */
+.date-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 292px; /* Kích thước chuẩn từ Figma */
 }
 
-/* 4. Định dạng bảng báo cáo chi tiết */
-.report-table-wrapper {
-    margin-top: 32px;
+.date-input-wrapper label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #6B7280;
 }
 
-.report-table-wrapper h3 {
-    margin-bottom: 16px;
-    font-size: 18px;
-    font-weight: 600;
+.date-input-wrapper input[type="date"] {
+    padding: 10px 16px;
+    border: 1px solid #D1D5DB;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #374151;
+    outline: none;
+    height: 44px;
+    font-family: 'Inter', sans-serif;
 }
+
+.date-input-wrapper input[type="date"]:focus {
+    border-color: #2563EB;
+}
+
+/* Hàng nút bấm */
+.action-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.btn-primary {
+    padding: 10px 24px;
+    background: #2563EB;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.10);
+}
+
+.btn-outline {
+    padding: 10px 24px;
+    background: #fff;
+    color: #374151;
+    border: 1px solid #D1D5DB;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btn-primary:hover { background: #1D4ED8; }
+.btn-outline:hover { background: #F9FAFB; }
