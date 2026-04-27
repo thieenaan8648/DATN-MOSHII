@@ -155,3 +155,320 @@
     color: var(--text-main);
     font-weight: 500;
 }
+
+/* =========================================
+   TRẠNG THÁI TRỐNG (NO RESULTS) CHUẨN FIGMA
+========================================= */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 232.5px; /* Chiều cao chuẩn từ Figma */
+    background: #fff;
+    gap: 12px;
+}
+
+.empty-state-text {
+    color: #6B7280;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    line-height: 21px;
+}
+
+/* Định dạng chữ Phân trang */
+.pagination-text {
+    color: #6B7280;
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 19.5px;
+}
+
+.pagination-text span {
+    color: #111827;
+    font-weight: 500;
+}
+
+/* =========================================
+   TRANG TẠO TÀI KHOẢN MỚI (CHUẨN FIGMA)
+========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* --- 1. Header (Quay lại & Tiêu đề) --- */
+.page-header-action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.header-left-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #6B7280;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.back-link:hover {
+    color: #111827;
+}
+
+.header-left-stack h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #111827;
+    line-height: 36px;
+    margin: 0;
+}
+
+.btn-primary {
+    height: 44px;
+    padding: 0 24px;
+    background: #2563EB;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.10), 0px 1px 3px rgba(0, 0, 0, 0.10);
+    transition: background 0.2s;
+}
+
+.btn-primary:hover {
+    background: #1D4ED8;
+}
+
+/* --- 2. Khung Form (Form Container) --- */
+.create-form-container {
+    background: #fff;
+    border-radius: 14px;
+    border: 1.33px solid #E5E7EB;
+    box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.10), 0px 1px 3px rgba(0, 0, 0, 0.10);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+/* Chọn Vai trò (Radio Toggle) */
+.role-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-bottom: 32px;
+    border-bottom: 1.33px solid #E5E7EB;
+}
+
+.form-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+}
+
+.form-label .required {
+    color: #DC2626;
+}
+
+.role-toggle-group {
+    display: flex;
+    gap: 16px;
+}
+
+.role-option {
+    flex: 1;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Trạng thái Active (Đại lý) */
+.role-option.active {
+    background: #EFF6FF;
+    border: 1.33px solid #2563EB;
+    color: #2563EB;
+}
+
+/* Trạng thái Inactive (Cộng tác viên) */
+.role-option.inactive {
+    background: #fff;
+    border: 1.33px solid #D1D5DB;
+    color: #6B7280;
+}
+
+.role-option.inactive:hover {
+    background: #F9FAFB;
+}
+
+/* --- 3. Lưới Form 2 Cột (Grid) --- */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 32px;
+    row-gap: 24px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group input {
+    width: 100%;
+    height: 44px;
+    padding: 0 16px;
+    background: #fff;
+    border: 1.33px solid #D1D5DB;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #111827;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.input-group input::placeholder {
+    color: #9CA3AF;
+    font-weight: 400;
+}
+
+.input-group input:focus {
+    border-color: #2563EB;
+}
+
+/* Định dạng cho ô Select (Dropdown) */
+.input-group select {
+    width: 100%;
+    height: 44px;
+    padding: 0 16px;
+    background: #fff;
+    border: 1.33px solid #D1D5DB;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #111827;
+    outline: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    appearance: none; /* Ẩn mũi tên mặc định để custom */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+}
+
+.input-group select:focus {
+    border-color: #2563EB;
+}
+
+/* =========================================
+   4. HIỆU ỨNG LỖI (VALIDATION)
+========================================= */
+.input-error {
+    border-color: #DC2626 !important; /* Viền đỏ */
+    background-color: #FEF2F2 !important; /* Nền đỏ nhạt xíu cho giống màn login */
+}
+
+.error-text {
+    color: #DC2626;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    margin-top: 4px;
+    display: none; /* Mặc định ẩn, chỉ hiện khi JS gọi */
+}
+
+/* =========================================
+   5. POPUP MODAL THÀNH CÔNG
+========================================= */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5); /* Nền đen mờ 50% */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    display: none; /* Mặc định ẩn */
+}
+
+.modal-box {
+    width: 440px;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.25);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.modal-icon {
+    width: 64px;
+    height: 64px;
+    background: #DCFCE7;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #16A34A; /* Màu xanh lá chuẩn */
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.modal-box h3 {
+    color: #111827;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.modal-box p {
+    color: #6B7280;
+    font-size: 14px;
+    margin: 0 0 12px 0;
+}
+
+.btn-modal {
+    width: 100%;
+    height: 44px;
+    background: #2563EB;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.1);
+}
+
+.btn-modal:hover {
+    background: #1D4ED8;
+}

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Tài khoản / Mới - MOSHII</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/pages/taiKhoan.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="app-container">
+        <div id="sidebar-placeholder"></div>
+        <div class="main-wrapper">
+            <div id="header-placeholder"></div>
+            <main class="main-content">
+                
+                <div class="page-header-action">
+                    <div class="header-left-stack">
+                        <a href="taiKhoan.html" class="back-link">
+                            <i class='bx bx-chevron-left'></i> Quay lại
+                        </a>
+                        <h2>Tài khoản / Mới</h2>
+                    </div>
+                    <button class="btn-primary" onclick="taoTaiKhoanMoi()">Tạo tài khoản</button>
+                </div>
+
+                <div class="create-form-container">
+                    
+                    <div class="role-section">
+                        <div class="form-label">Loại tài khoản / vai trò <span class="required">*</span></div>
+                        <div class="role-toggle-group">
+                            <div class="role-option active" onclick="selectRole('daily', this)">Đại lý</div>
+                            <div class="role-option inactive" onclick="selectRole('ctv', this)">Cộng tác viên</div>
+                        </div>
+                    </div>
+
+                    <div id="grid-daily" class="form-grid">
+                        <div class="input-group">
+                            <div class="form-label">Email <span class="required">*</span></div>
+                            <input type="email" placeholder="Nhập email" autocomplete="off" class="val-email">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Mật khẩu <span class="required">*</span></div>
+                            <input type="password" placeholder="Nhập mật khẩu" autocomplete="new-password">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Họ và tên <span class="required">*</span></div>
+                            <input type="text" placeholder="Nhập họ và tên" class="val-name">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Ngày sinh <span class="required">*</span></div>
+                            <input type="date">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Số điện thoại <span class="required">*</span></div>
+                            <input type="text" placeholder="Nhập số điện thoại" class="val-phone">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Mã đại lý <span class="required">*</span></div>
+                            <input type="text" placeholder="Nhập mã đại lý">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Khu vực hoạt động <span class="required">*</span></div>
+                            <input type="text" placeholder="Nhập khu vực">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Phần trăm hoa hồng (%) <span class="required">*</span></div>
+                            <input type="number" placeholder="Nhập phần trăm">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                    </div>
+
+                    <div id="grid-ctv" class="form-grid" style="display: none;">
+                        <div class="input-group">
+                            <div class="form-label">Email <span class="required">*</span></div>
+                            <input type="email" placeholder="Nhập email" autocomplete="off" class="val-email">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Mật khẩu <span class="required">*</span></div>
+                            <input type="password" placeholder="Nhập mật khẩu" autocomplete="new-password">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Họ và tên <span class="required">*</span></div>
+                            <input type="text" placeholder="Nhập họ và tên" class="val-name">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Ngày sinh <span class="required">*</span></div>
+                            <input type="date">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Số điện thoại <span class="required">*</span></div>
+                            <input type="text" placeholder="Nhập số điện thoại" class="val-phone">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <div class="form-label">Đại lý quản lý <span class="required">*</span></div>
+                            <select>
+                                <option value="" disabled selected hidden>Chọn đại lý quản lý</option>
+                                <option value="dl01">DL001 - Trần Thị Bình</option>
+                                <option value="dl02">DL002 - Phạm Thị Dung</option>
+                            </select>
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+
+                        <div class="input-group">
+                            <div class="form-label">Mã đại lý <span class="required">*</span></div>
+                            <input type="text" placeholder="Nhập mã đại lý">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Mã cộng tác viên <span class="required">*</span></div>
+                            <input type="text" placeholder="Nhập mã cộng tác viên">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+
+                        <div class="input-group">
+                            <div class="form-label">Khu vực hoạt động <span class="required">*</span></div>
+                            <input type="text" placeholder="Nhập khu vực">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Phần trăm hoa hồng (%) <span class="required">*</span></div>
+                            <input type="number" placeholder="Nhập phần trăm">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div id="successModal" class="modal-overlay" style="display: none;">
+        <div class="modal-box">
+            <div class="modal-icon">
+                <i class='bx bx-check'></i>
+            </div>
+            <h3>Thông báo</h3>
+            <p>Tạo tài khoản thành công</p>
+            <button class="btn-modal" onclick="dongModalVaChuyenTrang()">Đóng</button>
+        </div>
+    </div>
+
+    <script src="../assets/js/include.js"></script>
+    <script>
+        // 1. Hàm chuyển đổi tab Vai trò
+        function selectRole(roleType, element) {
+            const options = document.querySelectorAll('.role-option');
+            options.forEach(opt => {
+                opt.classList.remove('active');
+                opt.classList.add('inactive');
+            });
+            element.classList.remove('inactive');
+            element.classList.add('active');
+
+            const gridDaily = document.getElementById('grid-daily');
+            const gridCtv = document.getElementById('grid-ctv');
+
+            if (roleType === 'daily') {
+                gridDaily.style.display = 'grid';
+                gridCtv.style.display = 'none';
+            } else if (roleType === 'ctv') {
+                gridDaily.style.display = 'none';
+                gridCtv.style.display = 'grid';
+            }
+        }
+
+        // 2. Xóa trạng thái lỗi khi người dùng bắt đầu nhập dữ liệu
+        document.querySelectorAll('.input-group input, .input-group select').forEach(element => {
+            element.addEventListener('input', function() {
+                this.classList.remove('input-error'); 
+                const errorText = this.nextElementSibling;
+                if(errorText && errorText.classList.contains('error-text')) {
+                    errorText.style.display = 'none'; 
+                }
+            });
+        });
+
+        // 3. Hàm Validate, Lưu tài khoản và Hiện Modal
+        function taoTaiKhoanMoi() {
+            const vaiTro = document.querySelector('.role-option.active').innerText;
+            const activeGrid = vaiTro === 'Đại lý' ? document.getElementById('grid-daily') : document.getElementById('grid-ctv');
+            const inputs = activeGrid.querySelectorAll('input, select');
+            let isValid = true;
+
+            inputs.forEach(input => {
+                const errorText = input.nextElementSibling;
+                if (input.value.trim() === '') {
+                    input.classList.add('input-error'); 
+                    if(errorText) errorText.style.display = 'block'; 
+                    isValid = false;
+                } else {
+                    input.classList.remove('input-error');
+                    if(errorText) errorText.style.display = 'none';
+                }
+            });
+
+            if (!isValid) return; // Nếu có lỗi thì DỪNG LẠI
+
+            // Nếu không có lỗi -> Lưu dữ liệu tạm
+            const email = activeGrid.querySelector('.val-email').value;
+            const hoTen = activeGrid.querySelector('.val-name').value;
+            const sdt = activeGrid.querySelector('.val-phone').value;
+
+            const taiKhoanMoi = {
+                name: hoTen,
+                email: email,
+                phone: sdt,
+                role: vaiTro,
+                date: new Date().toLocaleDateString('vi-VN')
+            };
+
+            let danhSach = JSON.parse(localStorage.getItem('duLieuTam')) || [];
+            danhSach.push(taiKhoanMoi);
+            localStorage.setItem('duLieuTam', JSON.stringify(danhSach));
+
+            // Hiển thị Modal thông báo thay vì chuyển trang ngay
+            document.getElementById('successModal').style.display = 'flex';
+        }
+
+        // 4. Hàm đóng Modal và chuyển về trang Danh sách
+        function dongModalVaChuyenTrang() {
+            document.getElementById('successModal').style.display = 'none'; 
+            window.location.href = 'taiKhoan.html'; 
+        }
+    </script>
+</body>
+</html>
