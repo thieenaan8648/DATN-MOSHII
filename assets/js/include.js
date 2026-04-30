@@ -36,6 +36,8 @@ document.addEventListener("DOMContentLoaded", function() {
         // thì quy hết về menu "taiKhoan.html" để giữ hiệu ứng highlight xanh
         if (currentPath.includes("taiKhoan")) {
             currentPath = "taiKhoan.html";
+        } else if (currentPath.includes("khachHang")) {
+            currentPath = "khachHang.html";
         }
         
         // Tìm tất cả các thẻ menu trong sidebar

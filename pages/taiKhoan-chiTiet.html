@@ -25,13 +25,12 @@
                         <h2 id="pageTitle">Tài khoản / ...</h2>
                     </div>
                     <div class="detail-header-right">
-                        <button class="btn-edit"><i class='bx bx-edit-alt'></i> Sửa</button>
-                        <button class="btn-disable"><i class='bx bx-block'></i> Vô hiệu hóa</button>
+                        <button class="btn-edit" id="btnEditAcc"><i class='bx bx-edit-alt'></i> Sửa</button>
+                        <button class="btn-disable" onclick="hienModalXacNhan()"><i class='bx bx-block'></i> Vô hiệu hóa</button>
                     </div>
                 </div>
 
                 <div class="info-card">
-                    <!-- SECTION 1: Thông tin chung -->
                     <div class="info-section">
                         <h3>Thông báo chung</h3>
                         <div class="info-row">
@@ -48,11 +47,10 @@
                         </div>
                     </div>
 
-                    <!-- SECTION 2: Thông tin chi tiết (Được render bằng JS) -->
                     <div class="info-section">
                         <h3 id="sectionTitle2">Thông tin ...</h3>
                         <div id="dynamic-info-rows">
-                            <!-- Các dòng dữ liệu (Tên, SĐT, Mã...) sẽ được JS đổ vào đây -->
+                            <!-- JS sẽ đổ dữ liệu vào đây -->
                         </div>
                     </div>
                 </div>
@@ -61,7 +59,68 @@
         </div>
     </div>
 
+    <!-- MODAL 1: XÁC NHẬN VÔ HIỆU HÓA -->
+    <div id="confirmModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-icon-danger">
+                <i class='bx bx-x'></i>
+            </div>
+            <h3>Xác nhận</h3>
+            <p>Bạn có muốn vô hiệu hóa tài khoản này không?</p>
+            <div class="modal-actions">
+                <button class="btn-danger-confirm" onclick="voHieuHoa()">Có</button>
+                <button class="btn-cancel-modal" onclick="anModalXacNhan()">Không</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: THÔNG BÁO THÀNH CÔNG -->
+    <div id="successDeactivateModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-icon-success">
+                <i class='bx bx-check'></i>
+            </div>
+            <h3>Thông báo</h3>
+            <p>Vô hiệu hóa tài khoản thành công</p>
+            <button class="btn-primary-modal" onclick="dongModalThanhCong()">Đóng</button>
+        </div>
+    </div>
+
     <script src="../assets/js/include.js"></script>
     <script src="../assets/js/taiKhoan-chiTiet.js"></script>
+    
+    <!-- Script Logic Modal -->
+    <script>
+        // Mở Modal Xác Nhận
+        function hienModalXacNhan() {
+            document.getElementById('confirmModal').style.display = 'flex';
+        }
+
+        // Đóng Modal Xác Nhận (nếu chọn Không)
+        function anModalXacNhan() {
+            document.getElementById('confirmModal').style.display = 'none';
+        }
+
+        // Nếu chọn CÓ -> Tắt Modal 1, Mở Modal 2
+        function voHieuHoa() {
+            anModalXacNhan();
+            document.getElementById('successDeactivateModal').style.display = 'flex';
+        }
+
+        // Khi bấm ĐÓNG ở Modal 2
+        function dongModalThanhCong() {
+            document.getElementById('successDeactivateModal').style.display = 'none'; // Tắt Modal 2
+            
+            // Cập nhật giao diện: Đổi thẻ trạng thái thành màu đỏ "Ngừng hoạt động"
+            const statusContainer = document.getElementById('status-container');
+            if(statusContainer) {
+                statusContainer.innerHTML = `
+                    <span style="background: #FEE2E2; color: #DC2626; padding: 4px 10px; border-radius: 8px; font-weight: 500; font-size: 12px; display: inline-flex; align-items: center; gap: 6px;">
+                        <span style="width: 6px; height: 6px; background: #DC2626; border-radius: 50%;"></span> Ngừng hoạt động
+                    </span>
+                `;
+            }
+        }
+    </script>
 </body>
 </html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Khách hàng / Mới - MOSHII</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/pages/khachHang-moi.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="app-container">
+        <div id="sidebar-placeholder"></div>
+        <div class="main-wrapper">
+            <div id="header-placeholder"></div>
+            <main class="main-content">
+                
+                <div class="page-header-action">
+                    <div class="header-left-stack">
+                        <a href="khachHang.html" class="back-link">
+                            <i class='bx bx-chevron-left'></i> Quay lại
+                        </a>
+                        <h2>Khách hàng / Mới</h2>
+                    </div>
+                    <button class="btn-primary" onclick="taoKhachHang()">Tạo khách hàng</button>
+                </div>
+
+                <div class="create-form-container">
+                    <div class="form-grid">
+                        
+                        <!-- Dòng 1 -->
+                        <div class="input-group">
+                            <div class="form-label">Họ và tên <span class="required">*</span></div>
+                            <input type="text" placeholder="Nhập họ và tên" class="val-required" id="kh-name">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Số CMND/CCCD <span class="required">*</span></div>
+                            <input type="text" placeholder="Nhập số CMND/CCCD" class="val-required">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+
+                        <!-- Dòng 2 -->
+                        <div class="input-group">
+                            <div class="form-label">Giới tính</div>
+                            <div class="radio-group">
+                                <label class="radio-item"><input type="radio" name="gender" value="Nam" checked> Nam</label>
+                                <label class="radio-item"><input type="radio" name="gender" value="Nữ"> Nữ</label>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Số điện thoại <span class="required">*</span></div>
+                            <input type="text" placeholder="Nhập số điện thoại" class="val-required" id="kh-phone">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+
+                        <!-- Dòng 3 -->
+                        <div class="input-group">
+                            <div class="form-label">Email <span class="required">*</span></div>
+                            <input type="email" placeholder="Nhập email" class="val-required">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Ngày sinh <span class="required">*</span></div>
+                            <input type="date" class="val-required">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+
+                        <!-- Dòng 4 & 5: Full width (Trải qua 2 cột) -->
+                        <div class="input-group col-span-2">
+                            <div class="form-label">Địa chỉ <span class="required">*</span></div>
+                            <input type="text" placeholder="Nhập địa chỉ" class="val-required">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        <div class="input-group col-span-2">
+                            <div class="form-label">Ghi chú</div>
+                            <textarea placeholder="Nhập ghi chú (nếu có)"></textarea>
+                        </div>
+
+                        <!-- Dòng 6 -->
+                        <div class="input-group">
+                            <div class="form-label">Mã đại lý <span class="required">*</span></div>
+                            <input type="text" placeholder="Nhập mã đại lý" class="val-required">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Mã cộng tác viên <span class="required">*</span></div>
+                            <input type="text" placeholder="Nhập mã cộng tác viên" class="val-required">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- MODAL THÀNH CÔNG -->
+    <div id="successModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-icon-success">
+                <i class='bx bx-check'></i>
+            </div>
+            <h3>Thông báo</h3>
+            <p>Tạo khách hàng thành công</p>
+            <button class="btn-primary-modal" onclick="dongModal()">Đóng</button>
+        </div>
+    </div>
+
+    <script src="../assets/js/include.js"></script>
+    <script src="../assets/js/khachHang-moi.js"></script>
+    <script src="../assets/js/khachHang.js"></script>
+</body>
+</html>

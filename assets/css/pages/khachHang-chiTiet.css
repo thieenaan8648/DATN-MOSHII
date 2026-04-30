@@ -1,0 +1,114 @@
+/* =========================================
+   TRANG CHI TIẾT KHÁCH HÀNG
+========================================= */
+
+/* --- Header Actions --- */
+.detail-header-action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.detail-header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.detail-header-left h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
+}
+
+.detail-header-right {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-edit {
+    height: 44px;
+    padding: 0 20px;
+    background: #2563EB;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+}
+.btn-edit:hover { background: #1D4ED8; }
+
+.btn-delete {
+    height: 44px;
+    padding: 0 20px;
+    background: #DC2626;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+}
+.btn-delete:hover { background: #B91C1C; }
+
+/* --- Khung Thông tin --- */
+.info-card {
+    background: #fff;
+    border-radius: 14px;
+    border: 1.33px solid #E5E7EB;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.info-section {
+    padding: 32px;
+    border-bottom: 1.33px solid #E5E7EB;
+}
+.info-section:last-child {
+    border-bottom: none;
+}
+
+.info-section h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+    margin: 0 0 24px 0;
+}
+
+/* --- Từng dòng thông tin --- */
+.info-row {
+    display: flex;
+    padding: 16px 0;
+    border-bottom: 1.33px solid #F3F4F6;
+    align-items: flex-start;
+}
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    width: 200px;
+    color: #6B7280;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.info-value {
+    flex: 1;
+    color: #374151;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+}

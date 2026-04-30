@@ -22,7 +22,9 @@
             <main class="main-content">
                 <div class="page-title-row">
                     <h2>Khách hàng</h2>
-                    <button class="btn-primary"><i class='bx bx-plus'></i> Thêm khách hàng</button>
+                    <button class="btn-primary" onclick="window.location.href='khachHang-moi.html'">
+                        <i class='bx bx-plus'></i> Mới
+                    </button>
                 </div>
 
                 <div class="filter-row">
@@ -46,7 +48,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <!-- Đã thêm class="data-row" vào tất cả các thẻ tr -->
+                                <tr class="data-row">
                                     <td><strong>KH001</strong></td>
                                     <td>Nguyễn Thị Mai</td>
                                     <td>0987654321</td>
@@ -54,7 +57,7 @@
                                     <td><span class="status-dot status-active">Đang hoạt động</span></td>
                                     <td>10/04/2026</td>
                                 </tr>
-                                <tr>
+                                <tr class="data-row">
                                     <td><strong>KH002</strong></td>
                                     <td>Trần Văn Hùng</td>
                                     <td>0912345678</td>
@@ -62,7 +65,7 @@
                                     <td><span class="status-dot status-active">Đang hoạt động</span></td>
                                     <td>12/04/2026</td>
                                 </tr>
-                                <tr>
+                                <tr class="data-row">
                                     <td><strong>KH003</strong></td>
                                     <td>Lê Thị Lan</td>
                                     <td>0909998887</td>
@@ -70,7 +73,7 @@
                                     <td><span class="status-dot status-locked">Đã khóa</span></td>
                                     <td>14/04/2026</td>
                                 </tr>
-                                <tr>
+                                <tr class="data-row">
                                     <td><strong>KH004</strong></td>
                                     <td>Phạm Văn Đức</td>
                                     <td>0944556677</td>
@@ -83,13 +86,16 @@
                     </div>
                 </div>
 
+                <!-- Đã thêm id="visibleCount" và id="totalCount" để JS đếm số lượng -->
                 <div class="pagination-info" style="margin-top: 16px; color: var(--text-gray); font-size: 13px;">
-                    Hiển thị <strong>4</strong> / <strong>1,250</strong> khách hàng
+                    Hiển thị <strong id="visibleCount">0</strong> / <strong id="totalCount">0</strong> khách hàng
                 </div>
             </main>
         </div>
     </div>
 
+    <!-- Nhúng file include.js VÀ khachHang.js -->
     <script src="../assets/js/include.js"></script>
+    <script src="../assets/js/khachHang.js"></script>
 </body>
 </html>
