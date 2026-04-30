@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chỉnh sửa tài khoản - MOSHII</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/pages/taiKhoan.css">
+    <link rel="stylesheet" href="../assets/css/pages/taiKhoan-sua.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="app-container">
+        <div id="sidebar-placeholder"></div>
+        <div class="main-wrapper">
+            <div id="header-placeholder"></div>
+            <main class="main-content">
+                
+                <div class="page-header-action">
+                    <div class="header-left-stack">
+                        <a href="javascript:history.back()" class="back-link">
+                            <i class='bx bx-chevron-left'></i> Quay lại
+                        </a>
+                        <h2>Chỉnh sửa tài khoản</h2>
+                    </div>
+                </div>
+
+                <div class="create-form-container">
+                    <div class="role-section">
+                        <div class="form-label">Loại tài khoản / vai trò <span class="required">*</span></div>
+                        <div class="role-toggle-group">
+                            <div class="role-option active" id="btnRoleDaily" onclick="selectRole('daily', this)">Đại lý</div>
+                            <div class="role-option inactive" id="btnRoleCtv" onclick="selectRole('ctv', this)">Cộng tác viên</div>
+                        </div>
+                    </div>
+
+                    <!-- FORM ĐẠI LÝ -->
+                    <div id="grid-daily" class="form-grid">
+                        <div class="input-group">
+                            <div class="form-label">Email <span class="required">*</span></div>
+                            <input type="email" placeholder="Nhập email" class="val-email">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Mật khẩu</div>
+                            <input type="password" placeholder="Để trống nếu không đổi">
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Họ và tên <span class="required">*</span></div>
+                            <input type="text" placeholder="Nhập họ và tên" class="val-name">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Ngày sinh <span class="required">*</span></div>
+                            <input type="date" value="1994-08-19">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Số điện thoại <span class="required">*</span></div>
+                            <input type="text" placeholder="Nhập số điện thoại" class="val-phone">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Mã đại lý <span class="required">*</span></div>
+                            <input type="text" value="AG001" readonly style="background: #F9FAFB; cursor: not-allowed;">
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Khu vực hoạt động <span class="required">*</span></div>
+                            <input type="text" value="TP. Hồ Chí Minh">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Phần trăm hoa hồng (%) <span class="required">*</span></div>
+                            <input type="number" value="25">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        <!-- Ô trạng thái mới -->
+                        <div class="input-group">
+                            <div class="form-label">Trạng thái <span class="required">*</span></div>
+                            <select class="val-status">
+                                <option value="Hoạt động">Đang hoạt động</option>
+                                <option value="Ngừng hoạt động">Ngừng hoạt động</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- FORM CỘNG TÁC VIÊN -->
+                    <div id="grid-ctv" class="form-grid" style="display: none;">
+                        <div class="input-group">
+                            <div class="form-label">Email <span class="required">*</span></div>
+                            <input type="email" placeholder="Nhập email" class="val-email">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Mật khẩu</div>
+                            <input type="password" placeholder="Để trống nếu không đổi">
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Họ và tên <span class="required">*</span></div>
+                            <input type="text" placeholder="Nhập họ và tên" class="val-name">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Ngày sinh <span class="required">*</span></div>
+                            <input type="date" value="1994-08-19">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Số điện thoại <span class="required">*</span></div>
+                            <input type="text" placeholder="Nhập số điện thoại" class="val-phone">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Đại lý quản lý <span class="required">*</span></div>
+                            <select>
+                                <option value="dl01" selected>DL001 - Trần Thị Bình</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Mã đại lý <span class="required">*</span></div>
+                            <input type="text" value="AG001" readonly style="background: #F9FAFB;">
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Mã cộng tác viên <span class="required">*</span></div>
+                            <input type="text" value="CTV_00005" readonly style="background: #F9FAFB;">
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Khu vực hoạt động <span class="required">*</span></div>
+                            <input type="text" value="TP. Hồ Chí Minh">
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Phần trăm hoa hồng (%) <span class="required">*</span></div>
+                            <input type="number" value="18">
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Trạng thái <span class="required">*</span></div>
+                            <select class="val-status">
+                                <option value="Hoạt động">Đang hoạt động</option>
+                                <option value="Ngừng hoạt động">Ngừng hoạt động</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Nút hành động Lưu / Hủy -->
+                    <div class="form-footer-actions">
+                        <button class="btn-save" onclick="luuTaiKhoan()">Lưu</button>
+                        <button class="btn-cancel" onclick="window.history.back()">Hủy</button>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- MODAL THÀNH CÔNG -->
+    <div id="successModal" class="modal-overlay" style="display: none;">
+        <div class="modal-box">
+            <div class="modal-icon">
+                <i class='bx bx-check'></i>
+            </div>
+            <h3>Thông báo</h3>
+            <p>Cập nhật tài khoản thành công</p>
+            <button class="btn-modal" onclick="window.location.href='taiKhoan.html'">Đóng</button>
+        </div>
+    </div>
+
+    <script src="../assets/js/include.js"></script>
+    <script src="../assets/js/taiKhoan-sua.js"></script>
+</body>
+</html>

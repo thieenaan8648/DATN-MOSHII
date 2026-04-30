@@ -1,0 +1,49 @@
+/* =========================================
+   TRANG CHỈNH SỬA TÀI KHOẢN
+========================================= */
+@import url('taiKhoan-moi.css'); /* Kế thừa toàn bộ giao diện từ form Tạo Mới */
+
+/* 1. Tiêu đề Trang */
+.page-header-action h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
+}
+
+/* 2. Cụm nút bấm Lưu / Hủy (Footer) */
+.form-footer-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 24px;
+    margin-top: 32px;
+    border-top: 1.33px solid #E5E7EB;
+}
+
+.btn-save {
+    height: 44px;
+    padding: 0 24px;
+    background: #2563EB;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.10);
+}
+.btn-save:hover { background: #1D4ED8; }
+
+.btn-cancel {
+    height: 44px;
+    padding: 0 24px;
+    background: #fff;
+    color: #374151;
+    border: 1.33px solid #D1D5DB;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.btn-cancel:hover { background: #F9FAFB; }

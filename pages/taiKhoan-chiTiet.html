@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chi tiết Tài khoản - MOSHII</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/pages/taiKhoan-chiTiet.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="app-container">
+        <div id="sidebar-placeholder"></div>
+        <div class="main-wrapper">
+            <div id="header-placeholder"></div>
+            <main class="main-content">
+                
+                <div class="detail-header-action">
+                    <div class="detail-header-left">
+                        <a href="taiKhoan.html" class="back-link" style="display: flex; align-items: center; gap: 8px; color: #6B7280; text-decoration: none; font-size: 14px; font-weight: 500;">
+                            <i class='bx bx-chevron-left'></i> Quay lại
+                        </a>
+                        <h2 id="pageTitle">Tài khoản / ...</h2>
+                    </div>
+                    <div class="detail-header-right">
+                        <button class="btn-edit"><i class='bx bx-edit-alt'></i> Sửa</button>
+                        <button class="btn-disable"><i class='bx bx-block'></i> Vô hiệu hóa</button>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <!-- SECTION 1: Thông tin chung -->
+                    <div class="info-section">
+                        <h3>Thông báo chung</h3>
+                        <div class="info-row">
+                            <div class="info-label">Loại tài khoản / vai trò</div>
+                            <div class="info-value" id="val-role"></div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Email</div>
+                            <div class="info-value" id="val-email"></div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Mật khẩu</div>
+                            <div class="info-value">••••••••</div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 2: Thông tin chi tiết (Được render bằng JS) -->
+                    <div class="info-section">
+                        <h3 id="sectionTitle2">Thông tin ...</h3>
+                        <div id="dynamic-info-rows">
+                            <!-- Các dòng dữ liệu (Tên, SĐT, Mã...) sẽ được JS đổ vào đây -->
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <script src="../assets/js/include.js"></script>
+    <script src="../assets/js/taiKhoan-chiTiet.js"></script>
+</body>
+</html>

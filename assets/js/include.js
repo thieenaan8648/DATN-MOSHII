@@ -13,7 +13,9 @@ function loadComponent(elementId, filePath) {
                 element.innerHTML = data;
             }
         })
-        .catch(error => console.error('Lỗi nạp component:', error));
+        .catch(error => {
+            console.warn(`Bỏ qua nạp component [${elementId}]:`, error.message);
+        });
 }
 
 /**
@@ -28,8 +30,13 @@ document.addEventListener("DOMContentLoaded", function() {
     ]).then(() => {
         
         // --- LOGIC 1: TỰ ĐỘNG ACTIVE MENU THEO TRANG HIỆN TẠI ---
-        // Lấy tên file hiện tại (ví dụ: taiKhoan.html)
-        const currentPath = window.location.pathname.split("/").pop();
+        let currentPath = window.location.pathname.split("/").pop();
+        
+        // [NÂNG CẤP]: Cứ trang nào tên có chứa chữ "taiKhoan" (VD: taiKhoan-moi, taiKhoan-sua, taiKhoan-chiTiet)
+        // thì quy hết về menu "taiKhoan.html" để giữ hiệu ứng highlight xanh
+        if (currentPath.includes("taiKhoan")) {
+            currentPath = "taiKhoan.html";
+        }
         
         // Tìm tất cả các thẻ menu trong sidebar
         const menuItems = document.querySelectorAll(".menu-item");
@@ -38,15 +45,14 @@ document.addEventListener("DOMContentLoaded", function() {
             // Xóa class active cũ của tất cả menu
             item.classList.remove("active");
 
-            // Lấy giá trị href của menu (ví dụ: taiKhoan.html)
+            // Lấy giá trị href của menu
             const itemHref = item.getAttribute("href");
 
             // Nếu href trùng với tên file hiện tại thì thêm class active (hiện xanh)
-            if (itemHref === currentPath) {
+            if (itemHref === currentPath || (itemHref && itemHref.includes(currentPath))) {
                 item.classList.add("active");
             }
         });
-
 
         // --- LOGIC 2: XỬ LÝ ĐĂNG XUẤT ---
         const logoutBtn = document.querySelector(".menu-item.logout");
@@ -58,5 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 window.location.href = "dangNhap.html";
             });
         }
+    }).catch(error => {
+        console.error('Lỗi Promise load components:', error);
     });
 });
