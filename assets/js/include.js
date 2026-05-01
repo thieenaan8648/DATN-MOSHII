@@ -38,6 +38,8 @@ document.addEventListener("DOMContentLoaded", function() {
             currentPath = "taiKhoan.html";
         } else if (currentPath.includes("khachHang")) {
             currentPath = "khachHang.html";
+        } else if (currentPath.includes("goiCuoc")) { 
+            currentPath = "goiCuoc.html"; 
         }
         
         // Tìm tất cả các thẻ menu trong sidebar

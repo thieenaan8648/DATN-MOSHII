@@ -2,16 +2,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const tbody = document.querySelector('.table tbody');
     
     // ========================================================
-    // 1. TẢI DỮ LIỆU KHÁCH HÀNG MỚI TỪ LOCALSTORAGE
+    // 1. TẢI DỮ LIỆU KHÁCH HÀNG MỚI (TỪ LOCALSTORAGE)
     // ========================================================
     let listKH = JSON.parse(localStorage.getItem('listKhachHang')) || [];
     const today = new Date().toLocaleDateString('vi-VN');
+    const noResultsRow = document.getElementById('noResultsRow');
     
     listKH.forEach(kh => {
         let tr = document.createElement('tr');
         tr.className = 'data-row'; 
         
-        // Cấu trúc HTML của một dòng Khách hàng chuẩn
         tr.innerHTML = `
             <td><strong>${kh.id}</strong></td>
             <td>${kh.name}</td>
@@ -21,14 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
             <td>${today}</td>
         `;
         
-        // Chèn lên đầu bảng (hoặc cuối bảng tùy ý)
-        if (tbody) {
-            tbody.appendChild(tr);
+        // Chèn vào bảng, nhưng phải đứng TRƯỚC dòng Empty State
+        if (tbody && noResultsRow) {
+            tbody.insertBefore(tr, noResultsRow);
         }
     });
 
     // ========================================================
-    // 2. CẬP NHẬT TỔNG SỐ KHÁCH HÀNG
+    // 2. CẬP NHẬT CON SỐ BỘ ĐẾM
     // ========================================================
     const dataRows = document.querySelectorAll('.table tbody tr.data-row'); 
     const visibleCountEl = document.getElementById('visibleCount');
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (visibleCountEl) visibleCountEl.textContent = totalRows;
 
     // ========================================================
-    // 3. CHỨC NĂNG TÌM KIẾM
+    // 3. TÌM KIẾM VÀ HIỂN THỊ EMPTY STATE
     // ========================================================
     const searchInput = document.querySelector('.search-box input');
     
@@ -49,10 +49,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const searchTerm = this.value.toLowerCase();
             let visibleCount = 0;
 
+            // 1. Ẩn hiện các dòng dữ liệu
             dataRows.forEach(row => {
-                // Quét toàn bộ text trong dòng
                 const rowText = row.textContent.toLowerCase();
-
                 if (rowText.includes(searchTerm)) {
                     row.style.display = '';
                     visibleCount++;
@@ -61,23 +60,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // Cập nhật lại số lượng đang hiển thị sau khi lọc
+            // 2. Cập nhật con số hiển thị
             if (visibleCountEl) visibleCountEl.textContent = visibleCount;
+
+            // 3. Bật/Tắt giao diện "Không tìm thấy"
+            if (noResultsRow) {
+                if (visibleCount === 0) {
+                    noResultsRow.style.display = ''; // Bật lên
+                } else {
+                    noResultsRow.style.display = 'none'; // Tắt đi
+                }
+            }
         });
     }
-    // === CODE MỚI THÊM: CLICK VÀO KHÁCH HÀNG ĐỂ XEM CHI TIẾT ===
-    // Quét toàn bộ các dòng hiện có (và cả dòng vừa được JS thêm vào)
-    const allCustomerRows = document.querySelectorAll('.table tbody tr');
-    
-    allCustomerRows.forEach(row => {
-        // Bỏ qua dòng thông báo "Không tìm thấy dữ liệu"
-        if(row.id === 'noResultsRow') return;
 
-        row.style.cursor = 'pointer'; // Thêm icon bàn tay
+    // ========================================================
+    // 4. CLICK VÀO HÀNG ĐỂ XEM CHI TIẾT
+    // ========================================================
+    dataRows.forEach(row => {
+        row.style.cursor = 'pointer'; 
         
         row.addEventListener('click', function() {
-            // Lấy thông tin từ các cột
-            // Giả sử HTML hiện tại: Cột 1 là Mã KH, Cột 2 là Tên, Cột 3 là SĐT
             const columns = this.querySelectorAll('td');
             if(columns.length < 3) return;
 
@@ -87,7 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const selectedCus = { id, name, phone };
             
-            // Lưu vào localStorage và chuyển trang
             localStorage.setItem('viewingCustomer', JSON.stringify(selectedCus));
             window.location.href = 'khachHang-chiTiet.html';
         });

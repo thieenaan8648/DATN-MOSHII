@@ -26,29 +26,54 @@
                     </div>
                     <div class="detail-header-right">
                         <button class="btn-edit"><i class='bx bx-edit-alt'></i> Sửa</button>
+                        <!-- Nút Xóa (Đã gỡ bỏ onclick, JS sẽ tự động bắt sự kiện qua class) -->
                         <button class="btn-delete"><i class='bx bx-trash'></i> Xóa</button>
                     </div>
                 </div>
 
                 <div class="info-card">
-                    <!-- SECTION 1: Thông tin chung -->
                     <div class="info-section">
-                        <h3>Thông tin chung</h3>
-                        <div id="general-info-rows">
-                            <!-- JS sẽ đổ dữ liệu vào đây -->
-                        </div>
+                        <h3>Thông báo chung</h3>
+                        <div id="general-info-rows"></div>
                     </div>
-
-                    <!-- SECTION 2: Thông tin quản lý -->
                     <div class="info-section">
                         <h3>Thông tin quản lý</h3>
-                        <div id="management-info-rows">
-                            <!-- JS sẽ đổ dữ liệu vào đây -->
-                        </div>
+                        <div id="management-info-rows"></div>
                     </div>
                 </div>
 
             </main>
+        </div>
+    </div>
+
+    <!-- ===================================== -->
+    <!-- MODAL 1: XÁC NHẬN XÓA (ĐỎ) -->
+    <!-- ===================================== -->
+    <div id="deleteModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-icon-danger">
+                <i class='bx bx-x'></i>
+            </div>
+            <h3>Xác nhận</h3>
+            <p>Bạn chắc chắn muốn xóa khách hàng này không?</p>
+            <div class="modal-actions">
+                <button class="btn-danger-confirm" id="btnConfirmDelete">Xóa</button>
+                <button class="btn-cancel-modal" id="btnCancelDelete">Đóng</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================== -->
+    <!-- MODAL 2: THÔNG BÁO XÓA THÀNH CÔNG (XANH) -->
+    <!-- ===================================== -->
+    <div id="successDeleteModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-icon-success">
+                <i class='bx bx-check'></i>
+            </div>
+            <h3>Thông báo</h3>
+            <p>Xóa khách hàng thành công</p>
+            <button class="btn-primary-modal" id="btnCloseSuccess">Đóng</button>
         </div>
     </div>
 
