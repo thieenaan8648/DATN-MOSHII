@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Gói cước / Sửa - MOSHII</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/pages/goiCuoc-moi.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="app-container">
+        <div id="sidebar-placeholder"></div>
+        <div class="main-wrapper">
+            <div id="header-placeholder"></div>
+            <main class="main-content">
+                
+                <!-- HEADER CHỈ CÒN TIÊU ĐỀ (Đã bỏ nút Lưu ở đây) -->
+                <div class="page-header-action">
+                    <div class="header-left-stack">
+                        <a href="goiCuoc-chiTiet.html" class="back-link">
+                            <i class='bx bx-chevron-left'></i> Quay lại
+                        </a>
+                        <h2>Gói cước / GC001 / Sửa</h2>
+                    </div>
+                </div>
+
+                <div class="create-form-container">
+                    <div class="form-grid">
+                        
+                        <!-- Dòng 1: Mã gói (Bị khóa - disabled) & Tên gói -->
+                        <div class="input-group">
+                            <div class="form-label">Mã gói cước <span class="required">*</span></div>
+                            <input type="text" class="val-required" value="GC001" disabled style="background: #F3F4F6; cursor: not-allowed;">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Tên gói cước <span class="required">*</span></div>
+                            <input type="text" placeholder="Nhập tên gói cước" class="val-required" value="Gói Data Cao Cấp">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+
+                        <!-- Dòng 2: Giá gói -->
+                        <div class="input-group">
+                            <div class="form-label">Giá gói cước <span class="required">*</span></div>
+                            <input type="number" placeholder="Nhập giá gói cước (VNĐ)" class="val-required" value="150000">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        <div></div> <!-- Ô trống để đẩy phần dưới xuống hàng mới -->
+
+                        <!-- Dòng 3: Loại gói cước -->
+                        <div class="input-group col-span-2">
+                            <div class="form-label">Loại gói cước <span class="required">*</span></div>
+                            <div class="options-row">
+                                <div class="option-item">
+                                    <input type="radio" name="packageType" class="checkbox-custom radio-package-type" id="rad-ngay" data-target="inp-ngay">
+                                    <label for="rad-ngay" class="option-label">Ngày</label>
+                                    <div class="option-input-wrapper">
+                                        <input type="number" id="inp-ngay" placeholder="Nhập số ngày" disabled>
+                                        <span class="option-unit">ngày</span>
+                                    </div>
+                                </div>
+                                <div class="option-item">
+                                    <input type="radio" name="packageType" class="checkbox-custom radio-package-type" id="rad-thang" data-target="inp-thang" checked>
+                                    <label for="rad-thang" class="option-label">Tháng</label>
+                                    <div class="option-input-wrapper">
+                                        <input type="number" id="inp-thang" placeholder="Nhập số tháng" value="1">
+                                        <span class="option-unit">tháng</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dòng 4: Loại dịch vụ -->
+                        <div class="input-group col-span-2">
+                            <div class="form-label">Loại dịch vụ <span class="required">*</span></div>
+                            <div class="options-row">
+                                <div class="option-item">
+                                    <input type="checkbox" class="checkbox-custom toggle-input" id="chk-data" data-target="inp-data" checked>
+                                    <label for="chk-data" class="option-label">Data</label>
+                                    <div class="option-input-wrapper">
+                                        <input type="number" id="inp-data" value="50">
+                                        <span class="option-unit">GB</span>
+                                    </div>
+                                </div>
+                                <div class="option-item">
+                                    <input type="checkbox" class="checkbox-custom toggle-input" id="chk-sms" data-target="inp-sms">
+                                    <label for="chk-sms" class="option-label">SMS</label>
+                                    <div class="option-input-wrapper">
+                                        <input type="number" id="inp-sms" disabled>
+                                        <span class="option-unit">Tin nhắn</span>
+                                    </div>
+                                </div>
+                                <div class="option-item">
+                                    <input type="checkbox" class="checkbox-custom toggle-input" id="chk-voice" data-target="inp-voice">
+                                    <label for="chk-voice" class="option-label">Voice</label>
+                                    <div class="option-input-wrapper">
+                                        <input type="number" id="inp-voice" disabled>
+                                        <span class="option-unit">Phút</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dòng 5: Trạng thái -->
+                        <div class="input-group col-span-2">
+                            <div class="form-label">Trạng thái</div>
+                            <div class="toggle-wrapper">
+                                <input type="checkbox" class="toggle-switch" id="status-toggle" checked>
+                                <span class="toggle-label" id="status-text">Hoạt động</span>
+                            </div>
+                        </div>
+
+                        <!-- Dòng 6: Ghi chú -->
+                        <div class="input-group col-span-2">
+                            <div class="form-label">Ghi chú</div>
+                            <textarea placeholder="Nhập ghi chú (nếu có)">Gói data không giới hạn tốc độ</textarea>
+                        </div>
+
+                        <!-- NÚT THAO TÁC Ở CUỐI FORM -->
+                        <div class="form-actions col-span-2">
+                            <button class="btn-cancel-form" onclick="window.location.href='goiCuoc-chiTiet.html'">Hủy</button>
+                            <button class="btn-primary" id="btn-save-goicuoc">Lưu</button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- MODAL THÔNG BÁO CẬP NHẬT THÀNH CÔNG -->
+    <div id="successModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-icon-success">
+                <i class='bx bx-check'></i>
+            </div>
+            <h3>Thông báo</h3>
+            <p>Cập nhật gói cước thành công</p>
+            <button class="btn-primary-modal" onclick="dongModal()">Đóng</button>
+        </div>
+    </div>
+
+    <script src="../assets/js/include.js"></script>
+    <script src="../assets/js/goiCuoc-sua.js"></script>
+</body>
+</html>

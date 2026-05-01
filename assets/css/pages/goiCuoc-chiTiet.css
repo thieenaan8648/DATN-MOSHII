@@ -1,0 +1,96 @@
+/* =========================================
+   TRANG CHI TIẾT GÓI CƯỚC
+========================================= */
+
+/* --- Header Actions --- */
+.detail-header-action {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;
+}
+.detail-header-left { display: flex; flex-direction: column; gap: 8px; }
+.detail-header-left h2 { font-size: 24px; font-weight: 600; color: #111827; margin: 0; }
+.detail-header-right { display: flex; gap: 12px; }
+
+.btn-edit, .btn-delete {
+    height: 44px; padding: 0 20px; color: #fff; border: none; border-radius: 10px;
+    font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 8px;
+    cursor: pointer; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+}
+.btn-edit { background: #2563EB; }
+.btn-edit:hover { background: #1D4ED8; }
+.btn-delete { background: #DC2626; }
+.btn-delete:hover { background: #B91C1C; }
+
+/* --- Khung Thông tin --- */
+.info-card {
+    background: #fff; border-radius: 14px; border: 1.33px solid #E5E7EB;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1); padding: 32px;
+}
+.info-card h3 { font-size: 16px; font-weight: 600; color: #111827; margin: 0 0 24px 0; }
+
+/* --- Từng dòng thông tin --- */
+.info-row {
+    display: flex; padding: 16px 0; border-bottom: 1.33px solid #F3F4F6; align-items: flex-start;
+}
+.info-row:last-child { border-bottom: none; }
+.info-label { width: 232px; color: #6B7280; font-size: 14px; font-weight: 500; }
+.info-value { flex: 1; color: #374151; font-size: 14px; font-weight: 400; line-height: 21px; }
+
+/* --- Nhãn Dịch vụ trong form chi tiết --- */
+.service-badges-detail { display: flex; gap: 24px; }
+.badge-detail-item { display: flex; align-items: center; gap: 12px; }
+.badge-detail-label { color: #374151; font-size: 14px; font-weight: 400; }
+.badge-detail-box {
+    padding: 6px 12px; background: #F3F4F6; border: 1.33px solid #E5E7EB;
+    border-radius: 10px; color: #9CA3AF; font-size: 14px; display: inline-flex; align-items: center;
+}
+.badge-detail-unit { color: #6B7280; font-size: 13px; }
+
+/* =========================================
+   MODAL XÁC NHẬN XÓA (Kế thừa)
+========================================= */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.5); display: none; justify-content: center; align-items: center; z-index: 9999; }
+.modal-box { width: 440px; background: #fff; border-radius: 14px; padding: 32px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.25); }
+.modal-icon-danger { width: 64px; height: 64px; background: #FEE2E2; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: #DC2626; font-size: 32px; }
+.modal-icon-success { width: 64px; height: 64px; background: #DCFCE7; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: #16A34A; font-size: 32px; }
+.modal-box h3 { color: #111827; font-size: 20px; font-weight: 600; margin: 0; }
+.modal-box p { color: #6B7280; font-size: 14px; margin: 0 0 12px 0; }
+.modal-actions { display: flex; width: 100%; gap: 12px; }
+.btn-danger-confirm { flex: 1; height: 44px; background: #DC2626; color: #fff; border: none; border-radius: 10px; font-size: 14px; font-weight: 500; cursor: pointer; }
+.btn-danger-confirm:hover { background: #B91C1C; }
+.btn-cancel-modal { flex: 1; height: 44px; background: #fff; color: #374151; border: 1.33px solid #D1D5DB; border-radius: 10px; font-size: 14px; font-weight: 500; cursor: pointer; }
+.btn-cancel-modal:hover { background: #F9FAFB; }
+.btn-primary-modal { width: 100%; height: 44px; background: #2563EB; color: #fff; border: none; border-radius: 10px; font-size: 14px; font-weight: 500; cursor: pointer; }
+.btn-primary-modal:hover { background: #1D4ED8; }
+
+/* =========================================
+   MODALS: XÁC NHẬN (ĐỎ) & THÀNH CÔNG (XANH)
+========================================= */
+.modal-overlay { 
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
+    background: rgba(0, 0, 0, 0.5); display: none; /* Mặc định ẩn */
+    justify-content: center; align-items: center; z-index: 9999; 
+}
+.modal-box { 
+    width: 440px; background: #fff; border-radius: 14px; padding: 32px; 
+    display: flex; flex-direction: column; align-items: center; gap: 16px; 
+    text-align: center; box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.25); 
+}
+.modal-icon-danger { 
+    width: 64px; height: 64px; background: #FEE2E2; border-radius: 50%; 
+    display: flex; justify-content: center; align-items: center; color: #DC2626; font-size: 32px; 
+}
+.modal-icon-success { 
+    width: 64px; height: 64px; background: #DCFCE7; border-radius: 50%; 
+    display: flex; justify-content: center; align-items: center; color: #16A34A; font-size: 32px; 
+}
+.modal-box h3 { color: #111827; font-size: 20px; font-weight: 600; margin: 0; }
+.modal-box p { color: #6B7280; font-size: 14px; margin: 0 0 12px 0; }
+.modal-actions { display: flex; width: 100%; gap: 12px; }
+
+/* Nút bấm trong Modal */
+.btn-danger-confirm { flex: 1; height: 44px; background: #DC2626; color: #fff; border: none; border-radius: 10px; font-size: 14px; font-weight: 500; cursor: pointer; }
+.btn-danger-confirm:hover { background: #B91C1C; }
+.btn-cancel-modal { flex: 1; height: 44px; background: #fff; color: #374151; border: 1.33px solid #D1D5DB; border-radius: 10px; font-size: 14px; font-weight: 500; cursor: pointer; }
+.btn-cancel-modal:hover { background: #F9FAFB; }
+.btn-primary-modal { width: 100%; height: 44px; background: #2563EB; color: #fff; border: none; border-radius: 10px; font-size: 14px; font-weight: 500; cursor: pointer; }
+.btn-primary-modal:hover { background: #1D4ED8; }

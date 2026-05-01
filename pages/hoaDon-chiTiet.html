@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chi tiết Hóa đơn - MOSHII</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/pages/hoaDon-chiTiet.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="app-container">
+        <div id="sidebar-placeholder"></div>
+        <div class="main-wrapper">
+            <div id="header-placeholder"></div>
+            <main class="main-content">
+                
+                <div class="detail-header-action">
+                    <div class="detail-header-left">
+                        <a href="hoaDon.html" class="back-link" style="display: flex; align-items: center; gap: 8px; color: #6B7280; text-decoration: none; font-size: 14px; font-weight: 500;">
+                            <i class='bx bx-chevron-left'></i> Quay lại
+                        </a>
+                        <!-- ID này sẽ được JS lấy để điền mã hóa đơn vào -->
+                        <h2 id="pageTitle">Chi tiết hóa đơn</h2>
+                    </div>
+                    <div class="detail-header-right">
+                        <button class="btn-edit" onclick="window.location.href='hoaDon-sua.html'"><i class='bx bx-edit-alt'></i> Sửa</button>
+                        <button class="btn-delete"><i class='bx bx-trash'></i> Xóa</button>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3>Thông tin hóa đơn</h3>
+                    
+                    <div class="info-row">
+                        <div class="info-label">Khách hàng</div>
+                        <div class="info-value" style="font-weight: 500; color: #111827;">Trần Văn Hùng</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Tên gói cước</div>
+                        <div class="info-value">Gói Combo Data + Voice</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Giá gói cước</div>
+                        <div class="info-value">200.000 VNĐ</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Ngày bắt đầu</div>
+                        <div class="info-value">5/4/2026</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Ngày kết thúc</div>
+                        <div class="info-value">5/5/2026</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Đại lý</div>
+                        <div class="info-value">DL002 - Phạm Thị Dung</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Cộng tác viên</div>
+                        <div class="info-value">CTV002 - Hoàng Văn Em</div>
+                    </div>
+                    
+                    <!-- Khối thông tin trạng thái & tổng tiền -->
+                    <div style="margin-top: 16px;">
+                        <div style="color: #6B7280; font-size: 13px; font-weight: 500; margin-bottom: 8px;">Trạng thái hóa đơn</div>
+                        <span class="status-badge-invoice">Đang xử lý</span>
+                    </div>
+
+                    <div class="info-row" style="border-top: 1.33px solid #F3F4F6; margin-top: 24px; padding-top: 16px;">
+                        <div class="info-label">Tổng số tiền</div>
+                        <div class="info-value">200.000 VNĐ</div>
+                    </div>
+
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- ===================================== -->
+    <!-- MODAL 1: XÁC NHẬN XÓA (ĐỎ) -->
+    <!-- ===================================== -->
+    <div id="deleteModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-icon-danger">
+                <i class='bx bx-x'></i>
+            </div>
+            <h3>Xác nhận</h3>
+            <p>Bạn chắc chắn muốn xóa hóa đơn này không?</p>
+            <div class="modal-actions">
+                <button class="btn-danger-confirm">Xóa</button>
+                <button class="btn-cancel-modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================== -->
+    <!-- MODAL 2: THÔNG BÁO XÓA THÀNH CÔNG (XANH) -->
+    <!-- ===================================== -->
+    <div id="successDeleteModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-icon-success">
+                <i class='bx bx-check'></i>
+            </div>
+            <h3>Thông báo</h3>
+            <p>Xóa hóa đơn thành công</p>
+            <button class="btn-primary-modal">Đóng</button>
+        </div>
+    </div>
+
+    <script src="../assets/js/include.js"></script>
+    <script src="../assets/js/hoaDon-chiTiet.js"></script>
+</body>
+</html>
