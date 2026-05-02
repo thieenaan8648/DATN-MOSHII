@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chỉnh sửa Đơn hàng - MOSHII</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <!-- Dùng chung file CSS với form Tạo mới -->
+    <link rel="stylesheet" href="../assets/css/pages/donHang-moi.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="app-container">
+        <div id="sidebar-placeholder"></div>
+        <div class="main-wrapper">
+            <div id="header-placeholder"></div>
+            <main class="main-content">
+                
+                <!-- HEADER -->
+                <div class="page-header-action">
+                    <div class="header-left-stack">
+                        <a href="donHang-chiTiet.html" class="back-link">
+                            <i class='bx bx-chevron-left'></i> Quay lại
+                        </a>
+                        <h2 id="pageTitle">Chỉnh sửa đơn hàng</h2>
+                    </div>
+                </div>
+
+                <div class="create-form-container">
+                    <div class="form-grid">
+                        
+                        <!-- Dòng 1: Khách hàng & Tên gói cước (KHÔNG CHO SỬA) -->
+                        <div class="input-group">
+                            <div class="form-label">Khách hàng</div>
+                            <input type="text" id="edit-customer" disabled style="background: #F3F4F6; cursor: not-allowed;">
+                        </div>
+
+                        <div class="input-group">
+                            <div class="form-label">Tên gói cước</div>
+                            <input type="text" id="edit-packageName" disabled style="background: #F3F4F6; cursor: not-allowed;">
+                        </div>
+
+                        <!-- Dòng 2: Giá gói cước (KHÔNG CHO SỬA) & Ngày bắt đầu -->
+                        <div class="input-group">
+                            <div class="form-label">Giá gói cước</div>
+                            <input type="text" id="edit-packagePrice" disabled style="background: #F3F4F6; cursor: not-allowed;">
+                        </div>
+
+                        <div class="input-group">
+                            <div class="form-label">Ngày bắt đầu <span class="required">*</span></div>
+                            <input type="date" id="edit-startDate" class="form-input val-required">
+                            <div class="error-text">Vui lòng nhập đầy đủ thông tin</div>
+                        </div>
+
+                        <!-- Dòng 3: Ngày kết thúc & Đại lý -->
+                        <div class="input-group">
+                            <div class="form-label">Ngày kết thúc <span class="required">*</span></div>
+                            <input type="date" id="edit-endDate" class="form-input val-required">
+                            <div class="error-text">Vui lòng nhập đầy đủ thông tin</div>
+                        </div>
+
+                        <div class="input-group">
+                            <div class="form-label">Đại lý <span class="required">*</span></div>
+                            <select id="edit-agent" class="form-input val-required">
+                                <option value="" disabled hidden>Chọn đại lý</option>
+                                <option value="DL001 - Trần Thị Bình">DL001 - Trần Thị Bình</option>
+                                <option value="DL002 - Phạm Thị Dung">DL002 - Phạm Thị Dung</option>
+                            </select>
+                            <div class="error-text">Vui lòng nhập đầy đủ thông tin</div>
+                        </div>
+
+                        <!-- Dòng 4: CTV & Trạng thái -->
+                        <div class="input-group">
+                            <div class="form-label">Cộng tác viên <span class="required">*</span></div>
+                            <select id="edit-collaborator" class="form-input val-required">
+                                <option value="" disabled hidden>Chọn CTV</option>
+                                <option value="CTV001 - Lê Văn Cường">CTV001 - Lê Văn Cường</option>
+                                <option value="CTV002 - Hoàng Văn Em">CTV002 - Hoàng Văn Em</option>
+                                <option value="CTV003 - Vũ Văn F">CTV003 - Vũ Văn F</option>
+                            </select>
+                            <div class="error-text">Vui lòng nhập đầy đủ thông tin</div>
+                        </div>
+
+                        <div class="input-group">
+                            <div class="form-label">Trạng thái <span class="required">*</span></div>
+                            <select id="edit-status" class="form-input val-required">
+                                <option value="" disabled hidden>Chọn trạng thái</option>
+                                <option value="Chờ xử lý">Chờ xử lý</option>
+                                <option value="Đang xử lý">Đang xử lý</option>
+                                <!-- Không có Hoàn tất/Đã hủy vì khi đạt trạng thái đó sẽ khóa nút Sửa -->
+                            </select>
+                            <div class="error-text">Vui lòng nhập đầy đủ thông tin</div>
+                        </div>
+
+                        <!-- Dòng 5: Ghi chú -->
+                        <div class="input-group col-span-2">
+                            <div class="form-label">Ghi chú</div>
+                            <textarea placeholder="Nhập ghi chú (nếu có)"></textarea>
+                        </div>
+
+                        <!-- NÚT THAO TÁC Ở CUỐI FORM -->
+                        <div class="form-actions col-span-2" style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 16px; border-top: 1px solid #E5E7EB; padding-top: 24px;">
+                            <button class="btn-primary" style="background: #fff; color: #374151; border: 1.33px solid #D1D5DB;" onclick="window.location.href='donHang-chiTiet.html'">Hủy</button>
+                            <button class="btn-primary" id="btn-save-donhang">Lưu</button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- MODAL THÔNG BÁO CẬP NHẬT THÀNH CÔNG -->
+    <div id="successModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-icon-success">
+                <i class='bx bx-check'></i>
+            </div>
+            <h3>Thông báo</h3>
+            <p>Cập nhật đơn hàng thành công</p>
+            <button class="btn-primary-modal" onclick="dongModal()">Đóng</button>
+        </div>
+    </div>
+
+    <script src="../assets/js/include.js"></script>
+    <script src="../assets/js/donHang-sua.js"></script>
+</body>
+</html>

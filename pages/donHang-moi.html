@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo Đơn Hàng - MOSHII</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <!-- FILE CSS RIÊNG CỦA MÀN HÌNH TẠO ĐƠN HÀNG -->
+    <link rel="stylesheet" href="../assets/css/pages/donHang-moi.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="app-container">
+        <div id="sidebar-placeholder"></div>
+        <div class="main-wrapper">
+            <div id="header-placeholder"></div>
+            <main class="main-content">
+                
+                <div class="page-header-action">
+                    <div class="header-left-stack">
+                        <a href="donHang.html" class="back-link">
+                            <i class='bx bx-chevron-left'></i> Quay lại
+                        </a>
+                        <h2>Đơn hàng / Mới</h2>
+                    </div>
+                    <button class="btn-primary" id="btn-submit-donhang">Tạo đơn hàng</button>
+                </div>
+
+                <div class="create-form-container">
+                    <div class="form-grid">
+                        
+                        <div class="input-group">
+                            <div class="form-label">Khách hàng <span class="required">*</span></div>
+                            <select class="form-input val-required">
+                                <option value="" disabled selected hidden>Chọn khách hàng</option>
+                                <option value="KH001">Nguyễn Thị Mai</option>
+                                <option value="KH002">Trần Văn Hùng</option>
+                                <option value="KH003">Lê Thị Lan</option>
+                            </select>
+                            <div class="error-text">Vui lòng nhập đầy đủ thông tin</div>
+                        </div>
+
+                        <div class="input-group">
+                            <div class="form-label">Tên gói cước <span class="required">*</span></div>
+                            <select class="form-input val-required" id="select-package">
+                                <option value="" disabled selected hidden>Chọn gói cước</option>
+                                <option value="150000">Gói Data Cao Cấp</option>
+                                <option value="200000">Gói Combo Data + Voice</option>
+                                <option value="50000">Gói SMS Doanh Nghiệp</option>
+                            </select>
+                            <div class="error-text">Vui lòng nhập đầy đủ thông tin</div>
+                        </div>
+
+                        <div class="input-group">
+                            <div class="form-label">Giá gói cước <span class="required">*</span></div>
+                            <input type="text" id="auto-price" placeholder="Tự động điền" disabled>
+                        </div>
+
+                        <div class="input-group">
+                            <div class="form-label">Ngày bắt đầu <span class="required">*</span></div>
+                            <input type="date" class="form-input val-required">
+                            <div class="error-text">Vui lòng nhập đầy đủ thông tin</div>
+                        </div>
+
+                        <div class="input-group">
+                            <div class="form-label">Ngày kết thúc <span class="required">*</span></div>
+                            <input type="date" class="form-input val-required">
+                            <div class="error-text">Vui lòng nhập đầy đủ thông tin</div>
+                        </div>
+
+                        <div class="input-group">
+                            <div class="form-label">Đại lý <span class="required">*</span></div>
+                            <select class="form-input val-required">
+                                <option value="" disabled selected hidden>Chọn đại lý</option>
+                                <option value="DL001">DL001 - Trần Thị Bình</option>
+                                <option value="DL002">DL002 - Phạm Thị Dung</option>
+                            </select>
+                            <div class="error-text">Vui lòng nhập đầy đủ thông tin</div>
+                        </div>
+
+                        <div class="input-group">
+                            <div class="form-label">Cộng tác viên <span class="required">*</span></div>
+                            <select class="form-input val-required">
+                                <option value="" disabled selected hidden>Chọn CTV</option>
+                                <option value="CTV001">CTV001 - Lê Văn Cường</option>
+                                <option value="CTV002">CTV002 - Hoàng Văn Em</option>
+                            </select>
+                            <div class="error-text">Vui lòng nhập đầy đủ thông tin</div>
+                        </div>
+
+                        <div class="input-group">
+                            <div class="form-label">Trạng thái <span class="required">*</span></div>
+                            <select class="form-input val-required">
+                                <option value="" disabled selected hidden>Chọn trạng thái</option>
+                                <option value="Chờ xử lý">Chờ xử lý</option>
+                                <option value="Đang xử lý">Đang xử lý</option>
+                                <option value="Hoàn tất">Đã hoàn thành</option>
+                            </select>
+                            <div class="error-text">Vui lòng nhập đầy đủ thông tin</div>
+                        </div>
+
+                        <div class="input-group col-span-2">
+                            <div class="form-label">Ghi chú</div>
+                            <textarea placeholder="Nhập ghi chú (nếu có)"></textarea>
+                        </div>
+
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- MODAL THÔNG BÁO TẠO THÀNH CÔNG -->
+    <div id="successModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-icon-success">
+                <i class='bx bx-check'></i>
+            </div>
+            <h3>Thông báo</h3>
+            <p>Tạo đơn hàng thành công</p>
+            <button class="btn-primary-modal" onclick="dongModal()">Đóng</button>
+        </div>
+    </div>
+
+    <script src="../assets/js/include.js"></script>
+    <script src="../assets/js/donHang-moi.js"></script>
+</body>
+</html>

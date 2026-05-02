@@ -1,0 +1,77 @@
+/* =========================================
+   TRANG TẠO MỚI ĐƠN HÀNG
+========================================= */
+
+/* --- Header Actions --- */
+.page-header-action { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.header-left-stack { display: flex; flex-direction: column; gap: 8px; }
+.back-link { display: flex; align-items: center; gap: 8px; color: #6B7280; text-decoration: none; font-size: 14px; font-weight: 500; }
+.header-left-stack h2 { font-size: 24px; font-weight: 600; color: #111827; margin: 0; }
+
+.btn-primary { 
+    background: #2563EB; color: #fff; border: none; height: 44px; padding: 0 20px; 
+    border-radius: 10px; font-size: 14px; font-weight: 500; cursor: pointer; 
+    transition: 0.2s; box-shadow: 0 1px 2px rgba(0,0,0,0.1); 
+}
+.btn-primary:hover { background: #1D4ED8; }
+
+/* --- Form Container & Grid --- */
+.create-form-container { 
+    background: #fff; border-radius: 14px; border: 1.33px solid #E5E7EB; 
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1); padding: 32px; 
+}
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 32px; }
+.col-span-2 { grid-column: span 2; }
+
+/* --- Inputs & Labels --- */
+.input-group { display: flex; flex-direction: column; gap: 8px; }
+.form-label { color: #374151; font-size: 14px; font-weight: 500; }
+.required { color: #DC2626; }
+
+/* Định dạng chung cho Text, Date và Select */
+input[type="text"], input[type="number"], input[type="date"].form-input, select.form-input {
+    width: 100%; height: 44px; padding: 0 16px; background: #fff; 
+    border: 1.33px solid #D1D5DB; border-radius: 10px; font-size: 14px; 
+    color: #111827; outline: none; font-family: 'Inter', sans-serif; 
+    box-sizing: border-box; transition: border-color 0.2s;
+}
+input:focus, select:focus, textarea:focus { border-color: #2563EB; }
+select.form-input { appearance: none; cursor: pointer; }
+input:disabled { background: #F3F4F6; cursor: not-allowed; color: #6B7280; }
+
+/* Textarea Ghi chú */
+textarea { 
+    width: 100%; height: 100px; padding: 12px 16px; background: #fff; 
+    border: 1.33px solid #D1D5DB; border-radius: 10px; font-size: 14px; 
+    color: #111827; outline: none; font-family: 'Inter', sans-serif; 
+    resize: vertical; box-sizing: border-box; 
+}
+
+/* --- Validate Lỗi --- */
+.input-error { border-color: #DC2626 !important; }
+.error-text { color: #DC2626; font-size: 12px; margin-top: 4px; display: none; }
+
+/* =========================================
+   MODAL THÔNG BÁO THÀNH CÔNG
+========================================= */
+.modal-overlay { 
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
+    background: rgba(0, 0, 0, 0.5); display: none; 
+    justify-content: center; align-items: center; z-index: 9999; 
+}
+.modal-box { 
+    width: 440px; background: #fff; border-radius: 14px; padding: 32px; 
+    display: flex; flex-direction: column; align-items: center; gap: 16px; 
+    text-align: center; box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.25); 
+}
+.modal-icon-success { 
+    width: 64px; height: 64px; background: #DCFCE7; border-radius: 50%; 
+    display: flex; justify-content: center; align-items: center; color: #16A34A; font-size: 32px; 
+}
+.modal-box h3 { color: #111827; font-size: 20px; font-weight: 600; margin: 0; }
+.modal-box p { color: #6B7280; font-size: 14px; margin: 0 0 12px 0; }
+.btn-primary-modal { 
+    width: 100%; height: 44px; background: #2563EB; color: #fff; border: none; 
+    border-radius: 10px; font-size: 14px; font-weight: 500; cursor: pointer; transition: 0.2s; 
+}
+.btn-primary-modal:hover { background: #1D4ED8; }

@@ -8,13 +8,12 @@
     <link rel="stylesheet" href="../assets/css/layout.css">
     <link rel="stylesheet" href="../assets/css/components.css">
     <link rel="stylesheet" href="../assets/css/pages/baoCao.css">
-    
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="app-container">
         <div id="sidebar-placeholder"></div>
-
         <div class="main-wrapper">
             <div id="header-placeholder"></div>
 
@@ -25,57 +24,62 @@
 
                 <div class="filter-section">
                     <h3>Bộ lọc báo cáo</h3>
-
                     <div class="filter-row-group">
                         <div class="filter-label">Đối tượng thống kê</div>
                         <div class="radio-group">
-                            <label class="radio-item">
-                                <input type="radio" name="doi_tuong" checked> Tất cả
-                            </label>
-                            <label class="radio-item">
-                                <input type="radio" name="doi_tuong"> Theo Đại lý
-                            </label>
-                            <label class="radio-item">
-                                <input type="radio" name="doi_tuong"> Theo Cộng tác viên
-                            </label>
+                            <label class="radio-item"><input type="radio" name="doi_tuong" value="all" checked> Tất cả</label>
+                            <label class="radio-item"><input type="radio" name="doi_tuong" value="agent"> Theo Đại lý</label>
+                            <label class="radio-item"><input type="radio" name="doi_tuong" value="collab"> Theo Cộng tác viên</label>
                         </div>
+                        <div id="dropdown-container"></div>
                     </div>
 
                     <div class="filter-row-group">
                         <div class="filter-label">Loại thời gian</div>
                         <div class="radio-group">
-                            <label class="radio-item">
-                                <input type="radio" name="loai_thoi_gian" checked> Theo ngày
-                            </label>
-                            <label class="radio-item">
-                                <input type="radio" name="loai_thoi_gian"> Theo tuần
-                            </label>
-                            <label class="radio-item">
-                                <input type="radio" name="loai_thoi_gian"> Theo tháng
-                            </label>
-                            <label class="radio-item">
-                                <input type="radio" name="loai_thoi_gian"> Theo năm
-                            </label>
+                            <label class="radio-item"><input type="radio" name="loai_thoi_gian" value="day" checked> Theo ngày</label>
+                            <label class="radio-item"><input type="radio" name="loai_thoi_gian" value="week"> Theo tuần</label>
+                            <label class="radio-item"><input type="radio" name="loai_thoi_gian" value="month"> Theo tháng</label>
+                            <label class="radio-item"><input type="radio" name="loai_thoi_gian" value="year"> Theo năm</label>
                         </div>
                     </div>
 
                     <div class="filter-row-group">
                         <div class="filter-label">Khoảng thời gian</div>
-                        <div class="date-group">
-                            <div class="date-input-wrapper">
-                                <label>Từ ngày</label>
-                                <input type="date">
-                            </div>
-                            <div class="date-input-wrapper">
-                                <label>Đến ngày</label>
-                                <input type="date">
-                            </div>
+                        <div class="date-group" id="date-range-container">
+                            <div class="date-input-wrapper"><label>Ngày bắt đầu</label><input type="date"></div>
+                            <div class="date-input-wrapper"><label>Ngày kết thúc</label><input type="date"></div>
                         </div>
                     </div>
 
                     <div class="action-row">
-                        <button class="btn-primary">Xem báo cáo</button>
-                        <button class="btn-outline">Xuất báo cáo</button>
+                        <button class="btn-primary" id="btn-view-report">Xem báo cáo</button>
+                        <!-- Thêm ID cho nút xuất báo cáo -->
+                        <button class="btn-outline" id="btn-export-report">Xuất báo cáo</button>
+                    </div>
+                </div>
+
+                <div id="report-result-container">
+                    <div class="summary-cards-grid">
+                        <div class="summary-card">
+                            <div class="summary-label">Tổng số đơn hàng</div>
+                            <div class="summary-value text-blue" id="val-total">0</div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-label">Đơn hoàn thành</div>
+                            <div class="summary-value text-green" id="val-completed">0</div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-label">Đơn đang xử lý</div>
+                            <div class="summary-value text-orange" id="val-processing">0</div>
+                        </div>
+                    </div>
+
+                    <div class="chart-section">
+                        <h3>Biểu đồ thống kê</h3>
+                        <div class="chart-placeholder">
+                            <canvas id="myChart"></canvas>
+                        </div>
                     </div>
                 </div>
 
@@ -83,6 +87,28 @@
         </div>
     </div>
 
+    <!-- POPUP XUẤT FILE -->
+    <div id="exportModal" class="modal-overlay">
+        <div class="export-modal-box">
+            <h3>Chọn định dạng xuất file</h3>
+            
+            <div class="export-options">
+                <label class="radio-item">
+                    <input type="radio" name="exportFormat" value="pdf" checked> PDF
+                </label>
+                <label class="radio-item">
+                    <input type="radio" name="exportFormat" value="xlsx"> XLSX
+                </label>
+            </div>
+
+            <div class="export-actions">
+                <button class="btn-outline" id="btn-close-export" style="height: 44px; padding: 0 24px;">Đóng</button>
+                <button class="btn-primary" id="btn-confirm-export" style="height: 44px; padding: 0 24px;">Xuất</button>
+            </div>
+        </div>
+    </div>
+
     <script src="../assets/js/include.js"></script>
+    <script src="../assets/js/baoCao.js"></script>
 </body>
 </html>

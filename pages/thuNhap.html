@@ -2,11 +2,11 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý thu nhập - MOSHII</title>
     <link rel="stylesheet" href="../assets/css/base.css">
     <link rel="stylesheet" href="../assets/css/layout.css">
     <link rel="stylesheet" href="../assets/css/components.css">
-    <link rel="stylesheet" href="../assets/css/pages/bangDieukhien.css">
     <link rel="stylesheet" href="../assets/css/pages/thuNhap.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
@@ -16,81 +16,108 @@
         <div class="main-wrapper">
             <div id="header-placeholder"></div>
             <main class="main-content">
+                
                 <div class="page-header">
                     <h2>Quản lý thu nhập</h2>
                 </div>
 
+                <!-- TABS -->
                 <div class="card-block">
                     <div class="tabs-container">
-                        <div class="tab-item active" onclick="switchTab('income')">Thu nhập</div>
-                        <div class="tab-item" onclick="switchTab('withdraw')">Yêu cầu rút tiền</div>
+                        <div class="tab-item active" id="tab-income">Thu nhập</div>
+                        <div class="tab-item" id="tab-withdraw">Yêu cầu rút tiền</div>
                     </div>
                 </div>
 
-                <div class="card-block">
+                <!-- BỘ LỌC CHUNG (Bọc thêm ID filter-block-container để dễ ẩn) -->
+                <div class="card-block" id="filter-block-container">
                     <div class="filter-bar">
                         <div class="filter-group">
                             <label>Đối tượng</label>
-                            <select><option>Tất cả</option></select>
+                            <select id="filter-type" class="filter-input">
+                                <option value="agent" selected>Chọn đại lý</option>
+                                <option value="collab">Chọn cộng tác viên</option>
+                            </select>
                         </div>
                         <div class="filter-group">
-                            <label>Chọn đại lý</label>
-                            <select><option>-- Chọn đại lý --</option></select>
+                            <label id="label-target">Chọn đại lý</label>
+                            <select id="filter-target" class="filter-input">
+                                <option value="" disabled selected hidden>Vui lòng chọn</option>
+                                <option value="DL001">DL001 - Trần Thị Bình</option>
+                                <option value="DL002">DL002 - Phạm Thị Dung</option>
+                            </select>
                         </div>
-                        <div class="filter-group">
+                        <div class="filter-group small">
                             <label>Tháng</label>
-                            <select><option>Tháng 4</option></select>
+                            <select id="filter-month" class="filter-input">
+                                <option value="1">01</option>
+                                <option value="2">02</option>
+                                <option value="3">03</option>
+                                <option value="4" selected>04</option>
+                            </select>
                         </div>
                         <div class="filter-group small">
                             <label>Năm</label>
-                            <select><option>2026</option></select>
+                            <input type="number" id="filter-year" value="2026" class="filter-input">
                         </div>
-                        <button class="btn-view">Xem thu nhập</button>
+                        <div class="filter-group" style="flex: none;">
+                            <button class="btn-view" id="btn-view-action">Xem thu nhập</button>
+                        </div>
                     </div>
                 </div>
 
-                <div class="card-block table-block">
-                    <div class="table-responsive">
-                        <table class="table">
+                <!-- KẾT QUẢ 1: TAB THU NHẬP -->
+                <div id="income-result-container">
+                    <div class="summary-cards-grid">
+                        <div class="summary-card">
+                            <div class="icon-box icon-blue"><i class='bx bx-shopping-bag'></i></div>
+                            <div class="summary-info">
+                                <div class="summary-label">Tổng số đơn hàng</div>
+                                <div class="summary-value text-black" id="val-total-orders">0 đơn</div>
+                            </div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="icon-box icon-green"><i class='bx bx-wallet'></i></div>
+                            <div class="summary-info">
+                                <div class="summary-label">Tổng hoa hồng</div>
+                                <div class="summary-value text-green" id="val-total-commission">0 VNĐ</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-block" style="margin-bottom: 0;">
+                        <table class="table-custom">
                             <thead>
-                                <tr id="table-header">
-                                    <th>MÃ GIAO DỊCH</th>
-                                    <th>NGÀY</th>
-                                    <th>NGUỒN THU</th>
-                                    <th>SỐ TIỀN</th>
-                                    <th>TRẠNG THÁI</th>
-                                </tr>
+                                <tr><th>Mã đơn</th><th>Ngày</th><th>Giá trị đơn</th><th>Hoa hồng</th></tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td colspan="5" style="text-align: center; color: #9CA3AF; padding: 40px;">
-                                        Nhấn "Xem thu nhập" để hiển thị dữ liệu
-                                    </td>
-                                </tr>
-                            </tbody>
+                            <tbody id="table-income-body"></tbody>
                         </table>
                     </div>
                 </div>
+
+                <!-- KẾT QUẢ 2: TAB YÊU CẦU RÚT TIỀN -->
+                <div id="withdraw-result-container" style="display: none;">
+                    <div class="withdraw-list-block">
+                        <div class="withdraw-header">Danh sách yêu cầu rút tiền</div>
+                        <table class="table-custom">
+                            <thead>
+                                <tr><th>Mã yêu cầu</th><th>Người yêu cầu</th><th>Số tiền</th><th>Thời gian</th><th>Trạng thái</th></tr>
+                            </thead>
+                            <tbody id="table-withdraw-body">
+                                <!-- Data mẫu đổ bằng JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="withdraw-detail-block">
+                        <i class='bx bx-receipt' style="font-size: 48px; color: #D1D5DB; margin-bottom: 16px;"></i>
+                        Chọn một yêu cầu để xem chi tiết
+                    </div>
+                </div>
+
             </main>
         </div>
     </div>
 
     <script src="../assets/js/include.js"></script>
-    <script>
-        function switchTab(type) {
-            const tabs = document.querySelectorAll('.tab-item');
-            tabs.forEach(t => t.classList.remove('active'));
-            
-            if(type === 'income') {
-                tabs[0].classList.add('active');
-                document.getElementById('table-header').innerHTML = '<th>MÃ GIAO DỊCH</th><th>NGÀY</th><th>NGUỒN THU</th><th>SỐ TIỀN</th><th>TRẠNG THÁI</th>';
-                document.querySelector('.btn-view').innerText = 'Xem thu nhập';
-            } else {
-                tabs[1].classList.add('active');
-                document.getElementById('table-header').innerHTML = '<th>MÃ YÊU CẦU</th><th>NGÀY GỬI</th><th>ĐẠI LÝ / CTV</th><th>SỐ TIỀN RÚT</th><th>TRẠNG THÁI</th>';
-                document.querySelector('.btn-view').innerText = 'Xem yêu cầu';
-            }
-        }
-    </script>
+    <script src="../assets/js/thuNhap.js"></script>
 </body>
 </html>
