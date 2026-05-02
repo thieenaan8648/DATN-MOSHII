@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sửa Đại lý/CTV - MOSHII</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <!-- Link file CSS mới -->
+    <link rel="stylesheet" href="../assets/css/pages/daiLy-CTV-sua.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="app-container">
+        <div id="sidebar-placeholder"></div>
+        <div class="main-wrapper">
+            <div id="header-placeholder"></div>
+
+            <main class="main-content">
+                <div class="detail-wrapper">
+                    
+                    <!-- Header -->
+                    <div>
+                        <button class="back-btn" onclick="window.location.href='daiLy-CTV-sua.html'">
+                            <i class='bx bx-chevron-left'></i> Quay lại chi tiết
+                        </button>
+                        <div class="detail-header-row">
+                            <h2 id="page-title">Sửa thông tin Đại lý</h2>
+                            <div class="header-actions">
+                                <button class="btn-cancel" onclick="window.location.href='daiLy-CTV-sua.html'">Hủy</button>
+                                <button class="btn-save" id="btn-save-data">Lưu</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Khối Thông tin cơ bản -->
+                    <div class="detail-card">
+                        <h3>Thông tin cơ bản</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">Email <span class="text-danger">*</span></label>
+                                <input type="email" class="form-input" id="inp-email" value="binh.tran@example.com" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Họ và tên <span class="text-danger">*</span></label>
+                                <input type="text" class="form-input" id="inp-name" value="Trần Thị Bình">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Ngày sinh <span class="text-danger">*</span></label>
+                                <input type="date" class="form-input" id="inp-dob">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Số điện thoại <span class="text-danger">*</span></label>
+                                <input type="text" class="form-input" id="inp-phone" value="0912345678">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" id="lbl-id">Mã đại lý <span class="text-danger">*</span></label>
+                                <input type="text" class="form-input" id="inp-id" value="DL001" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Khu vực hoạt động <span class="text-danger">*</span></label>
+                                <input type="text" class="form-input" id="inp-area" value="TP. Hồ Chí Minh">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Hoa hồng (%) <span class="text-danger">*</span></label>
+                                <input type="number" class="form-input" id="inp-comm" value="15">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Khối Thông tin định danh -->
+                    <div class="detail-card">
+                        <h3>Thông tin định danh</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">CCCD</label>
+                                <input type="text" class="form-input" placeholder="Nhập số CCCD">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Ngày cấp</label>
+                                <input type="date" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Nơi cấp</label>
+                                <input type="text" class="form-input" placeholder="Nhập nơi cấp">
+                            </div>
+                            <!-- Trường ẩn/hiện tùy đối tượng -->
+                            <div class="form-group" id="doanh-nghiep-row">
+                                <label class="form-label">Tên doanh nghiệp</label>
+                                <input type="text" class="form-input" placeholder="Nhập tên doanh nghiệp">
+                            </div>
+                            <div class="form-group" id="mst-row">
+                                <label class="form-label">Mã số thuế</label>
+                                <input type="text" class="form-input" placeholder="Nhập mã số thuế">
+                            </div>
+                            <div class="form-group" id="gioi-tinh-row" style="display: none;">
+                                <label class="form-label">Giới tính</label>
+                                <select class="form-input">
+                                    <option>Nam</option><option>Nữ</option><option>Khác</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="image-grid">
+                            <div class="image-box-wrapper">
+                                <div class="image-box-label">Ảnh CCCD</div>
+                                <div class="upload-box">
+                                    <i class='bx bx-cloud-upload upload-icon'></i>
+                                    <div class="upload-text">Tải ảnh lên</div>
+                                </div>
+                            </div>
+                            <div class="image-box-wrapper">
+                                <div class="image-box-label">Ảnh chân dung</div>
+                                <div class="upload-box">
+                                    <i class='bx bx-cloud-upload upload-icon'></i>
+                                    <div class="upload-text">Tải ảnh lên</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Khối Liên hệ -->
+                    <div class="detail-card">
+                        <h3>Thông tin liên hệ</h3>
+                        <div class="form-grid">
+                            <div class="form-group" id="addr-1-row">
+                                <label class="form-label" id="lbl-addr-1">Địa chỉ thường trú</label>
+                                <input type="text" class="form-input" placeholder="Nhập địa chỉ">
+                            </div>
+                            <div class="form-group" id="addr-2-row">
+                                <label class="form-label">Địa chỉ kinh doanh</label>
+                                <input type="text" class="form-input" placeholder="Nhập địa chỉ kinh doanh">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Khối Hệ thống -->
+                    <div class="detail-card">
+                        <h3 id="lbl-system">Thông tin hệ thống</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">Ngày hợp tác</label>
+                                <input type="date" class="form-input" disabled>
+                            </div>
+                            <div class="form-group" id="pham-vi-row">
+                                <label class="form-label">Phạm vi quản lý</label>
+                                <input type="text" class="form-input" placeholder="Nhập phạm vi">
+                            </div>
+                            <div class="form-group" id="kenh-ban-row" style="display: none;">
+                                <label class="form-label">Kênh bán hàng</label>
+                                <input type="text" class="form-input" placeholder="Nhập kênh bán">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Trạng thái <span class="text-danger">*</span></label>
+                                <select class="form-input" id="inp-status">
+                                    <option value="Hoạt động">Hoạt động</option>
+                                    <option value="Ngừng hoạt động">Ngừng hoạt động</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Khối Thanh toán -->
+                    <div class="detail-card">
+                        <h3>Thanh toán</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">Ngân hàng</label>
+                                <select class="form-input"><option>Vietcombank</option><option>Techcombank</option></select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Số tài khoản</label>
+                                <input type="text" class="form-input" placeholder="Nhập STK">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Chủ tài khoản</label>
+                                <input type="text" class="form-input" placeholder="Tên in trên thẻ">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="../assets/js/include.js"></script>
+    <!-- Link file JS mới -->
+    <script src="../assets/js/daiLy-CTV-sua.js"></script>
+</body>
+</html>

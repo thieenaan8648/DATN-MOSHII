@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="../assets/css/components.css">
     <link rel="stylesheet" href="../assets/css/pages/daiLy-CTV.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        .search-standard input:focus { border-color: #2563EB !important; }
+        /* Thêm style để con trỏ chuột thành hình bàn tay khi hover vào tab */
+        .tab-item { cursor: pointer; } 
+    </style>
 </head>
 <body>
     <div class="app-container">
@@ -22,34 +27,38 @@
                     <h2>Quản lý Đại lý / Cộng tác viên</h2>
                 </div>
 
+                <!-- KHỐI TABS (Có gắn ID để gọi JS) -->
                 <div class="tabs-header">
-                    <div class="tab-item active">Đại lý</div>
-                    <div class="tab-item">Cộng tác viên</div>
+                    <div class="tab-item active" id="tab-daily">Đại lý</div>
+                    <div class="tab-item" id="tab-ctv">Cộng tác viên</div>
                 </div>
 
-                <div class="search-action-row">
-                    <div class="search-box-large">
-                        <i class='bx bx-search'></i>
-                        <input type="text" placeholder="Tìm kiếm theo tên, mã đại lý...">
+                <!-- KHỐI TÌM KIẾM -->
+                <div class="search-standard" style="margin-bottom: 24px;">
+                    <div style="position: relative; width: 400px;">
+                        <i class='bx bx-search' style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: #9CA3AF; font-size: 20px;"></i>
+                        <input type="text" id="search-input" placeholder="Tìm kiếm theo mã, tên đại lý..." style="width: 100%; height: 44px; padding: 0 16px 0 44px; background: #fff; border: 1.33px solid #D1D5DB; border-radius: 10px; font-size: 14px; color: #111827; outline: none; font-family: 'Inter', sans-serif; box-sizing: border-box; transition: 0.2s;">
                     </div>
-                    <button class="btn-search">Tìm kiếm</button>
                 </div>
 
+                <!-- KHỐI BẢNG DỮ LIỆU -->
                 <div class="dashboard-section" style="padding: 0;">
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>MÃ ĐẠI LÝ</th>
-                                    <th>TÊN ĐẠI DIỆN</th>
+                                    <th id="col-ma">MÃ ĐẠI LÝ</th>
+                                    <th id="col-ten">TÊN ĐẠI DIỆN</th>
                                     <th>SỐ ĐIỆN THOẠI</th>
                                     <th>KHU VỰC</th>
                                     <th>HOA HỒNG (%)</th>
                                     <th>TRẠNG THÁI</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
+                            
+                            <!-- BẢNG 1: DỮ LIỆU ĐẠI LÝ (Mặc định hiển thị) -->
+                            <tbody id="table-body-daily">
+                                <tr class="data-row">
                                     <td><strong style="color: #111827; font-weight: 500;">DL001</strong></td>
                                     <td><span style="color: #374151;">Trần Thị Bình</span></td>
                                     <td><span style="color: #374151;">0912345678</span></td>
@@ -57,7 +66,7 @@
                                     <td><span style="color: #374151;">15%</span></td>
                                     <td><span class="status-dot status-active">Hoạt động</span></td>
                                 </tr>
-                                <tr>
+                                <tr class="data-row">
                                     <td><strong style="color: #111827; font-weight: 500;">DL002</strong></td>
                                     <td><span style="color: #374151;">Phạm Thị Dung</span></td>
                                     <td><span style="color: #374151;">0934567890</span></td>
@@ -65,12 +74,40 @@
                                     <td><span style="color: #374151;">12%</span></td>
                                     <td><span class="status-dot status-active">Hoạt động</span></td>
                                 </tr>
-                                <tr>
+                                <tr class="data-row">
                                     <td><strong style="color: #111827; font-weight: 500;">DL003</strong></td>
                                     <td><span style="color: #374151;">Nguyễn Văn Thành</span></td>
                                     <td><span style="color: #374151;">0945678901</span></td>
                                     <td><span style="color: #6B7280;">Đà Nẵng</span></td>
                                     <td><span style="color: #374151;">10%</span></td>
+                                    <td><span class="status-dot status-inactive">Ngừng hoạt động</span></td>
+                                </tr>
+                            </tbody>
+
+                            <!-- BẢNG 2: DỮ LIỆU CỘNG TÁC VIÊN (Mặc định ẩn) -->
+                            <tbody id="table-body-ctv" style="display: none;">
+                                <tr class="data-row">
+                                    <td><strong style="color: #111827; font-weight: 500;">CTV001</strong></td>
+                                    <td><span style="color: #374151;">Lê Văn Cường</span></td>
+                                    <td><span style="color: #374151;">0923456789</span></td>
+                                    <td><span style="color: #6B7280;">TP. Hồ Chí Minh</span></td>
+                                    <td><span style="color: #374151;">8%</span></td>
+                                    <td><span class="status-dot status-active">Hoạt động</span></td>
+                                </tr>
+                                <tr class="data-row">
+                                    <td><strong style="color: #111827; font-weight: 500;">CTV002</strong></td>
+                                    <td><span style="color: #374151;">Hoàng Văn Em</span></td>
+                                    <td><span style="color: #374151;">0945678901</span></td>
+                                    <td><span style="color: #6B7280;">Hà Nội</span></td>
+                                    <td><span style="color: #374151;">7%</span></td>
+                                    <td><span class="status-dot status-active">Hoạt động</span></td>
+                                </tr>
+                                <tr class="data-row">
+                                    <td><strong style="color: #111827; font-weight: 500;">CTV003</strong></td>
+                                    <td><span style="color: #374151;">Vũ Văn F</span></td>
+                                    <td><span style="color: #374151;">0956789012</span></td>
+                                    <td><span style="color: #6B7280;">Cần Thơ</span></td>
+                                    <td><span style="color: #374151;">6%</span></td>
                                     <td><span class="status-dot status-inactive">Ngừng hoạt động</span></td>
                                 </tr>
                             </tbody>
@@ -82,5 +119,6 @@
     </div>
 
     <script src="../assets/js/include.js"></script>
+    <script src="../assets/js/daiLy-CTV.js"></script>
 </body>
 </html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết - MOSHII</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/pages/chiTietDaiLy.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="app-container">
+        <div id="sidebar-placeholder"></div>
+        <div class="main-wrapper">
+            <div id="header-placeholder"></div>
+
+            <main class="main-content">
+                <div class="detail-wrapper">
+                    
+                    <div>
+                        <button class="back-btn" onclick="window.location.href='daiLy-CTV.html'">
+                            <i class='bx bx-chevron-left' style="font-size: 20px;"></i> Quay lại danh sách
+                        </button>
+                        <div class="detail-header-row">
+                            <!-- Tiêu đề sẽ được JS thay đổi động -->
+                            <h2 id="page-title">Chi tiết Đại lý</h2>
+                            <button class="btn-edit">Sửa</button>
+                        </div>
+                    </div>
+
+                    <!-- Thông tin cơ bản -->
+                    <div class="detail-card">
+                        <h3>Thông tin cơ bản</h3>
+                        <div class="info-grid">
+                            <div class="info-item"><div class="info-label">Email</div><div class="info-value" id="det-email">binh.tran@example.com</div></div>
+                            <div class="info-item"><div class="info-label">Họ và tên</div><div class="info-value bold" id="det-name">Trần Thị Bình</div></div>
+                            <div class="info-item"><div class="info-label">Ngày sinh</div><div class="info-value">15/3/1985</div></div>
+                            <div class="info-item"><div class="info-label">Số điện thoại</div><div class="info-value" id="det-phone">0912345678</div></div>
+                            <!-- Nhãn "Mã đại lý" hoặc "Mã CTV" cũng thay đổi động -->
+                            <div class="info-item"><div class="info-label" id="lbl-id">Mã đại lý</div><div class="info-value bold" id="det-id">DL001</div></div>
+                            <div class="info-item"><div class="info-label">Khu vực hoạt động</div><div class="info-value" id="det-area">TP. Hồ Chí Minh</div></div>
+                            <div class="info-item"><div class="info-label">Hoa hồng (%)</div><div class="info-value" id="det-commission">15%</div></div>
+                        </div>
+                    </div>
+
+                    <!-- Thông tin định danh -->
+                    <div class="detail-card">
+                        <h3>Thông tin định danh</h3>
+                        <div class="info-grid">
+                            <div class="info-item"><div class="info-label">Giới tính</div><div class="info-value">-</div></div>
+                            <div class="info-item"><div class="info-label">CCCD</div><div class="info-value">-</div></div>
+                            <div class="info-item"><div class="info-label">Ngày cấp</div><div class="info-value">-</div></div>
+                            <div class="info-item"><div class="info-label">Nơi cấp</div><div class="info-value">-</div></div>
+                            <!-- 2 trường này chỉ hiển thị nếu là Đại lý -->
+                            <div class="info-item" id="doanh-nghiep-row"><div class="info-label">Tên doanh nghiệp</div><div class="info-value">-</div></div>
+                            <div class="info-item" id="mst-row"><div class="info-label">Mã số thuế</div><div class="info-value">-</div></div>
+                        </div>
+                        <div class="image-grid">
+                            <div class="image-box-wrapper">
+                                <div class="image-box-label">Ảnh CCCD</div>
+                                <div class="image-placeholder">Chưa có ảnh</div>
+                            </div>
+                            <div class="image-box-wrapper">
+                                <div class="image-box-label">Ảnh chân dung</div>
+                                <div class="image-placeholder">Chưa có ảnh</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Thông tin liên hệ -->
+                    <div class="detail-card">
+                        <h3>Liên hệ</h3>
+                        <div class="info-grid">
+                            <!-- JS sẽ đổi label nếu là CTV chỉ ghi "Địa chỉ", Đại lý thì có "Thường trú/Kinh doanh" -->
+                            <div class="info-item" id="addr-1-row"><div class="info-label" id="lbl-addr-1">Địa chỉ thường trú</div><div class="info-value">-</div></div>
+                            <div class="info-item" id="addr-2-row"><div class="info-label">Địa chỉ kinh doanh</div><div class="info-value">-</div></div>
+                        </div>
+                    </div>
+
+                    <!-- Hợp tác / Thông tin hệ thống -->
+                    <div class="detail-card">
+                        <h3 id="lbl-system">Thông tin hệ thống</h3>
+                        <div class="info-grid">
+                            <div class="info-item"><div class="info-label">Ngày hợp tác</div><div class="info-value">-</div></div>
+                            
+                            <!-- 2 trường này thay đổi tùy đối tượng -->
+                            <div class="info-item" id="pham-vi-row"><div class="info-label">Phạm vi quản lý</div><div class="info-value">-</div></div>
+                            <div class="info-item" id="danh-sach-row"><div class="info-label">Danh sách CTV</div><div class="info-value">-</div></div>
+                            <div class="info-item" id="kenh-ban-row" style="display: none;"><div class="info-label">Kênh bán hàng</div><div class="info-value">-</div></div>
+
+                            <div class="info-item">
+                                <div class="info-label">Trạng thái</div>
+                                <div class="info-value" id="det-status">
+                                    <span class="status-dot status-active" style="display: inline-flex; align-items: center; gap: 8px; padding: 4px 12px; background: #DCFCE7; color: #16A34A; border-radius: 8px; font-size: 12px; font-weight: 500;"><div style="width: 6px; height: 6px; background: #16A34A; border-radius: 50%;"></div>Hoạt động</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Thanh toán -->
+                    <div class="detail-card">
+                        <h3>Thanh toán</h3>
+                        <div class="info-grid">
+                            <div class="info-item"><div class="info-label">Ngân hàng</div><div class="info-value">-</div></div>
+                            <div class="info-item"><div class="info-label">Số tài khoản</div><div class="info-value">-</div></div>
+                            <div class="info-item"><div class="info-label">Chủ tài khoản</div><div class="info-value">-</div></div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="../assets/js/include.js"></script>
+    <!-- Tạo một file JS riêng biệt cho trang chi tiết -->
+    <script src="../assets/js/daiLy-CTV-chiTiet.js"></script>
+</body>
+</html>
