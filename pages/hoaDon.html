@@ -8,10 +8,17 @@
     <link rel="stylesheet" href="../assets/css/layout.css">
     <link rel="stylesheet" href="../assets/css/components.css">
     <link rel="stylesheet" href="../assets/css/pages/bangDieukhien.css">
-    <!-- Tái sử dụng CSS của bảng để đồng bộ giao diện -->
     <link rel="stylesheet" href="../assets/css/pages/khachHang.css"> 
-    
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        /* CSS cho thẻ Trạng thái Hóa đơn */
+        .status-badge-invoice {
+            display: inline-block; padding: 4px 12px; border-radius: 8px; font-size: 12px; font-weight: 500;
+        }
+        .status-hoan-tat { background: #D1FAE5; color: #065F46; border: 1.33px solid #6EE7B7; }
+        .status-dang-xu-ly { background: #DBEAFE; color: #1E40AF; border: 1.33px solid #93C5FD; }
+        .status-da-huy { background: #FEE2E2; color: #991B1B; border: 1.33px solid #FCA5A5; }
+    </style>
 </head>
 <body>
     <div class="app-container">
@@ -23,15 +30,13 @@
             <main class="main-content">
                 <div class="page-title-row">
                     <h2>Hóa đơn</h2>
-                    <button class="btn-primary" onclick="window.location.href='hoaDon-moi.html'">
-                        <i class='bx bx-plus'></i> Tạo hóa đơn 
-                    </button>
+                    
                 </div>
 
                 <div class="filter-row">
                     <div class="search-box">
                         <i class='bx bx-search'></i>
-                        <input type="text" placeholder="Tìm kiếm theo mã hóa đơn, tên khách hàng...">
+                        <input type="text" placeholder="Tìm kiếm theo khách hàng, tên gói cước...">
                     </div>
                 </div>
 
@@ -40,44 +45,82 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>MÃ HÓA ĐƠN</th>
                                     <th>KHÁCH HÀNG</th>
-                                    <th>GÓI CƯỚC</th>
-                                    <th>NGÀY TẠO</th>
-                                    <th>TỔNG TIỀN</th>
+                                    <th>TÊN GÓI CƯỚC</th>
+                                    <th>GIÁ GÓI</th>
+                                    <th>NGÀY BẮT ĐẦU</th>
+                                    <th>NGÀY KẾT THÚC</th>
+                                    <th>ĐẠI LÝ</th>
+                                    <th>CỘNG TÁC VIÊN</th>
                                     <th>TRẠNG THÁI</th>
+                                    <th>TỔNG TIỀN</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Dữ liệu mẫu -->
+                                <!-- Data Row 1 -->
                                 <tr class="data-row">
-                                    <td><strong style="color: #111827;">HD001</strong></td>
-                                    <td>Nguyễn Thị Mai</td>
+                                    <td><strong style="color: #111827;">Nguyễn Thị Mai</strong></td>
                                     <td>Gói Data Cao Cấp</td>
-                                    <td>01/05/2026</td>
                                     <td>150.000 VNĐ</td>
-                                    <td><span class="status-dot status-active">Đã thanh toán</span></td>
+                                    <td>1/4/2026</td>
+                                    <td>30/4/2026</td>
+                                    <td>DL001 - Trần Thị Bình</td>
+                                    <td>CTV001 - Lê Văn Cường</td>
+                                    <td><span class="status-badge-invoice status-hoan-tat">Hoàn tất</span></td>
+                                    <td style="color: #111827; font-weight: 600;">150.000 VNĐ</td>
                                 </tr>
+                                <!-- Data Row 2 -->
                                 <tr class="data-row">
-                                    <td><strong style="color: #111827;">HD002</strong></td>
-                                    <td>Trần Văn Hùng</td>
+                                    <td><strong style="color: #111827;">Trần Văn Hùng</strong></td>
                                     <td>Gói Combo Data + Voice</td>
-                                    <td>02/05/2026</td>
                                     <td>200.000 VNĐ</td>
-                                    <td><span class="status-dot status-locked">Chưa thanh toán</span></td>
+                                    <td>5/4/2026</td>
+                                    <td>5/5/2026</td>
+                                    <td>DL002 - Phạm Thị Dung</td>
+                                    <td>CTV002 - Hoàng Văn Em</td>
+                                    <td><span class="status-badge-invoice status-dang-xu-ly">Đang xử lý</span></td>
+                                    <td style="color: #111827; font-weight: 600;">200.000 VNĐ</td>
                                 </tr>
+                                <!-- Data Row 3 -->
                                 <tr class="data-row">
-                                    <td><strong style="color: #111827;">HD003</strong></td>
-                                    <td>Lê Thị Lan</td>
+                                    <td><strong style="color: #111827;">Lê Thị Lan</strong></td>
                                     <td>Gói SMS Doanh Nghiệp</td>
-                                    <td>03/05/2026</td>
                                     <td>50.000 VNĐ</td>
-                                    <td><span class="status-dot status-active">Đã thanh toán</span></td>
+                                    <td>10/4/2026</td>
+                                    <td>17/4/2026</td>
+                                    <td>DL001 - Trần Thị Bình</td>
+                                    <td>CTV001 - Lê Văn Cường</td>
+                                    <td><span class="status-badge-invoice status-dang-xu-ly">Đang xử lý</span></td>
+                                    <td style="color: #111827; font-weight: 600;">50.000 VNĐ</td>
+                                </tr>
+                                <!-- Data Row 4 -->
+                                <tr class="data-row">
+                                    <td><strong style="color: #111827;">Phạm Văn Đức</strong></td>
+                                    <td>Gói All-in-One</td>
+                                    <td>300.000 VNĐ</td>
+                                    <td>12/4/2026</td>
+                                    <td>12/5/2026</td>
+                                    <td>DL002 - Phạm Thị Dung</td>
+                                    <td>CTV003 - Vũ Văn F</td>
+                                    <td><span class="status-badge-invoice status-dang-xu-ly">Đang xử lý</span></td>
+                                    <td style="color: #111827; font-weight: 600;">300.000 VNĐ</td>
+                                </tr>
+                                <!-- Data Row 5 -->
+                                <tr class="data-row">
+                                    <td><strong style="color: #111827;">Hoàng Thị Thu</strong></td>
+                                    <td>Gói Data Cao Cấp</td>
+                                    <td>150.000 VNĐ</td>
+                                    <td>15/3/2026</td>
+                                    <td>15/4/2026</td>
+                                    <td>DL001 - Trần Thị Bình</td>
+                                    <td>CTV002 - Hoàng Văn Em</td>
+                                    <td><span class="status-badge-invoice status-da-huy">Đã hủy</span></td>
+                                    <td style="color: #111827; font-weight: 600;">150.000 VNĐ</td>
                                 </tr>
 
-                                <!-- KHỐI EMPTY STATE (KHÔNG TÌM THẤY HÓA ĐƠN) -->
+                                <!-- KHỐI EMPTY STATE -->
                                 <tr id="noResultsRow" style="display: none;">
-                                    <td colspan="6" style="padding: 0; border: none;">
+                                    <td colspan="9" style="padding: 0; border: none;">
                                         <div class="empty-state" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 232.5px; background: #fff; gap: 12px;">
                                             <div style="width: 48px; height: 48px; position: relative; overflow: hidden;">
                                                 <div style="width: 28px; height: 12px; left: 4px; top: 30px; position: absolute; outline: 4px #D1D5DB solid; outline-offset: -2px"></div>
@@ -98,14 +141,14 @@
 
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
                     <div class="pagination-info" style="color: var(--text-gray); font-size: 13px;">
-                        Hiển thị <strong id="visibleCount">3</strong> / <strong id="totalCount">3</strong> hóa đơn
+                        Hiển thị <strong id="visibleCount">5</strong> / <strong id="totalCount">5</strong> hóa đơn
                     </div>
                 </div>
             </main>
         </div>
     </div>
 
-    <!-- Nhúng script chung và script riêng cho trang Hóa đơn -->
+    <!-- Script -->
     <script src="../assets/js/include.js"></script>
     <script src="../assets/js/hoaDon.js"></script>
 </body>

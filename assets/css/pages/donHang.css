@@ -72,3 +72,23 @@
     color: #B45309; 
     border: 1px solid #FDE68A;
 }
+
+.btn-primary {
+    background: #2563EB; /* Màu xanh chủ đạo */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+    box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.10);
+}
+
+.btn-primary:hover { 
+    background: #1D4ED8; 
+}

@@ -9,6 +9,15 @@
     <link rel="stylesheet" href="../assets/css/components.css">
     <link rel="stylesheet" href="../assets/css/pages/hoaDon-chiTiet.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        /* Kế thừa CSS Trạng thái */
+        .status-badge-invoice {
+            display: inline-block; padding: 4px 12px; border-radius: 8px; font-size: 12px; font-weight: 500;
+        }
+        .status-hoan-tat { background: #D1FAE5; color: #065F46; border: 1.33px solid #6EE7B7; }
+        .status-dang-xu-ly { background: #DBEAFE; color: #1E40AF; border: 1.33px solid #93C5FD; }
+        .status-da-huy { background: #FEE2E2; color: #991B1B; border: 1.33px solid #FCA5A5; }
+    </style>
 </head>
 <body>
     <div class="app-container">
@@ -22,8 +31,7 @@
                         <a href="hoaDon.html" class="back-link" style="display: flex; align-items: center; gap: 8px; color: #6B7280; text-decoration: none; font-size: 14px; font-weight: 500;">
                             <i class='bx bx-chevron-left'></i> Quay lại
                         </a>
-                        <!-- ID này sẽ được JS lấy để điền mã hóa đơn vào -->
-                        <h2 id="pageTitle">Chi tiết hóa đơn</h2>
+                        <h2>Chi tiết hóa đơn</h2>
                     </div>
                     <div class="detail-header-right">
                         <button class="btn-edit" onclick="window.location.href='hoaDon-sua.html'"><i class='bx bx-edit-alt'></i> Sửa</button>
@@ -36,42 +44,42 @@
                     
                     <div class="info-row">
                         <div class="info-label">Khách hàng</div>
-                        <div class="info-value" style="font-weight: 500; color: #111827;">Trần Văn Hùng</div>
+                        <div class="info-value" id="val-customer" style="font-weight: 500; color: #111827;">...</div>
                     </div>
                     <div class="info-row">
                         <div class="info-label">Tên gói cước</div>
-                        <div class="info-value">Gói Combo Data + Voice</div>
+                        <div class="info-value" id="val-packageName">...</div>
                     </div>
                     <div class="info-row">
                         <div class="info-label">Giá gói cước</div>
-                        <div class="info-value">200.000 VNĐ</div>
+                        <div class="info-value" id="val-packagePrice">...</div>
                     </div>
                     <div class="info-row">
                         <div class="info-label">Ngày bắt đầu</div>
-                        <div class="info-value">5/4/2026</div>
+                        <div class="info-value" id="val-startDate">...</div>
                     </div>
                     <div class="info-row">
                         <div class="info-label">Ngày kết thúc</div>
-                        <div class="info-value">5/5/2026</div>
+                        <div class="info-value" id="val-endDate">...</div>
                     </div>
                     <div class="info-row">
                         <div class="info-label">Đại lý</div>
-                        <div class="info-value">DL002 - Phạm Thị Dung</div>
+                        <div class="info-value" id="val-agent">...</div>
                     </div>
                     <div class="info-row">
                         <div class="info-label">Cộng tác viên</div>
-                        <div class="info-value">CTV002 - Hoàng Văn Em</div>
+                        <div class="info-value" id="val-collaborator">...</div>
                     </div>
                     
                     <!-- Khối thông tin trạng thái & tổng tiền -->
                     <div style="margin-top: 16px;">
                         <div style="color: #6B7280; font-size: 13px; font-weight: 500; margin-bottom: 8px;">Trạng thái hóa đơn</div>
-                        <span class="status-badge-invoice">Đang xử lý</span>
+                        <span class="status-badge-invoice" id="val-status">...</span>
                     </div>
 
                     <div class="info-row" style="border-top: 1.33px solid #F3F4F6; margin-top: 24px; padding-top: 16px;">
                         <div class="info-label">Tổng số tiền</div>
-                        <div class="info-value">200.000 VNĐ</div>
+                        <div class="info-value" id="val-totalPrice" style="font-weight: 600; color: #111827;">...</div>
                     </div>
 
                 </div>
@@ -80,9 +88,7 @@
         </div>
     </div>
 
-    <!-- ===================================== -->
     <!-- MODAL 1: XÁC NHẬN XÓA (ĐỎ) -->
-    <!-- ===================================== -->
     <div id="deleteModal" class="modal-overlay">
         <div class="modal-box">
             <div class="modal-icon-danger">
@@ -97,9 +103,7 @@
         </div>
     </div>
 
-    <!-- ===================================== -->
     <!-- MODAL 2: THÔNG BÁO XÓA THÀNH CÔNG (XANH) -->
-    <!-- ===================================== -->
     <div id="successDeleteModal" class="modal-overlay">
         <div class="modal-box">
             <div class="modal-icon-success">

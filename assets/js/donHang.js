@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     
     // ========================================================
-    // 1. TÌM KIẾM HÓA ĐƠN & HIỂN THỊ EMPTY STATE
+    // 1. TÌM KIẾM ĐƠN HÀNG & HIỂN THỊ EMPTY STATE
     // ========================================================
     const dataRows = document.querySelectorAll('.table tbody tr.data-row'); 
     const searchInput = document.querySelector('.search-box input');
@@ -38,43 +38,48 @@ document.addEventListener('DOMContentLoaded', () => {
     // ========================================================
     // 2. CLICK VÀO HÀNG ĐỂ XEM CHI TIẾT & CHUYỂN DỮ LIỆU
     // ========================================================
-    // Bổ sung thêm việc đánh mã tự động (ID) giả lập nếu bảng chưa có cột ID
-    dataRows.forEach((row, index) => {
+    dataRows.forEach(row => {
         row.style.cursor = 'pointer'; 
         
         row.addEventListener('click', function() {
             const columns = this.querySelectorAll('td');
-            if(columns.length < 9) return;
+            if(columns.length < 6) return; // Bảng đơn hàng có 6 cột
 
-            // Xử lý class màu cho Trạng thái
-            const statusText = columns[7].textContent.trim();
-            let statusClass = 'status-dang-xu-ly'; // Mặc định
-            if (statusText === 'Hoàn tất') statusClass = 'status-hoan-tat';
-            else if (statusText === 'Đã hủy') statusClass = 'status-da-huy';
+            const id = columns[0].textContent.trim();
+            const customer = columns[1].textContent.trim();
+            const packageName = columns[2].textContent.trim();
+            const packagePrice = columns[3].textContent.trim();
+            const statusText = columns[4].textContent.trim();
+            const date = columns[5].textContent.trim(); // Cột ngày
 
-            // Tạo mã ID giả lập (VD: HD001, HD002...) dựa trên số thứ tự dòng
-            const generatedId = `HD00${index + 1}`;
+            // Map class CSS tương ứng cho trang chi tiết
+            let statusClass = 'status-dang-xu-ly'; 
+            if (statusText === 'Đã hoàn thành' || statusText === 'Hoàn tất') {
+                statusClass = 'status-hoan-tat';
+            } else if (statusText === 'Đã hủy') {
+                statusClass = 'status-da-huy';
+            } else if (statusText === 'Chờ xử lý') {
+                statusClass = 'status-cho-xu-ly'; 
+            }
 
-            // Gói gọn toàn bộ dữ liệu của hàng
-            const selectedInvoice = {
-                id: generatedId, // THÊM ID VÀO ĐÂY
-                customer: columns[0].textContent.trim(),
-                packageName: columns[1].textContent.trim(),
-                packagePrice: columns[2].textContent.trim(),
-                startDate: columns[3].textContent.trim(),
-                endDate: columns[4].textContent.trim(),
-                agent: columns[5].textContent.trim(),
-                collaborator: columns[6].textContent.trim(),
+            // Đóng gói dữ liệu gửi đi (Do bảng danh sách chỉ có 1 cột Ngày nên mình clone ra cho 2 ô Bắt đầu/Kết thúc ở trang chi tiết để test)
+            const selectedOrder = {
+                id: id,
+                customer: customer,
+                packageName: packageName,
+                packagePrice: packagePrice,
+                startDate: date,
+                endDate: date, 
                 statusText: statusText,
                 statusClass: statusClass,
-                totalPrice: columns[8].textContent.trim()
+                totalPrice: packagePrice
             };
             
             // Lưu vào localStorage
-            localStorage.setItem('viewingInvoice', JSON.stringify(selectedInvoice));
+            localStorage.setItem('viewingOrder', JSON.stringify(selectedOrder));
             
-            // Chuyển trang
-            window.location.href = 'hoaDon-chiTiet.html';
+            // Chuyển trang sang chi tiết
+            window.location.href = 'donHang-chiTiet.html';
         });
     });
 });

@@ -1,19 +1,38 @@
 document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
-    // 1. HIỂN THỊ DỮ LIỆU TỪ DANH SÁCH (TÙY CHỌN)
+    // 1. LẤY DỮ LIỆU TỪ LOCALSTORAGE ĐỂ ĐIỀN VÀO CHI TIẾT
     // ==========================================
-    const packageDataStr = localStorage.getItem('viewingPackage');
-    if (packageDataStr) {
-        const pkg = JSON.parse(packageDataStr);
-        const titleEl = document.getElementById('pageTitle');
-        if (titleEl) titleEl.textContent = `Gói cước / ${pkg.id}`;
+    const invoiceDataStr = localStorage.getItem('viewingInvoice');
+    
+    // Nếu có dữ liệu thì điền vào
+    if (invoiceDataStr) {
+        const invoice = JSON.parse(invoiceDataStr);
+
+        // Gắn Text vào các trường thông tin
+        document.getElementById('val-customer').textContent = invoice.customer;
+        document.getElementById('val-packageName').textContent = invoice.packageName;
+        document.getElementById('val-packagePrice').textContent = invoice.packagePrice;
+        document.getElementById('val-startDate').textContent = invoice.startDate;
+        document.getElementById('val-endDate').textContent = invoice.endDate;
+        document.getElementById('val-agent').textContent = invoice.agent;
+        document.getElementById('val-collaborator').textContent = invoice.collaborator;
+        document.getElementById('val-totalPrice').textContent = invoice.totalPrice;
+
+        // Cập nhật Nhãn Trạng thái (Text và Màu sắc)
+        const statusEl = document.getElementById('val-status');
+        if (statusEl) {
+            statusEl.textContent = invoice.statusText;
+            statusEl.className = 'status-badge-invoice ' + invoice.statusClass;
+        }
+    } else {
+        // NẾU KHÔNG CÓ DỮ LIỆU (Mở trực tiếp trang) -> Đẩy về trang Danh sách
+        window.location.href = 'hoaDon.html';
+        return; // Dừng chạy các lệnh bên dưới
     }
 
     // ==========================================
-    // 2. LOGIC BẬT / TẮT MODAL XÓA GÓI CƯỚC
+    // 2. LOGIC BẬT / TẮT MODAL XÓA HÓA ĐƠN
     // ==========================================
-    
-    // Tìm các nút bấm và Modal bằng class / ID
     const btnDelete = document.querySelector('.btn-delete'); 
     const deleteModal = document.getElementById('deleteModal');
     const btnConfirmDelete = document.querySelector('.btn-danger-confirm'); 
@@ -21,21 +40,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const successDeleteModal = document.getElementById('successDeleteModal');
     const btnCloseSuccess = document.querySelector('#successDeleteModal .btn-primary-modal');
 
-    // 1. Mở popup Xóa (Đỏ) khi bấm nút Xóa ở góc trên
     if (btnDelete && deleteModal) {
         btnDelete.addEventListener('click', () => {
             deleteModal.style.display = 'flex';
         });
     }
 
-    // 2. Đóng popup Xóa (Đỏ) khi bấm "Đóng"
     if (btnCancelDelete && deleteModal) {
         btnCancelDelete.addEventListener('click', () => {
             deleteModal.style.display = 'none';
         });
     }
 
-    // 3. Xác nhận Xóa -> Tắt Modal Đỏ, Bật Modal Thành công (Xanh)
     if (btnConfirmDelete && deleteModal && successDeleteModal) {
         btnConfirmDelete.addEventListener('click', () => {
             deleteModal.style.display = 'none'; 
@@ -43,11 +59,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. Đóng popup Thành công -> Chuyển về trang danh sách
     if (btnCloseSuccess && successDeleteModal) {
         btnCloseSuccess.addEventListener('click', () => {
             successDeleteModal.style.display = 'none';
-            window.location.href = 'goiCuoc.html';
+            window.location.href = 'hoaDon.html';
         });
     }
 });

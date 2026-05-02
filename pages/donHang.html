@@ -9,8 +9,11 @@
     <link rel="stylesheet" href="../assets/css/components.css">
     <link rel="stylesheet" href="../assets/css/pages/bangDieukhien.css">
     <link rel="stylesheet" href="../assets/css/pages/donHang.css">
-    
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        /* Bổ sung thêm màu cho trạng thái Chờ xử lý ở trang chi tiết nếu cần */
+        .status-cho-xu-ly { background: #FEF3C7; color: #B45309; border: 1.33px solid #FDE68A; }
+    </style>
 </head>
 <body>
     <div class="app-container">
@@ -22,7 +25,9 @@
             <main class="main-content">
                 <div class="page-title-row">
                     <h2>Đơn hàng</h2>
-                    <button class="btn-primary"><i class='bx bx-export'></i> Xuất báo cáo</button>
+                    <button class="btn-primary" onclick="window.location.href='donHang-moi.html'">
+                        <i class='bx bx-plus'></i> Mới
+                    </button>
                 </div>
 
                 <div class="filter-row">
@@ -46,45 +51,63 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <!-- Thêm class data-row vào các dòng -->
+                                <tr class="data-row">
                                     <td><strong>DH001</strong></td>
                                     <td>Nguyễn Thị Mai</td>
                                     <td>Gói Data Cao Cấp</td>
-                                    <td>150,000 VNĐ</td>
+                                    <td>150.000 VNĐ</td>
                                     <td><span class="status-badge completed">Đã hoàn thành</span></td>
                                     <td>15/4/2026</td>
                                 </tr>
-                                <tr>
+                                <tr class="data-row">
                                     <td><strong>DH002</strong></td>
                                     <td>Trần Văn Hùng</td>
                                     <td>Gói Combo Data + Voice</td>
-                                    <td>200,000 VNĐ</td>
+                                    <td>200.000 VNĐ</td>
                                     <td><span class="status-badge processing">Đang xử lý</span></td>
                                     <td>15/4/2026</td>
                                 </tr>
-                                <tr>
+                                <tr class="data-row">
                                     <td><strong>DH003</strong></td>
                                     <td>Lê Thị Lan</td>
                                     <td>Gói SMS Doanh Nghiệp</td>
-                                    <td>50,000 VNĐ</td>
+                                    <td>50.000 VNĐ</td>
                                     <td><span class="status-badge pending">Chờ xử lý</span></td>
                                     <td>14/4/2026</td>
                                 </tr>
-                                <tr>
+                                <tr class="data-row">
                                     <td><strong>DH004</strong></td>
                                     <td>Phạm Văn Đức</td>
                                     <td>Gói All-in-One</td>
-                                    <td>300,000 VNĐ</td>
+                                    <td>300.000 VNĐ</td>
                                     <td><span class="status-badge processing">Đang xử lý</span></td>
                                     <td>14/4/2026</td>
                                 </tr>
-                                <tr>
+                                <tr class="data-row">
                                     <td><strong>DH005</strong></td>
                                     <td>Hoàng Thị Thu</td>
                                     <td>Gói Data Cao Cấp</td>
-                                    <td>150,000 VNĐ</td>
+                                    <td>150.000 VNĐ</td>
                                     <td><span class="status-badge completed">Đã hoàn thành</span></td>
                                     <td>13/4/2026</td>
+                                </tr>
+
+                                <!-- KHỐI EMPTY STATE (KHÔNG TÌM THẤY ĐƠN HÀNG) -->
+                                <tr id="noResultsRow" style="display: none;">
+                                    <td colspan="6" style="padding: 0; border: none;">
+                                        <div class="empty-state" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 232.5px; background: #fff; gap: 12px;">
+                                            <div style="width: 48px; height: 48px; position: relative; overflow: hidden;">
+                                                <div style="width: 28px; height: 12px; left: 4px; top: 30px; position: absolute; outline: 4px #D1D5DB solid; outline-offset: -2px"></div>
+                                                <div style="width: 16px; height: 16px; left: 10px; top: 6px; position: absolute; outline: 4px #D1D5DB solid; outline-offset: -2px"></div>
+                                                <div style="width: 6px; height: 11.74px; left: 38px; top: 30.26px; position: absolute; outline: 4px #D1D5DB solid; outline-offset: -2px"></div>
+                                                <div style="width: 6.02px; height: 15.50px; left: 32px; top: 6.26px; position: absolute; outline: 4px #D1D5DB solid; outline-offset: -2px"></div>
+                                            </div>
+                                            <div style="color: #6B7280; font-size: 14px; font-family: Inter; font-weight: 500; line-height: 21px;">
+                                                Không tìm thấy đơn hàng
+                                            </div>
+                                        </div>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -93,10 +116,7 @@
 
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
                     <div class="pagination-info" style="color: var(--text-gray); font-size: 13px;">
-                        Hiển thị <strong>5</strong> / <strong>5</strong> đơn hàng
-                    </div>
-                    <div style="color: #9CA3AF; font-size: 12px;">
-                        Cập nhật lần cuối: 11:30:15 26/4/2026
+                        Hiển thị <strong id="visibleCount">5</strong> / <strong id="totalCount">5</strong> đơn hàng
                     </div>
                 </div>
             </main>
@@ -104,5 +124,6 @@
     </div>
 
     <script src="../assets/js/include.js"></script>
+    <script src="../assets/js/donHang.js"></script>
 </body>
 </html>
