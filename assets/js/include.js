@@ -22,7 +22,6 @@ function loadComponent(elementId, filePath) {
  * Khởi tạo giao diện và xử lý logic menu
  */
 document.addEventListener("DOMContentLoaded", function() {
-    // Load xong tất cả component (Sidebar, Header, Footer)
     Promise.all([
         loadComponent("sidebar-placeholder", "../components/sidebar.html"),
         loadComponent("header-placeholder", "../components/header.html"),
@@ -32,8 +31,6 @@ document.addEventListener("DOMContentLoaded", function() {
         // --- LOGIC 1: TỰ ĐỘNG ACTIVE MENU THEO TRANG HIỆN TẠI ---
         let currentPath = window.location.pathname.split("/").pop();
         
-        // [NÂNG CẤP]: Cứ trang nào tên có chứa chữ "taiKhoan" (VD: taiKhoan-moi, taiKhoan-sua, taiKhoan-chiTiet)
-        // thì quy hết về menu "taiKhoan.html" để giữ hiệu ứng highlight xanh
         if (currentPath.includes("taiKhoan")) {
             currentPath = "taiKhoan.html";
         } else if (currentPath.includes("khachHang")) {
@@ -46,19 +43,15 @@ document.addEventListener("DOMContentLoaded", function() {
             currentPath = "bangDieukhien.html";
         } else if (currentPath.includes("donHang")) { 
             currentPath = "donHang.html";
+        } else if (currentPath.includes("daiLy-CTV")) { 
+            // [THÊM MỚI] Giúp menu Đại lý/CTV luôn sáng xanh
+            currentPath = "daiLy-CTV.html";
         }
         
-        // Tìm tất cả các thẻ menu trong sidebar
         const menuItems = document.querySelectorAll(".menu-item");
-
         menuItems.forEach(item => {
-            // Xóa class active cũ của tất cả menu
             item.classList.remove("active");
-
-            // Lấy giá trị href của menu
             const itemHref = item.getAttribute("href");
-
-            // Nếu href trùng với tên file hiện tại thì thêm class active (hiện xanh)
             if (itemHref === currentPath || (itemHref && itemHref.includes(currentPath))) {
                 item.classList.add("active");
             }

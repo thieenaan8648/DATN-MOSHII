@@ -1,11 +1,49 @@
 document.addEventListener('DOMContentLoaded', () => {
     
     // ========================================================
-    // 1. TÌM KIẾM HÓA ĐƠN & HIỂN THỊ EMPTY STATE
+    // 1. LẤY DỮ LIỆU ĐƠN HÀNG MỚI (NẾU CÓ) VÀ VẼ THÊM VÀO BẢNG
+    // ========================================================
+    const tableBody = document.querySelector('.table tbody');
+    const duLieuHoaDonTam = JSON.parse(localStorage.getItem('duLieuHoaDonTam')) || [];
+    
+    if (tableBody && duLieuHoaDonTam.length > 0) {
+        // QUAN TRỌNG: Đã BỎ .reverse() để phần tử mới được đẩy lên trên cùng
+        duLieuHoaDonTam.forEach(hd => {
+            const tr = document.createElement('tr');
+            tr.className = 'data-row';
+            tr.style.cursor = 'pointer';
+            tr.setAttribute('data-id', hd.id); 
+            
+            // Fix UI: Sử dụng class status-badge chuẩn theo CSS của bạn thay vì style inline
+            let statusCls = 'processing';
+            if (hd.statusText.includes('Hoàn tất') || hd.statusText.includes('thành')) statusCls = 'completed';
+            if (hd.statusText.includes('hủy')) statusCls = 'canceled';
+            if (hd.statusText.includes('Chờ')) statusCls = 'pending';
+
+            // In 9 cột khớp với cấu trúc bảng HTML hiện tại của bạn
+            tr.innerHTML = `
+                <td>${hd.customer}</td>
+                <td>${hd.packageName}</td>
+                <td>${hd.packagePrice}</td>
+                <td>${hd.startDate}</td>
+                <td>${hd.endDate}</td>
+                <td>${hd.agent}</td>
+                <td>${hd.collaborator}</td>
+                <td><span class="status-badge ${statusCls}">${hd.statusText}</span></td>
+                <td><strong>${hd.totalPrice}</strong></td>
+            `;
+            tableBody.prepend(tr); // Nhét lên đầu danh sách
+        });
+    }
+
+    // ========================================================
+    // 2. TÌM KIẾM HÓA ĐƠN & HIỂN THỊ EMPTY STATE + ĐẾM DÒNG
     // ========================================================
     const dataRows = document.querySelectorAll('.table tbody tr.data-row'); 
     const searchInput = document.querySelector('.search-box input');
     const noResultsRow = document.getElementById('noResultsRow');
+    
+    // GIỮ NGUYÊN CHỨC NĂNG ĐẾM DÒNG HIỂN THỊ
     const visibleCountEl = document.getElementById('visibleCount');
     const totalCountEl = document.getElementById('totalCount');
 
@@ -28,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
+            // Cập nhật số lượng dòng tìm thấy
             if (visibleCountEl) visibleCountEl.textContent = visibleCount;
             if (noResultsRow) {
                 noResultsRow.style.display = visibleCount === 0 ? '' : 'none';
@@ -36,9 +75,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ========================================================
-    // 2. CLICK VÀO HÀNG ĐỂ XEM CHI TIẾT & CHUYỂN DỮ LIỆU
+    // 3. CLICK VÀO HÀNG ĐỂ XEM CHI TIẾT & CHUYỂN DỮ LIỆU
     // ========================================================
-    // Bổ sung thêm việc đánh mã tự động (ID) giả lập nếu bảng chưa có cột ID
     dataRows.forEach((row, index) => {
         row.style.cursor = 'pointer'; 
         
@@ -46,18 +84,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const columns = this.querySelectorAll('td');
             if(columns.length < 9) return;
 
-            // Xử lý class màu cho Trạng thái
             const statusText = columns[7].textContent.trim();
-            let statusClass = 'status-dang-xu-ly'; // Mặc định
+            let statusClass = 'status-dang-xu-ly'; 
             if (statusText === 'Hoàn tất') statusClass = 'status-hoan-tat';
             else if (statusText === 'Đã hủy') statusClass = 'status-da-huy';
 
-            // Tạo mã ID giả lập (VD: HD001, HD002...) dựa trên số thứ tự dòng
-            const generatedId = `HD00${index + 1}`;
+            const generatedId = this.getAttribute('data-id') || `HD00${index + 1}`;
 
-            // Gói gọn toàn bộ dữ liệu của hàng
             const selectedInvoice = {
-                id: generatedId, // THÊM ID VÀO ĐÂY
+                id: generatedId, 
                 customer: columns[0].textContent.trim(),
                 packageName: columns[1].textContent.trim(),
                 packagePrice: columns[2].textContent.trim(),
@@ -70,10 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 totalPrice: columns[8].textContent.trim()
             };
             
-            // Lưu vào localStorage
             localStorage.setItem('viewingInvoice', JSON.stringify(selectedInvoice));
-            
-            // Chuyển trang
             window.location.href = 'hoaDon-chiTiet.html';
         });
     });

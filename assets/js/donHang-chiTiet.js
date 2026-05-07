@@ -5,8 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     const orderDataStr = localStorage.getItem('viewingOrder');
     
-    // Nếu trang mở bình thường thì ưu tiên lấy data từ danh sách, 
-    // Nếu test trực tiếp, mình mock giả lập 1 đơn hàng "Hoàn tất" để bạn thấy nút Sửa/Xóa bị mờ
+    // Mock giả lập 1 đơn hàng "Hoàn tất" để test nếu mở trực tiếp
     let order = {
         id: 'DH001',
         customer: 'Trần Văn Hùng',
@@ -55,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (btnEdit) btnEdit.classList.add('btn-disabled');
         if (btnDelete) btnDelete.classList.add('btn-disabled');
     } else {
-        // Chỉ cấp quyền tương tác nếu đơn hàng đang "Đang xử lý"
+        // Chỉ cấp quyền tương tác nếu đơn hàng đang xử lý/chờ xử lý
         if (btnEdit) {
             btnEdit.addEventListener('click', () => {
                 window.location.href = 'donHang-sua.html';
@@ -69,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // 3. LOGIC MODAL XÓA (KHI NÚT XÓA CHƯA BỊ KHÓA)
+    // 3. LOGIC MODAL XÓA (KHI NÚT XÓA CHƯA BỊ KHÓA) VÀ XÓA DATA THẬT
     // ==========================================
     const btnConfirmDelete = document.getElementById('btnConfirmDelete'); 
     const btnCancelDelete = document.getElementById('btnCancelDelete'); 
@@ -82,6 +81,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (btnConfirmDelete && deleteModal && successDeleteModal) {
         btnConfirmDelete.addEventListener('click', () => {
+            // XÓA THẬT TRONG LOCALSTORAGE
+            let dsDonHang = JSON.parse(localStorage.getItem('duLieuDonHangTam')) || [];
+            dsDonHang = dsDonHang.filter(dh => dh.id !== order.id); 
+            localStorage.setItem('duLieuDonHangTam', JSON.stringify(dsDonHang));
+
+            // Xóa luôn Hóa đơn ánh xạ
+            let dsHoaDon = JSON.parse(localStorage.getItem('duLieuHoaDonTam')) || [];
+            dsHoaDon = dsHoaDon.filter(hd => hd.maDonHang !== order.id); 
+            localStorage.setItem('duLieuHoaDonTam', JSON.stringify(dsHoaDon));
+
             deleteModal.style.display = 'none'; 
             successDeleteModal.style.display = 'flex'; 
         });
@@ -90,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnCloseSuccess && successDeleteModal) {
         btnCloseSuccess.addEventListener('click', () => {
             successDeleteModal.style.display = 'none';
-            localStorage.removeItem('viewingOrder'); // Dọn dẹp memory
+            localStorage.removeItem('viewingOrder'); 
             window.location.href = 'donHang.html';
         });
     }

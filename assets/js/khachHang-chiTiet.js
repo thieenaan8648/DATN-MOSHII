@@ -19,17 +19,18 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
     `;
 
+    // Dán đè đoạn mã này vào khachHang-chiTiet.js thay cho đoạn generalHTML cũ
     const generalContainer = document.getElementById('general-info-rows');
     let generalHTML = '';
     generalHTML += createRow('Mã khách hàng', cus.id, true);
     generalHTML += createRow('Họ và tên', cus.name);
-    generalHTML += createRow('Giới tính', 'Nữ'); 
-    generalHTML += createRow('Số CMND/CCCD', '048111111111');
+    generalHTML += createRow('Giới tính', cus.gioitinh || 'Nữ'); 
+    generalHTML += createRow('Số CMND/CCCD', cus.cccd || '048111111111');
     generalHTML += createRow('Số điện thoại', cus.phone);
-    generalHTML += createRow('Email', 'mai.nguyen@example.com');
-    generalHTML += createRow('Ngày sinh', '15/5/1992');
-    generalHTML += createRow('Địa chỉ', '123 Đường Lê Lợi, Quận 1, TP. Hồ Chí Minh');
-    generalHTML += createRow('Ghi chú', 'Khách hàng VIP, ưu tiên hỗ trợ nhanh');
+    generalHTML += createRow('Email', cus.email || 'mai.nguyen@example.com');
+    generalHTML += createRow('Ngày sinh', cus.ngaysinh || '19/08/1994');
+    generalHTML += createRow('Địa chỉ', cus.diachi || '123 Đường Lê Lợi, Quận 1, TP. Hồ Chí Minh');
+    generalHTML += createRow('Ghi chú', cus.ghichu || 'Khách hàng VIP, ưu tiên hỗ trợ nhanh');
     
     generalContainer.innerHTML = generalHTML;
 
@@ -44,12 +45,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. LOGIC NÚT BẤM VÀ MODAL 
     // ==========================================
     
-    // Xử lý nút Sửa
+    // [SỬA LỖI] Xử lý nút Sửa chuyển hướng mượt mà
     const btnEdit = document.querySelector('.btn-edit');
     if (btnEdit) {
         btnEdit.addEventListener('click', () => {
-            // Tạm thời chưa có form sửa khách hàng nên mình để alert nhé
-            alert("Chuyển sang trang sửa khách hàng");
+            // Chuyển thẳng sang trang Sửa thay vì hiện popup
+            window.location.href = 'khachHang-sua.html';
         });
     }
 
@@ -82,7 +83,10 @@ document.addEventListener('DOMContentLoaded', () => {
             deleteModal.style.display = 'none'; // Tắt đỏ
             successDeleteModal.style.display = 'flex'; // Bật xanh
             
-            // Note: Đoạn này bạn có thể chèn code xóa data trong localStorage nếu cần
+            // Lệnh xóa data trong localStorage (nếu cần thiết cho dự án)
+            let listKH = JSON.parse(localStorage.getItem('listKhachHang')) || [];
+            listKH = listKH.filter(item => item.id !== cus.id);
+            localStorage.setItem('listKhachHang', JSON.stringify(listKH));
         });
 
         // 4. Khi bấm "Đóng" ở Modal 2 -> Chuyển về trang danh sách Khách hàng

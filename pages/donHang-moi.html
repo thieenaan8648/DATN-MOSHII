@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="../assets/css/base.css">
     <link rel="stylesheet" href="../assets/css/layout.css">
     <link rel="stylesheet" href="../assets/css/components.css">
-    <!-- FILE CSS RIÊNG CỦA MÀN HÌNH TẠO ĐƠN HÀNG -->
     <link rel="stylesheet" href="../assets/css/pages/donHang-moi.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
@@ -33,7 +32,7 @@
                         
                         <div class="input-group">
                             <div class="form-label">Khách hàng <span class="required">*</span></div>
-                            <select class="form-input val-required">
+                            <select class="form-input val-required" id="inp-khach-hang">
                                 <option value="" disabled selected hidden>Chọn khách hàng</option>
                                 <option value="KH001">Nguyễn Thị Mai</option>
                                 <option value="KH002">Trần Văn Hùng</option>
@@ -60,19 +59,19 @@
 
                         <div class="input-group">
                             <div class="form-label">Ngày bắt đầu <span class="required">*</span></div>
-                            <input type="date" class="form-input val-required">
+                            <input type="date" class="form-input val-required" id="inp-ngay-bat-dau">
                             <div class="error-text">Vui lòng nhập đầy đủ thông tin</div>
                         </div>
 
                         <div class="input-group">
                             <div class="form-label">Ngày kết thúc <span class="required">*</span></div>
-                            <input type="date" class="form-input val-required">
+                            <input type="date" class="form-input val-required" id="inp-ngay-ket-thuc">
                             <div class="error-text">Vui lòng nhập đầy đủ thông tin</div>
                         </div>
 
                         <div class="input-group">
                             <div class="form-label">Đại lý <span class="required">*</span></div>
-                            <select class="form-input val-required">
+                            <select class="form-input val-required" id="inp-dai-ly">
                                 <option value="" disabled selected hidden>Chọn đại lý</option>
                                 <option value="DL001">DL001 - Trần Thị Bình</option>
                                 <option value="DL002">DL002 - Phạm Thị Dung</option>
@@ -82,7 +81,7 @@
 
                         <div class="input-group">
                             <div class="form-label">Cộng tác viên <span class="required">*</span></div>
-                            <select class="form-input val-required">
+                            <select class="form-input val-required" id="inp-ctv">
                                 <option value="" disabled selected hidden>Chọn CTV</option>
                                 <option value="CTV001">CTV001 - Lê Văn Cường</option>
                                 <option value="CTV002">CTV002 - Hoàng Văn Em</option>
@@ -92,7 +91,7 @@
 
                         <div class="input-group">
                             <div class="form-label">Trạng thái <span class="required">*</span></div>
-                            <select class="form-input val-required">
+                            <select class="form-input val-required" id="inp-trang-thai">
                                 <option value="" disabled selected hidden>Chọn trạng thái</option>
                                 <option value="Chờ xử lý">Chờ xử lý</option>
                                 <option value="Đang xử lý">Đang xử lý</option>
@@ -113,7 +112,6 @@
         </div>
     </div>
 
-    <!-- MODAL THÔNG BÁO TẠO THÀNH CÔNG -->
     <div id="successModal" class="modal-overlay">
         <div class="modal-box">
             <div class="modal-icon-success">

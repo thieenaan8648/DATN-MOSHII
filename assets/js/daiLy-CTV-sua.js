@@ -12,6 +12,22 @@ document.addEventListener('DOMContentLoaded', () => {
         // ==========================================
         document.getElementById('inp-id').value = data.ma;
         document.getElementById('inp-name').value = data.ten;
+        
+        // [SỬA LỖI] Bổ sung đổ Email
+        const emailInput = document.getElementById('inp-email');
+        if(emailInput) emailInput.value = data.email || '';
+
+        // [SỬA LỖI] Bổ sung đổ Ngày sinh (Chuyển DD/MM/YYYY -> YYYY-MM-DD)
+        const dobInput = document.getElementById('inp-dob');
+        if (dobInput && data.ngaysinh) {
+            const parts = data.ngaysinh.split('/');
+            if (parts.length === 3) {
+                dobInput.value = `${parts[2]}-${parts[1]}-${parts[0]}`;
+            } else {
+                dobInput.value = data.ngaysinh; // Dự phòng
+            }
+        }
+
         document.getElementById('inp-phone').value = data.sdt;
         document.getElementById('inp-area').value = data.khuvuc;
         
@@ -62,10 +78,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnSave = document.getElementById('btn-save-data');
     if(btnSave) {
         btnSave.addEventListener('click', () => {
-            // Lấy dữ liệu mới người dùng vừa sửa
+            // [SỬA LỖI] Chuyển đổi ngược lại YYYY-MM-DD -> DD/MM/YYYY để lưu
+            const dobRaw = document.getElementById('inp-dob').value;
+            const dobFormatted = dobRaw ? dobRaw.split('-').reverse().join('/') : 'Chưa cập nhật';
+
+            // Lấy dữ liệu mới người dùng vừa sửa (Gồm cả Email và Ngày sinh)
             const updatedData = {
                 ma: document.getElementById('inp-id').value,
                 ten: document.getElementById('inp-name').value,
+                email: document.getElementById('inp-email').value,
+                ngaysinh: dobFormatted,
                 sdt: document.getElementById('inp-phone').value,
                 khuvuc: document.getElementById('inp-area').value,
                 hoahong: document.getElementById('inp-comm').value + '%',

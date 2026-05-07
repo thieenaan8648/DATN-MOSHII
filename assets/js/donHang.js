@@ -1,8 +1,47 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    // ========================================================
+    // 1. LẤY DỮ LIỆU ĐƠN HÀNG MỚI TẠO VÀ VẼ LÊN BẢNG
+    // ========================================================
+    const tableBody = document.querySelector('.table tbody');
+    const duLieuDonHangTam = JSON.parse(localStorage.getItem('duLieuDonHangTam')) || [];
+
+    if (tableBody && duLieuDonHangTam.length > 0) {
+        // Lật ngược mảng để đơn mới nhất hiện lên trên cùng
+        duLieuDonHangTam.reverse().forEach(dh => {
+            const tr = document.createElement('tr');
+            tr.className = 'data-row';
+            tr.style.cursor = 'pointer';
+            
+            // Fix UI Badge cho Trạng thái Đơn Hàng (Các Pill màu)
+            let badgeHtml = '';
+            if (dh.statusClass === 'status-cho-xu-ly' || dh.statusText === 'Chờ xử lý') {
+                badgeHtml = `<span style="background: #FEF3C7; color: #D97706; padding: 6px 12px; border-radius: 8px; font-weight: 500; font-size: 13px;">${dh.statusText}</span>`;
+            } else if (dh.statusClass === 'status-hoan-tat' || dh.statusText === 'Đã hoàn thành') {
+                badgeHtml = `<span style="background: #DCFCE7; color: #16A34A; padding: 6px 12px; border-radius: 8px; font-weight: 500; font-size: 13px;">${dh.statusText}</span>`;
+            } else if (dh.statusClass === 'status-da-huy' || dh.statusText === 'Đã hủy') {
+                badgeHtml = `<span style="background: #FEE2E2; color: #DC2626; padding: 6px 12px; border-radius: 8px; font-weight: 500; font-size: 13px;">${dh.statusText}</span>`;
+            } else { // Đang xử lý
+                badgeHtml = `<span style="background: #EFF6FF; color: #2563EB; padding: 6px 12px; border-radius: 8px; font-weight: 500; font-size: 13px;">${dh.statusText}</span>`;
+            }
+
+            // Sửa lại UI: Bỏ in đậm số tiền, đổi màu cột ngày cho đồng bộ với dòng cũ
+            tr.innerHTML = `
+                <td><strong style="color: #111827; font-weight: 500;">${dh.id}</strong></td>
+                <td><span style="color: #374151;">${dh.customer}</span></td>
+                <td><span style="color: #374151;">${dh.packageName}</span></td>
+                <td><span style="color: #374151;">${dh.packagePrice}</span></td>
+                <td>${badgeHtml}</td>
+                <td><span style="color: #374151;">${dh.date}</span></td>
+            `;
+            tableBody.prepend(tr); // Đẩy lên đầu bảng
+        });
+    }
     
     // ========================================================
-    // 1. TÌM KIẾM ĐƠN HÀNG & HIỂN THỊ EMPTY STATE
+    // 2. TÌM KIẾM ĐƠN HÀNG & HIỂN THỊ EMPTY STATE
     // ========================================================
+    // Khai báo lại dataRows sau khi đã chèn thêm các dòng mới vào HTML
     const dataRows = document.querySelectorAll('.table tbody tr.data-row'); 
     const searchInput = document.querySelector('.search-box input');
     const noResultsRow = document.getElementById('noResultsRow');
@@ -36,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ========================================================
-    // 2. CLICK VÀO HÀNG ĐỂ XEM CHI TIẾT & CHUYỂN DỮ LIỆU
+    // 3. CLICK VÀO HÀNG ĐỂ XEM CHI TIẾT & CHUYỂN DỮ LIỆU
     // ========================================================
     dataRows.forEach(row => {
         row.style.cursor = 'pointer'; 
@@ -62,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 statusClass = 'status-cho-xu-ly'; 
             }
 
-            // Đóng gói dữ liệu gửi đi (Do bảng danh sách chỉ có 1 cột Ngày nên mình clone ra cho 2 ô Bắt đầu/Kết thúc ở trang chi tiết để test)
+            // Đóng gói dữ liệu gửi đi 
             const selectedOrder = {
                 id: id,
                 customer: customer,

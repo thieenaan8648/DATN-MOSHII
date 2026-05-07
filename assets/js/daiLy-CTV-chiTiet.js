@@ -10,6 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // Gắn dữ liệu cơ bản
         document.getElementById('det-id').textContent = data.ma;
         document.getElementById('det-name').textContent = data.ten;
+        
+        // BỔ SUNG 2 DÒNG ĐIỀN EMAIL VÀ NGÀY SINH VÀO GIAO DIỆN
+        document.getElementById('det-email').textContent = data.email || 'Chưa cập nhật';
+        const dobElement = document.getElementById('det-dob');
+        if(dobElement) dobElement.textContent = data.ngaysinh || 'Chưa cập nhật';
+
         document.getElementById('det-phone').textContent = data.sdt;
         document.getElementById('det-area').textContent = data.khuvuc;
         document.getElementById('det-commission').textContent = data.hoahong;
@@ -30,9 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('lbl-id').textContent = 'Mã đại lý';
             document.getElementById('lbl-system').textContent = 'Thông tin hệ thống';
             
-            // Các trường của Đại lý
             document.getElementById('doanh-nghiep-row').style.display = 'flex';
             document.getElementById('mst-row').style.display = 'flex';
+            const gioiTinh = document.getElementById('gioi-tinh-row'); if(gioiTinh) gioiTinh.style.display = 'none';
+
             document.getElementById('lbl-addr-1').textContent = 'Địa chỉ thường trú';
             document.getElementById('addr-2-row').style.display = 'flex';
             document.getElementById('pham-vi-row').style.display = 'flex';
@@ -45,24 +52,22 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('lbl-id').textContent = 'Mã CTV';
             document.getElementById('lbl-system').textContent = 'Hợp tác';
             
-            // Ẩn/Hiện các trường theo CTV
             document.getElementById('doanh-nghiep-row').style.display = 'none';
             document.getElementById('mst-row').style.display = 'none';
+            const gioiTinh = document.getElementById('gioi-tinh-row'); if(gioiTinh) gioiTinh.style.display = 'flex';
+
             document.getElementById('lbl-addr-1').textContent = 'Địa chỉ';
-            document.getElementById('addr-2-row').style.display = 'none'; // Ẩn địa chỉ kinh doanh
-            document.getElementById('pham-vi-row').style.display = 'none'; // Ẩn phạm vi
-            document.getElementById('danh-sach-row').style.display = 'none'; // Ẩn danh sách CTV con
-            document.getElementById('kenh-ban-row').style.display = 'flex'; // Hiện Kênh bán
+            document.getElementById('addr-2-row').style.display = 'none'; 
+            document.getElementById('pham-vi-row').style.display = 'none'; 
+            document.getElementById('danh-sach-row').style.display = 'none'; 
+            document.getElementById('kenh-ban-row').style.display = 'flex'; 
         }
     }
 
-    // ==========================================
-    // 2. KÍCH HOẠT NÚT SỬA ĐỂ CHUYỂN SANG MÀN HÌNH FORM SỬA
-    // ==========================================
+    // KÍCH HOẠT NÚT SỬA 
     const btnEdit = document.querySelector('.btn-edit');
     if(btnEdit) {
         btnEdit.addEventListener('click', () => {
-            // Phải đảm bảo tên file này trỏ đúng vào file Form sửa bạn vừa tạo
             window.location.href = 'daiLy-CTV-sua.html';
         });
     }

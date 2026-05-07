@@ -4,9 +4,46 @@ document.addEventListener('DOMContentLoaded', () => {
         input.addEventListener('input', function() {
             this.classList.remove('input-error');
             const err = this.nextElementSibling;
-            if(err && err.classList.contains('error-text')) err.style.display = 'none';
+            if(err && err.classList.contains('error-text')) {
+                err.style.display = 'none';
+                err.textContent = 'Không được để trống'; // Phục hồi text lỗi gốc
+            }
         });
     });
+
+    // ==========================================
+    // VALIDATE CHẶN NGÀY TƯƠNG LAI CHO TẤT CẢ Ô DATE
+    // ==========================================
+    const dateInputs = document.querySelectorAll('input[type="date"]');
+    if (dateInputs.length > 0) {
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const dd = String(today.getDate()).padStart(2, '0');
+        const todayStr = `${yyyy}-${mm}-${dd}`;
+
+        dateInputs.forEach(input => {
+            // Khóa các ngày tương lai trên bảng chọn lịch (UI)
+            input.setAttribute('max', todayStr);
+
+            // Xử lý nếu người dùng cố tình gõ tay ngày tương lai
+            input.addEventListener('change', function() {
+                const selectedDate = new Date(this.value);
+                const currentDate = new Date();
+                currentDate.setHours(0, 0, 0, 0); 
+
+                if (selectedDate > currentDate) {
+                    this.classList.add('input-error');
+                    const errText = this.nextElementSibling;
+                    if (errText && errText.classList.contains('error-text')) {
+                        errText.textContent = 'Ngày sinh không được lớn hơn hiện tại';
+                        errText.style.display = 'block';
+                    }
+                    this.value = ''; // Xóa trắng dữ liệu sai
+                }
+            });
+        });
+    }
 });
 
 // 2. Validate form và lưu Khách hàng

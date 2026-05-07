@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Sửa Khách hàng - MOSHII</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/pages/khachHang-moi.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="app-container">
+        <div id="sidebar-placeholder"></div>
+        <div class="main-wrapper">
+            <div id="header-placeholder"></div>
+            <main class="main-content">
+                
+                <div class="page-header-action">
+                    <div class="header-left-stack">
+                        <a href="khachHang-chiTiet.html" class="back-link">
+                            <i class='bx bx-chevron-left'></i> Quay lại
+                        </a>
+                        <h2>Chỉnh sửa khách hàng</h2>
+                    </div>
+                </div>
+
+                <div class="create-form-container">
+                    <div class="form-grid">
+                        
+                        <div class="input-group">
+                            <div class="form-label">Họ và tên <span class="required">*</span></div>
+                            <input type="text" class="val-required" id="inp-name" placeholder="Nhập họ và tên">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Số điện thoại <span class="required">*</span></div>
+                            <input type="text" class="val-required" id="inp-phone" placeholder="Nhập số điện thoại">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+
+                        <div class="input-group">
+                            <div class="form-label">Email <span class="required">*</span></div>
+                            <input type="email" class="val-required" id="inp-email" placeholder="Nhập email">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-label">Ngày sinh <span class="required">*</span></div>
+                            <input type="date" class="val-required" id="inp-dob">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+
+                        <div class="input-group col-span-2">
+                            <div class="form-label">Địa chỉ <span class="required">*</span></div>
+                            <input type="text" class="val-required" id="inp-address" placeholder="Nhập địa chỉ">
+                            <div class="error-text">Không được để trống</div>
+                        </div>
+                        <div class="input-group col-span-2">
+                            <div class="form-label">Ghi chú</div>
+                            <textarea id="inp-note" placeholder="Nhập ghi chú (nếu có)"></textarea>
+                        </div>
+
+                    </div>
+
+                    <div style="margin-top: 32px; padding-top: 24px; border-top: 1.33px solid #E5E7EB; display: flex; gap: 12px; align-items: center;">
+                        <button id="btn-save" style="padding: 10px 24px; background: #2563EB; color: white; border-radius: 10px; border: none; cursor: pointer; font-weight: 500; font-size: 14px; box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.10);">Lưu</button>
+                        <button onclick="window.location.href='khachHang-chiTiet.html'" style="padding: 10px 24px; background: white; color: #374151; border: 1.33px solid #D1D5DB; border-radius: 10px; cursor: pointer; font-weight: 500; font-size: 14px;">Hủy</button>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <div id="successModal" class="modal-overlay" style="display: none;">
+        <div class="modal-box">
+            <div class="modal-icon-success">
+                <i class='bx bx-check'></i>
+            </div>
+            <h3>Thông báo</h3>
+            <p>Cập nhật khách hàng thành công</p>
+            <button class="btn-primary-modal" onclick="window.location.href='khachHang-chiTiet.html'">Đóng</button>
+        </div>
+    </div>
+
+    <script src="../assets/js/include.js"></script>
+    <script src="../assets/js/khachHang-sua.js"></script>
+</body>
+</html>

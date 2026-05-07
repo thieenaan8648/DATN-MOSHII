@@ -1,71 +1,106 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const accountDataStr = localStorage.getItem('viewingAccount');
-    if (!accountDataStr) {
-        window.location.href = 'taiKhoan.html'; 
-        return;
-    }
-    
-    const acc = JSON.parse(accountDataStr);
 
-    const prefix = acc.role === 'Đại lý' ? 'DL' : 'CTV';
-    document.getElementById('pageTitle').textContent = `Tài khoản / ${prefix}_${Math.floor(Math.random() * 10000).toString().padStart(5, '0')}`;
-    
-    document.getElementById('val-email').textContent = acc.email || 'chuacapnhat@email.com';
+    try {
+        // Lấy dữ liệu từ bộ nhớ tạm
+        const storedData = localStorage.getItem('moshii_detail_data');
 
-    const roleBadge = document.getElementById('val-role');
-    if (acc.role === 'Đại lý') {
-        roleBadge.innerHTML = `<span style="background: #DCFCE7; color: #16A34A; padding: 4px 10px; border-radius: 8px; font-weight: 500; font-size: 12px;">Đại lý</span>`;
-        document.getElementById('sectionTitle2').textContent = 'Thông tin đại lý';
-    } else {
-        roleBadge.innerHTML = `<span style="background: #FEF3C7; color: #D97706; padding: 4px 10px; border-radius: 8px; font-weight: 500; font-size: 12px;">Cộng tác viên</span>`;
-        document.getElementById('sectionTitle2').textContent = 'Thông tin cộng tác viên';
-    }
+        if (!storedData) {
+            window.location.href = 'daiLy-CTV.html';
+            return;
+        }
 
-    const dynamicContainer = document.getElementById('dynamic-info-rows');
-    const createRow = (label, value) => `
-        <div class="info-row">
-            <div class="info-label">${label}</div>
-            <div class="info-value">${value}</div>
-        </div>
-    `;
+        const data = JSON.parse(storedData);
+        
+        // [SỬA LỖI CRASH] Kiểm tra an toàn trước khi gọi hàm includes
+        const maText = data.ma || '';
+        const isAgent = maText.includes('DL') || data.role === 'Đại lý'; 
 
-    let rowsHTML = '';
-    rowsHTML += createRow('Họ và tên', acc.name || 'Đang cập nhật');
-    rowsHTML += createRow('Ngày sinh', '19/08/1994'); 
-    rowsHTML += createRow('Số điện thoại', acc.phone || 'Đang cập nhật');
+        // Hàm hỗ trợ đổ dữ liệu an toàn (không sập nếu thiếu thẻ HTML)
+        const safeSetText = (id, text) => {
+            const el = document.getElementById(id);
+            if (el) el.textContent = text || 'Chưa cập nhật';
+        };
 
-    if (acc.role === 'Cộng tác viên') {
-        rowsHTML += createRow('Đại lý quản lý', 'Nguyễn Văn An - AG001');
-    }
+        const safeSetDisplay = (id, displayValue) => {
+            const el = document.getElementById(id);
+            if (el) el.style.display = displayValue;
+        };
 
-    rowsHTML += createRow('Mã đại lý', 'AG001');
+        // ==========================================
+        // 1. GẮN DỮ LIỆU CƠ BẢN VÀO GIAO DIỆN
+        // ==========================================
+        safeSetText('det-id', data.ma);
+        safeSetText('det-name', data.ten || data.name);
+        safeSetText('det-email', data.email);
+        safeSetText('det-dob', data.ngaysinh);
+        safeSetText('det-phone', data.sdt || data.phone);
+        safeSetText('det-area', data.khuvuc);
+        safeSetText('det-commission', data.hoahong);
 
-    if (acc.role === 'Cộng tác viên') {
-        rowsHTML += createRow('Mã cộng tác viên', 'CTV_00005');
-    }
+        // Xử lý huy hiệu Trạng thái
+        const detStatus = document.getElementById('det-status');
+        if (detStatus) {
+            if (data.trangthai === 'Hoạt động' || !data.trangthai) {
+                detStatus.innerHTML = `<span style="display: inline-flex; align-items: center; gap: 8px; padding: 4px 12px; background: #DCFCE7; color: #16A34A; border-radius: 8px; font-size: 12px; font-weight: 500;"><div style="width: 6px; height: 6px; background: #16A34A; border-radius: 50%;"></div>Hoạt động</span>`;
+            } else {
+                detStatus.innerHTML = `<span style="display: inline-flex; align-items: center; gap: 8px; padding: 4px 12px; background: #FEE2E2; color: #DC2626; border-radius: 8px; font-size: 12px; font-weight: 500;"><div style="width: 6px; height: 6px; background: #DC2626; border-radius: 50%;"></div>Ngừng hoạt động</span>`;
+            }
+        }
 
-    rowsHTML += createRow('Khu vực hoạt động', 'TP. Hồ Chí Minh');
-    rowsHTML += createRow('Phần trăm hoa hồng', acc.role === 'Đại lý' ? '25%' : '18%');
-    
-    // GẮN THÊM id="status-container" ĐỂ LÁT NỮA UPDATE MÀU ĐỎ
-    rowsHTML += `
-        <div class="info-row">
-            <div class="info-label">Trạng thái</div>
-            <div class="info-value" id="status-container">
-                <span style="background: #DCFCE7; color: #16A34A; padding: 4px 10px; border-radius: 8px; font-weight: 500; font-size: 12px; display: inline-flex; align-items: center; gap: 6px;">
-                    <span style="width: 6px; height: 6px; background: #16A34A; border-radius: 50%;"></span> Hoạt động
-                </span>
-            </div>
-        </div>
-    `;
+        // ==========================================
+        // 2. BIẾN HÌNH GIAO DIỆN THEO ĐỐI TƯỢNG
+        // ==========================================
+        if (isAgent) {
+            safeSetText('page-title', 'Chi tiết Đại lý');
+            safeSetText('lbl-id', 'Mã đại lý');
+            safeSetText('lbl-system', 'Thông tin hệ thống');
+            
+            safeSetDisplay('doanh-nghiep-row', 'flex');
+            safeSetDisplay('mst-row', 'flex');
+            safeSetDisplay('gioi-tinh-row', 'none');
 
-    dynamicContainer.innerHTML = rowsHTML;
+            safeSetText('lbl-addr-1', 'Địa chỉ thường trú');
+            safeSetDisplay('addr-2-row', 'flex');
+            safeSetDisplay('pham-vi-row', 'flex');
+            safeSetDisplay('danh-sach-row', 'flex');
+            safeSetDisplay('kenh-ban-row', 'none');
 
-    // Nút Sửa
-    const btnEdit = document.querySelector('.btn-edit');
-    if (btnEdit) {
-        btnEdit.addEventListener('click', () => {
-            window.location.href = 'taiKhoan-sua.html';
-        });
+        } else {
+            safeSetText('page-title', 'Chi tiết CTV');
+            safeSetText('lbl-id', 'Mã CTV');
+            safeSetText('lbl-system', 'Hợp tác');
+            
+            safeSetDisplay('doanh-nghiep-row', 'none');
+            safeSetDisplay('mst-row', 'none');
+            safeSetDisplay('gioi-tinh-row', 'flex');
+
+            safeSetText('lbl-addr-1', 'Địa chỉ');
+            safeSetDisplay('addr-2-row', 'none'); 
+            safeSetDisplay('pham-vi-row', 'none'); 
+            safeSetDisplay('danh-sach-row', 'none'); 
+            safeSetDisplay('kenh-ban-row', 'flex'); 
+        }
+
+        // ==========================================
+        // 3. KÍCH HOẠT CÁC NÚT ĐIỀU HƯỚNG
+        // ==========================================
+        const btnEdit = document.querySelector('.btn-edit');
+        if (btnEdit) {
+            btnEdit.addEventListener('click', () => {
+                window.location.href = 'daiLy-CTV-sua.html';
+            });
+        }
+
+        // [SỬA LỖI] Ép nút Quay lại hoạt động ổn định bằng Javascript thay vì HTML
+        const btnBack = document.querySelector('.back-btn');
+        if (btnBack) {
+            btnBack.addEventListener('click', (e) => {
+                e.preventDefault(); // Ngăn chặn lỗi nhảy trang loạn xạ
+                window.location.href = 'daiLy-CTV.html';
+            });
+        }
+
+    } catch (error) {
+        console.error("Đã chặn được lỗi sập trang chi tiết:", error);
     }
 });

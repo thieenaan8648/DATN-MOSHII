@@ -3,10 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. LẤY DỮ LIỆU TỪ LOCALSTORAGE ĐỂ ĐIỀN VÀO CHI TIẾT
     // ==========================================
     const invoiceDataStr = localStorage.getItem('viewingInvoice');
+    let invoice = null; // Khai báo biến ra ngoài để dùng được ở phần Xóa bên dưới
     
     // Nếu CÓ DỮ LIỆU (tức là được chuyển đến từ trang Danh sách)
     if (invoiceDataStr) {
-        const invoice = JSON.parse(invoiceDataStr);
+        invoice = JSON.parse(invoiceDataStr);
 
         // Đổi tên Tiêu đề trang
         const titleEl = document.getElementById('pageTitle');
@@ -37,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // 2. LOGIC BẬT / TẮT MODAL XÓA HÓA ĐƠN
+    // 2. LOGIC BẬT / TẮT MODAL VÀ XÓA THẬT DỮ LIỆU
     // ==========================================
     const btnDelete = document.querySelector('.btn-delete'); 
     const deleteModal = document.getElementById('deleteModal');
@@ -60,6 +61,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (btnConfirmDelete && deleteModal && successDeleteModal) {
         btnConfirmDelete.addEventListener('click', () => {
+            
+            // --- ĐOẠN CODE THÊM MỚI: XÓA THẬT TRONG LOCAL STORAGE ---
+            if (invoice && invoice.id) {
+                let dsHoaDon = JSON.parse(localStorage.getItem('duLieuHoaDonTam')) || [];
+                // Lọc bỏ hóa đơn đang xem hiện tại
+                dsHoaDon = dsHoaDon.filter(hd => hd.id !== invoice.id);
+                // Lưu mảng mới (đã mất hóa đơn đó) trở lại kho
+                localStorage.setItem('duLieuHoaDonTam', JSON.stringify(dsHoaDon));
+            }
+            // --------------------------------------------------------
+
             deleteModal.style.display = 'none'; 
             successDeleteModal.style.display = 'flex'; 
         });
@@ -70,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
             successDeleteModal.style.display = 'none';
             // Xóa thành công thì clear dữ liệu tạm luôn cho sạch
             localStorage.removeItem('viewingInvoice');
-            window.location.href = 'hoaDon.html';
+            window.location.href = 'hoaDon.html'; // F5 lại trang danh sách
         });
     }
 });
